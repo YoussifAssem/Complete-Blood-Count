@@ -1,4 +1,4 @@
-import '../Classes/User.dart';
+import '../Classes/user.dart';
 
 main() {
   User u = User();
