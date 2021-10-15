@@ -1,109 +1,125 @@
 class User {
-  int _userID = 0;
-  String _firstName = '';
-  String _lastName = '';
-  String _birthDate = '';
+  int _userid = 0;
+  String _firstname = '';
+  String _lastname = '';
+  String _birthdate = '';
   String _email = '';
-  int phoneNumber = 0;
+  int _phonenumber = 0;
   String _password = '';
-  String gender = '';
+  String _gender = '';
 
-  User() {
+  User(this._userid) {
     // Initialaize Connection (From another class)
     //Add in dataBase
   }
   //Named Constructor
-  User.addID(this._userID) {}
+  User.addUser(
+      String fN, String lN, String bD, String e, int pN, String p, String g) {
+    setFirstName(fN);
+    setLastName(lN);
+    setBirthDate(bD);
+    setEmail(e);
+    setPhoneNumber(pN);
+    setPassword(p);
+    setGender(g);
+    addIntoDataBase();
+  }
   getID() {
-    return this._userID;
+    return _userid;
   }
 
   setFirstName(String fN) {
-    if (fN == '')
+    if (fN == '') {
       //Display error in UI
       throw 'Error, please Enter Your First Name';
-
-    this._firstName = fN;
+    }
+    _firstname = fN;
   }
 
   getFirstName() {
-    return this._firstName;
+    return _firstname;
   }
 
   setLastName(String lN) {
-    if (lN == '')
-      //Display error in UI
-      throw 'Error, please Enter Your Last Name';
-    this._lastName = lN;
+    if (lN == '') {
+      throw 'error, please enter your last name';
+    }
+    _lastname = lN;
   }
 
   getLastName() {
-    return this._lastName;
+    return _lastname;
   }
 
   setBirthDate(String bD) {
-    if (bD == '')
+    if (bD == '') {
       //Display error in UI
       throw 'Error, please Enter Your Birth Date';
-
-    this._birthDate = bD;
+    }
+    _birthdate = bD;
   }
 
   getBirthDate() {
-    return this._birthDate;
+    return _birthdate;
   }
 
   setEmail(String e) {
-    if (e == '')
+    if (e == '') {
       //Display error in UI
       throw 'Error, please Enter Your Email';
-
-    this._email = e;
+    }
+    _email = e;
   }
 
   getEmail() {
-    return this._email;
+    return _email;
   }
 
   setPhoneNumber(int pN) {
-    if (pN.toString().length == 10)
-      this.phoneNumber = pN;
-    else
+    if (pN.toString().length == 10) {
+      _phonenumber = pN;
+    } else {
       //Display error in UI
       throw 'Error, please Enter Your Phone Number Correctly';
+    }
   }
 
   getPhoneNumber() {
-    return this.phoneNumber;
+    return _phonenumber;
   }
 
   setPassword(String p) {
-    if (p == '')
+    if (p == '') {
       //Display error in UI
       throw 'Error, please Enter Your Password';
-
-    this._password = p;
+    }
+    _password = p;
   }
 
   getPassword() {
-    return this._password;
+    return _password;
   }
 
   setGender(String g) {
-    if (g == 'Male')
-      this.gender = g;
-    else if (g == 'Female')
-      this.gender = g;
-    else
+    if (g == 'Male') {
+      _gender = g;
+    } else if (g == 'Female') {
+      _gender = g;
+    } else {
       throw 'Error, Please Select Gender';
+    }
   }
 
   getGender() {
-    return this.gender;
+    return _gender;
   }
 
   logIn(String email, String password) {
-    this.setEmail(email);
-    this.setPassword(password);
+    setEmail(email);
+    setPassword(password);
   }
+}
+
+addIntoDataBase() {
+  //Here We Will add The New Data
 }
