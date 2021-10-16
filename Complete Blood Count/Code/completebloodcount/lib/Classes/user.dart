@@ -1,5 +1,4 @@
 class User {
-  int _userid = 0;
   String _firstname = '';
   String _lastname = '';
   String _birthdate = '';
@@ -8,7 +7,7 @@ class User {
   String _password = '';
   String _gender = '';
 
-  User(this._userid) {
+  User() {
     // Initialaize Connection (From another class)
     //Add in dataBase
   }
@@ -25,7 +24,7 @@ class User {
     addIntoDataBase();
   }
   getID() {
-    return _userid;
+    //Read ID From DataBase
   }
 
   setFirstName(String fN) {
@@ -117,9 +116,47 @@ class User {
   logIn(String email, String password) {
     setEmail(email);
     setPassword(password);
+    //Log In Join to the new page
   }
-}
 
-addIntoDataBase() {
-  //Here We Will add The New Data
+  sendMessage(String email, String message) {
+    //Check from database the email if it consists we will send the message
+  }
+
+  editProfile(
+      {String? firstName,
+      String? lastName,
+      String? email,
+      String? birthDate,
+      int? phone,
+      String? password}) {
+    setFirstName(firstName!);
+    setLastName(lastName!);
+    setEmail(email!);
+    setPassword(password!);
+    setBirthDate(birthDate!);
+    setPhoneNumber(phone!);
+
+    //This will edit the user profile and update the database
+    updateDataInDataBase(getFirstName(), getLastName(), getEmail(),
+        getBirthDate(), getPhoneNumber(), getPassword());
+  }
+
+  viewMessages() {
+    //This function will view data from database
+  }
+  register() {
+    //This function will take an object from Registeration and use the class
+  }
+  viewResults() {
+    //This Message will view Data From Class dataAnalyist
+  }
+
+  addIntoDataBase() {
+    //Here We Will add The New Data
+  }
+  updateDataInDataBase(String firstName, String lastName, String email,
+      String birthDate, int phone, String password) {
+    //This function will update data into data base
+  }
 }
