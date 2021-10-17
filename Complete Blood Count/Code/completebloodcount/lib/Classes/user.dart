@@ -3,7 +3,7 @@ class User {
   String _lastname = '';
   String _birthdate = '';
   String _email = '';
-  int _phonenumber = 0;
+  String _phonenumber = '';
   String _password = '';
   String _gender = '';
 
@@ -12,8 +12,8 @@ class User {
     //Add in dataBase
   }
   //Named Constructor
-  User.addUser(
-      String fN, String lN, String bD, String e, int pN, String p, String g) {
+  User.addUser(String fN, String lN, String bD, String e, String pN, String p,
+      String g) {
     setFirstName(fN);
     setLastName(lN);
     setBirthDate(bD);
@@ -74,8 +74,8 @@ class User {
     return _email;
   }
 
-  setPhoneNumber(int pN) {
-    if (pN.toString().length == 10) {
+  setPhoneNumber(String pN) {
+    if (pN.length == 11) {
       _phonenumber = pN;
     } else {
       //Display error in UI
@@ -128,7 +128,7 @@ class User {
       String? lastName,
       String? email,
       String? birthDate,
-      int? phone,
+      String? phone,
       String? password}) {
     setFirstName(firstName!);
     setLastName(lastName!);
