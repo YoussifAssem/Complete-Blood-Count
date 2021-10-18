@@ -38,6 +38,7 @@ class _SignInState extends State<SignIn> {
                   u.setBirthDate('20/1/2000');
                   u.setEmail('Kareem@gmail.com');
                   db.getData();
+                  db.setData();
                   // db.insertStudent(u);
                 })));
   }

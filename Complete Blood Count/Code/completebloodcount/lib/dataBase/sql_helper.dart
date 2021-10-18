@@ -7,10 +7,23 @@ import 'package:http/http.dart' as http;
 // ignore: camel_case_types
 class SQL_Helper {
   Future getData() async {
-    var url = 'http://192.168.1.3/dashboard/W/test.php';
+    var url = 'http://192.168.1.3/dashboard/W/CBC/readData.php';
     var response = await http.get(Uri.parse(url));
     print(json.decode(response.body));
     return json.decode(response.body);
+  }
+
+  setData() {
+    var url = 'http://192.168.1.3/dashboard/W/CBC/writeData.php';
+    http.post(Uri.parse(url), body: {
+      'firstName': 'Mai',
+      'lastName': 'Ali',
+      'email': 'Mai@gmail.com',
+      'password': 'Ali245',
+      'birthDate': '2/4/2003',
+      'phoneNumber': '01003214569',
+      'gender': 'Female',
+    });
   }
 
   /*
