@@ -38,6 +38,7 @@ class _SignUp extends State<SignUp> {
         body: Padding(
             padding: EdgeInsets.only(left: 2, top: 30),
             child: ListView(children: <Widget>[
+              image(),
               Text(
                 'First Name',
                 style: TextStyle(
@@ -208,7 +209,28 @@ class _SignUp extends State<SignUp> {
                       )
                     },
                 },
-              )
+              ),
             ])));
+  }
+}
+
+class image extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    AssetImage image = AssetImage('images/DNA.jpg');
+    Image myImg = Image(
+      image: image,
+      width: 500,
+      height: 800,
+    );
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: image,
+          fit: BoxFit.cover,
+        ),
+      ),
+      child: myImg,
+    );
   }
 }
