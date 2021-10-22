@@ -9,6 +9,7 @@ class SQL_Helper {
   Future getData() async {
     var url = 'http://192.168.1.3/dashboard/W/CBC/readData.php';
     var response = await http.get(Uri.parse(url));
+    // ignore: avoid_print
     print(json.decode(response.body));
     return json.decode(response.body);
   }
