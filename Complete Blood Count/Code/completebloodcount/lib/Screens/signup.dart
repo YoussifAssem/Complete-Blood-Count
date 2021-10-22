@@ -214,6 +214,7 @@ class _SignUp extends State<SignUp> {
   }
 }
 
+// ignore: camel_case_types, use_key_in_widget_constructors
 class image extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
