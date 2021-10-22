@@ -13,16 +13,16 @@ class SQL_Helper {
     return json.decode(response.body);
   }
 
-  setData() {
+  setData(User u) {
     var url = 'http://192.168.1.3/dashboard/W/CBC/writeData.php';
     http.post(Uri.parse(url), body: {
-      'firstName': 'Mai',
-      'lastName': 'Ali',
-      'email': 'Mai@gmail.com',
-      'password': 'Ali245',
-      'birthDate': '2/4/2003',
-      'phoneNumber': '01003214569',
-      'gender': 'Female',
+      'firstName': u.getFirstName(),
+      'lastName': u.getLastName(),
+      'email': u.getEmail(),
+      'password': u.getPassword(),
+      'birthDate': u.getBirthDate(),
+      'phoneNumber': u.getPhoneNumber(),
+      'gender': u.getGender(),
     });
   }
 
