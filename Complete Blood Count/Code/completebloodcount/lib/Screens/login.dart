@@ -2,6 +2,7 @@ import 'package:completebloodcount/Screens/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:completebloodcount/widgets/login_form.dart';
 import 'package:completebloodcount/widgets/primary_button.dart';
+import 'package:completebloodcount/widgets/login_option.dart';
 
 class logInScreen extends StatelessWidget {
   @override
