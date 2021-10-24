@@ -1,4 +1,3 @@
-import 'package:completebloodcount/Screens/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:completebloodcount/widgets/login_form.dart';
 import 'package:completebloodcount/widgets/primary_button.dart';
@@ -34,14 +33,7 @@ class logInScreen extends StatelessWidget {
               SizedBox(
                 width: 5,
               ),
-              RaisedButton(
-                  onPressed: () => {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => SignUp()),
-                        )
-                      },
-                  child: Text('sign up')),
+              RaisedButton(onPressed: () => {}, child: Text('sign up')),
             ]),
             SizedBox(
               height: 10,
@@ -63,6 +55,14 @@ class logInScreen extends StatelessWidget {
             PrimaryButton(
               buttonText: 'Log In',
             ),
+            SizedBox(
+              height: 20,
+            ),
+            Text('or log in with:', style: TextStyle(color: Colors.black)),
+            SizedBox(
+              height: 20,
+            ),
+            LoginOption(),
           ],
         ),
       ),
