@@ -1,5 +1,4 @@
-import 'package:completebloodcount/Screens/chat_screen.dart';
-import 'package:completebloodcount/Screens/signup.dart';
+import 'package:completebloodcount/Screens/login.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -10,7 +9,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       // debugShowCheckedModeBanner: false,
-      home: ChatScreen(),
+      home: logInScreen(),
     );
   }
 }

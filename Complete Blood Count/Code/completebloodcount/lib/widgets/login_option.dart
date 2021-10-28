@@ -1,29 +1,38 @@
 import 'package:flutter/material.dart';
 
+// ignore: use_key_in_widget_constructors
 class LoginOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        BuildButton(
+        // ignore: deprecated_member_use
+        FlatButton(
           // ignore: prefer_const_constructors
-          iconImage: Image(
-            height: 20,
-            width: 20,
-            image: const AssetImage("images/facebook.png"),
+          onPressed: () {},
+          child: Padding(
+            padding: const EdgeInsets.only(right: 80, top: 1),
+            // ignore: deprecated_member_use
+            child: Image.asset(
+              'images/facebook.png',
+              width: 40,
+              height: 50,
+            ),
           ),
-          textButton: 'Facebook',
         ),
-        BuildButton(
+
+        // ignore: deprecated_member_use
+        FlatButton(
           // ignore: prefer_const_constructors
-          iconImage: Image(
-            height: 20,
-            width: 20,
-            image: const AssetImage("images/google.png"),
+          onPressed: () {},
+          // ignore: deprecated_member_use
+          child: Image.asset(
+            'images/Google.png',
+            width: 40,
+            height: 50,
           ),
-          textButton: 'google',
-        )
+        ),
       ],
     );
   }
@@ -32,6 +41,7 @@ class LoginOption extends StatelessWidget {
 class BuildButton extends StatelessWidget {
   final Image iconImage;
   final String textButton;
+  // ignore: prefer_const_constructors_in_immutables, use_key_in_widget_constructors
   BuildButton({required this.iconImage, required this.textButton});
   @override
   Widget build(BuildContext context) {

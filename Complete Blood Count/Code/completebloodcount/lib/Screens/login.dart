@@ -1,19 +1,24 @@
+import 'package:completebloodcount/Screens/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:completebloodcount/widgets/login_form.dart';
 import 'package:completebloodcount/widgets/primary_button.dart';
 import 'package:completebloodcount/widgets/login_option.dart';
 
+// ignore: camel_case_types, use_key_in_widget_constructors
 class logInScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('LogIn'),
+        backgroundColor: Colors.black,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: ListView(
           children: [
-            SizedBox(
-              height: 120,
+            const SizedBox(
+              height: 30,
             ),
             const Text(
               'WELCOME',
@@ -22,44 +27,52 @@ class logInScreen extends StatelessWidget {
                   fontSize: 33.0,
                   fontWeight: FontWeight.bold),
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             Row(children: [
-              Text(
+              const Text(
                 'new to this app?',
                 style: TextStyle(color: Colors.black, fontSize: 14.0),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 5,
               ),
-              RaisedButton(onPressed: () => {}, child: Text('sign up')),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SignUp()),
+                    );
+                  },
+                  child: const Text('sign up')),
             ]),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             LogInForm(),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Text('forget password',
+            const Text('forget password',
                 style: TextStyle(
                   color: Colors.blue,
                   fontSize: 14.0,
                   decoration: TextDecoration.underline,
                   decorationThickness: 1,
                 )),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             PrimaryButton(
               buttonText: 'Log In',
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Text('or log in with:', style: TextStyle(color: Colors.black)),
-            SizedBox(
+            const Text('or log in with:',
+                style: TextStyle(color: Colors.black)),
+            const SizedBox(
               height: 20,
             ),
             LoginOption(),
