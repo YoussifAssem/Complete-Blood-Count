@@ -28,6 +28,7 @@ class _SignUp extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.blue[50],
         appBar: AppBar(
           backgroundColor: Colors.black,
           title: Text(
@@ -36,9 +37,8 @@ class _SignUp extends State<SignUp> {
           ),
         ),
         body: Padding(
-            padding: EdgeInsets.only(left: 2, top: 30),
+            padding: EdgeInsets.all(8),
             child: ListView(children: <Widget>[
-              Image.asset('images/DNA.jpg'),
               Text(
                 'First Name',
                 style: TextStyle(
@@ -172,44 +172,48 @@ class _SignUp extends State<SignUp> {
               ),
               const SizedBox(height: 20, width: 20),
               // ignore: deprecated_member_use
-              RaisedButton(
-                child: Text(
-                  'Sign Up',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
+              SizedBox(
+                height: 50,
+                child: ElevatedButton(
+                  child: Text(
+                    'Sign Up',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  style: ElevatedButton.styleFrom(primary: Colors.black),
+                  onPressed: () => {
+                    if (fN.text == '' ||
+                        sN.text == '' ||
+                        e.text == '' ||
+                        p.text == '' ||
+                        bD.text == '' ||
+                        pN.text == '')
+                      {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text("Please Fill All Requriements"),
+                        ))
+                      }
+                    else
+                      {
+                        user.setFirstName(fN.text),
+                        user.setLastName(sN.text),
+                        user.setEmail(e.text),
+                        user.setPassword(p.text),
+                        user.setBirthDate(bD.text),
+                        user.setPhoneNumber(pN.text),
+                        user.setGender(gender),
+                        sql.setData(user),
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => logInScreen()),
+                        )
+                      },
+                  },
                 ),
-                color: Colors.black,
-                onPressed: () => {
-                  if (fN.text == '' ||
-                      sN.text == '' ||
-                      e.text == '' ||
-                      p.text == '' ||
-                      bD.text == '' ||
-                      pN.text == '')
-                    {
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content: Text("Please Fill All Requriements"),
-                      ))
-                    }
-                  else
-                    {
-                      user.setFirstName(fN.text),
-                      user.setLastName(sN.text),
-                      user.setEmail(e.text),
-                      user.setPassword(p.text),
-                      user.setBirthDate(bD.text),
-                      user.setPhoneNumber(pN.text),
-                      user.setGender(gender),
-                      sql.setData(user),
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => logInScreen()),
-                      )
-                    },
-                },
-              ),
+              )
             ])));
   }
 }
