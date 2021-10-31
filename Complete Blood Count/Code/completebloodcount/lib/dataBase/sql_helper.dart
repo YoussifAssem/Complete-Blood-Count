@@ -27,6 +27,13 @@ class SQL_Helper {
     });
   }
 
+  readFromAPI() async {
+    var url = 'http://192.168.1.3/dashboard/W/CBC/API.json';
+    var response = await http.get(Uri.parse(url));
+    // ignore: avoid_print
+    print(json.decode(response.body));
+  }
+
   /*
   Future<Database?> get database async {
     _database = await openDatabase(

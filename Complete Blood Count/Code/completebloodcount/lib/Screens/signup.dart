@@ -50,7 +50,6 @@ class _SignUp extends State<SignUp> {
               TextFormField(
                   controller: fN,
                   autocorrect: true,
-                  textAlign: TextAlign.center,
                   decoration: InputDecoration(
                       labelText: "Enter First Name",
                       border: OutlineInputBorder(
@@ -68,7 +67,6 @@ class _SignUp extends State<SignUp> {
               TextFormField(
                   controller: sN,
                   autocorrect: true,
-                  textAlign: TextAlign.center,
                   decoration: InputDecoration(
                       labelText: "Enter Second Name",
                       border: OutlineInputBorder(
@@ -86,7 +84,6 @@ class _SignUp extends State<SignUp> {
               TextFormField(
                   autocorrect: true,
                   controller: e,
-                  textAlign: TextAlign.center,
                   decoration: InputDecoration(
                       labelText: "Enter Your Email",
                       border: OutlineInputBorder(
@@ -103,7 +100,6 @@ class _SignUp extends State<SignUp> {
               const SizedBox(height: 10, width: 10),
               TextFormField(
                   controller: p,
-                  textAlign: TextAlign.center,
                   obscureText: true,
                   decoration: InputDecoration(
                       labelText: "Password",
@@ -122,7 +118,6 @@ class _SignUp extends State<SignUp> {
               TextFormField(
                   controller: bD,
                   autocorrect: true,
-                  textAlign: TextAlign.center,
                   decoration: InputDecoration(
                       labelText: "Enter Birth Date",
                       border: OutlineInputBorder(
@@ -140,7 +135,6 @@ class _SignUp extends State<SignUp> {
               TextFormField(
                   controller: pN,
                   maxLength: 11,
-                  textAlign: TextAlign.center,
                   decoration: InputDecoration(
                       labelText: "Enter Phone Number",
                       border: OutlineInputBorder(

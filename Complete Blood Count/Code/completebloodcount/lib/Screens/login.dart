@@ -1,7 +1,7 @@
+import 'package:completebloodcount/Screens/home.dart';
 import 'package:completebloodcount/Screens/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:completebloodcount/widgets/login_form.dart';
-import 'package:completebloodcount/widgets/primary_button.dart';
 import 'package:completebloodcount/widgets/login_option.dart';
 
 // ignore: camel_case_types, use_key_in_widget_constructors
@@ -64,8 +64,14 @@ class logInScreen extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            PrimaryButton(
-              buttonText: 'Log In',
+            ElevatedButton(
+              child: const Text('Log In'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyHomePage()),
+                );
+              },
             ),
             const SizedBox(
               height: 20,
