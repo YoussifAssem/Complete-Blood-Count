@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
+// ignore: use_key_in_widget_constructors
 class LogInForm extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return logInForm();
   }
 }
 
+// ignore: camel_case_types
 class logInForm extends State<StatefulWidget> {
   @override
   Widget build(BuildContext context) {
@@ -21,11 +22,11 @@ class logInForm extends State<StatefulWidget> {
 
   Padding buildInputForm(String label) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 5),
+      padding: const EdgeInsets.symmetric(vertical: 5),
       child: TextFormField(
         decoration: InputDecoration(
             labelText: label,
-            labelStyle: TextStyle(
+            labelStyle: const TextStyle(
               color: Colors.blueGrey,
             )),
       ),
