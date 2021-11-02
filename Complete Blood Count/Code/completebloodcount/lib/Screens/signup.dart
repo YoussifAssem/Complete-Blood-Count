@@ -2,7 +2,6 @@
 
 import 'package:completebloodcount/Classes/user.dart';
 import 'package:completebloodcount/Screens/login.dart';
-import 'package:completebloodcount/dataBase/sql_helper.dart';
 import 'package:flutter/material.dart';
 
 // ignore: use_key_in_widget_constructors
@@ -23,7 +22,6 @@ class _SignUp extends State<SignUp> {
   final p = TextEditingController();
   final bD = TextEditingController();
   final pN = TextEditingController();
-  SQL_Helper sql = SQL_Helper();
 
   @override
   Widget build(BuildContext context) {
@@ -198,7 +196,7 @@ class _SignUp extends State<SignUp> {
                         user.setBirthDate(bD.text),
                         user.setPhoneNumber(pN.text),
                         user.setGender(gender),
-                        sql.setData(user),
+                        user.addIntoDataBase(),
                         Navigator.push(
                           context,
                           MaterialPageRoute(

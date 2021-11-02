@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class User {
   String _firstname = '';
   String _lastname = '';
@@ -154,7 +156,20 @@ class User {
 
   addIntoDataBase() {
     //Here We Will add The New Data
+    // ignore: unused_local_variable
+    final _firestore = FirebaseFirestore.instance;
+    _firestore.collection('signUp').add({
+      'firstName': getFirstName(),
+      'lastName': getLastName(),
+      'email': getEmail(),
+      'password': getPassword(),
+      'birthDate': getBirthDate(),
+      'phoneNumber': getPhoneNumber(),
+      'gender': getGender(),
+      //'sender':signedInUser.email,
+    });
   }
+
   updateDataInDataBase(String firstName, String lastName, String email,
       String birthDate, int phone, String password) {
     //This function will update data into data base
