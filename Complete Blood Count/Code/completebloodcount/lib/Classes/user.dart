@@ -8,7 +8,7 @@ class User {
   String _phonenumber = '';
   String _password = '';
   String _gender = '';
-
+  final _firestore = FirebaseFirestore.instance;
   User() {
     // Initialaize Connection (From another class)
     //Add in dataBase
@@ -155,9 +155,6 @@ class User {
   }
 
   addIntoDataBase() {
-    //Here We Will add The New Data
-    // ignore: unused_local_variable
-    final _firestore = FirebaseFirestore.instance;
     _firestore.collection('signUp').add({
       'firstName': getFirstName(),
       'lastName': getLastName(),

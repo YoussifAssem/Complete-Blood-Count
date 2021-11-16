@@ -12,6 +12,15 @@ class cbcTest extends StatefulWidget {
 // ignore: camel_case_types
 class _cbcTest extends State<cbcTest> {
   final haemo = TextEditingController();
+  final pcv = TextEditingController();
+  final rbcs = TextEditingController();
+  final mcv = TextEditingController();
+  final mch = TextEditingController();
+  final mchc = TextEditingController();
+  final rdw = TextEditingController();
+  final platCount = TextEditingController();
+  final totalCount = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,106 +37,455 @@ class _cbcTest extends State<cbcTest> {
           child: ListView(
             children: [
               // ignore: avoid_unnecessary_containers
-              Container(
-                child: Row(
-                  children: const [
-                    Padding(
-                      padding: EdgeInsets.only(left: 5),
-                      child: Text(
-                        'Test Name',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    SizedBox(width: 50),
-                    Text(
-                      'Results',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(width: 80),
-                    Text(
-                      'Unit',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(width: 60),
-                    SizedBox(
-                      width: 55,
-                      child: Text(
-                        'Biological reference intervals',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    SizedBox(width: 35),
-                  ],
-                ),
-              ),
-              // ignore: avoid_unnecessary_containers
-              Container(
-                  child: Row(
+              Table(
+                defaultColumnWidth: const FixedColumnWidth(100.0),
+                border: TableBorder.all(
+                    color: Colors.black, style: BorderStyle.solid),
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.only(left: 5),
-                    child: Text(
-                      'Haemoglobin',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold),
+                  TableRow(children: [
+                    Column(
+                      children: const [
+                        Text(
+                          '\nTest Name',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
                     ),
-                  ),
-                  const SizedBox(width: 20),
-                  SizedBox(
-                    width: 80,
-                    child: TextFormField(
-                        controller: haemo,
-                        autocorrect: true,
-                        textAlign: TextAlign.center,
-                        decoration: InputDecoration(
-                            labelText: "Enter Result",
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(5.0),
-                            ))),
-                  ),
-                  const SizedBox(width: 20),
-                  const SizedBox(
-                    width: 20,
-                    child: Text(
-                      'L||H',
-                      style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                    Column(
+                      children: const [
+                        Text(
+                          '\nResults',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
                     ),
-                  ),
-                  const SizedBox(width: 20),
-                  const SizedBox(
-                    width: 40,
-                    child: Text(
-                      'g/dl',
-                      style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                    Column(
+                      children: const [
+                        Text(
+                          '\nUnit',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
                     ),
-                  ),
-                  const SizedBox(width: 40),
-                  const SizedBox(
-                    width: 70,
-                    child: Text(
-                      '11.5-15.5',
-                      style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                    Column(
+                      children: const [
+                        Text(
+                          'Biological \n reference \n intervals',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    )
+                  ]),
+                  TableRow(children: [
+                    Column(
+                      children: const [
+                        Text(
+                          '\nHaemoglobin',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
                     ),
-                  ),
+                    Column(
+                      children: [
+                        TextFormField(
+                            controller: haemo,
+                            autocorrect: true,
+                            textAlign: TextAlign.center,
+                            decoration: InputDecoration(
+                                labelText: "Enter Result",
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ))),
+                      ],
+                    ),
+                    Column(
+                      children: const [
+                        Text(
+                          '\ng/dl',
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: const [
+                        Text(
+                          '\n11.5-15.5',
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ]),
+                  TableRow(children: [
+                    Column(
+                      children: const [
+                        Text(
+                          '\nHaematocrit\n\t\t\t\t\t(PCV)',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        TextFormField(
+                            controller: pcv,
+                            autocorrect: true,
+                            textAlign: TextAlign.center,
+                            decoration: InputDecoration(
+                                labelText: "Enter Result",
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ))),
+                      ],
+                    ),
+                    Column(
+                      children: const [
+                        Text(
+                          '\n%',
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: const [
+                        Text(
+                          '\n36-45',
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ]),
+                  TableRow(children: [
+                    Column(
+                      children: const [
+                        Text(
+                          '\nRBCs Count',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        TextFormField(
+                            controller: rbcs,
+                            autocorrect: true,
+                            textAlign: TextAlign.center,
+                            decoration: InputDecoration(
+                                labelText: "Enter Result",
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ))),
+                      ],
+                    ),
+                    Column(
+                      children: const [
+                        Text(
+                          '\nmillions/cmm',
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: const [
+                        Text(
+                          '\n4-5.2',
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ]),
+                  TableRow(children: [
+                    Column(
+                      children: const [
+                        Text(
+                          '\nMCV',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        TextFormField(
+                            controller: mcv,
+                            autocorrect: true,
+                            textAlign: TextAlign.center,
+                            decoration: InputDecoration(
+                                labelText: "Enter Result",
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ))),
+                      ],
+                    ),
+                    Column(
+                      children: const [
+                        Text(
+                          '\nfl',
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: const [
+                        Text(
+                          '\n80-100',
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ]),
+                  TableRow(children: [
+                    Column(
+                      children: const [
+                        Text(
+                          '\nMCH',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        TextFormField(
+                            controller: mch,
+                            autocorrect: true,
+                            textAlign: TextAlign.center,
+                            decoration: InputDecoration(
+                                labelText: "Enter Result",
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ))),
+                      ],
+                    ),
+                    Column(
+                      children: const [
+                        Text(
+                          '\npg',
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: const [
+                        Text(
+                          '\n27-33',
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ]),
+                  TableRow(children: [
+                    Column(
+                      children: const [
+                        Text(
+                          '\nMCHC',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        TextFormField(
+                            controller: mchc,
+                            autocorrect: true,
+                            textAlign: TextAlign.center,
+                            decoration: InputDecoration(
+                                labelText: "Enter Result",
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ))),
+                      ],
+                    ),
+                    Column(
+                      children: const [
+                        Text(
+                          '\ng/dl',
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: const [
+                        Text(
+                          '\n31-37',
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ]),
+                  TableRow(children: [
+                    Column(
+                      children: const [
+                        Text(
+                          '\nRDW-CV',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        TextFormField(
+                            controller: rdw,
+                            autocorrect: true,
+                            textAlign: TextAlign.center,
+                            decoration: InputDecoration(
+                                labelText: "Enter Result",
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ))),
+                      ],
+                    ),
+                    Column(
+                      children: const [
+                        Text(
+                          '\n%',
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: const [
+                        Text(
+                          '\n11.5-15',
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ]),
+                  TableRow(children: [
+                    Column(
+                      children: const [
+                        Text(
+                          '\nPlatelet Count\n(EDTA Blood)',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        TextFormField(
+                            controller: platCount,
+                            autocorrect: true,
+                            textAlign: TextAlign.center,
+                            decoration: InputDecoration(
+                                labelText: "Enter Result",
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ))),
+                      ],
+                    ),
+                    Column(
+                      children: const [
+                        Text(
+                          '\nthousands/cmm',
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: const [
+                        Text(
+                          '\n150-450',
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ]),
+                  TableRow(children: [
+                    Column(
+                      children: const [
+                        Text(
+                          '\nTotal\nleucocytic\n\t\tcount',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        TextFormField(
+                            controller: totalCount,
+                            autocorrect: true,
+                            textAlign: TextAlign.center,
+                            decoration: InputDecoration(
+                                labelText: "Enter Result",
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ))),
+                      ],
+                    ),
+                    Column(
+                      children: const [
+                        Text(
+                          '\nthousands/cmm',
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: const [
+                        Text(
+                          '\n4-11',
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ]),
                 ],
-              ))
+              )
             ],
           )),
     );
