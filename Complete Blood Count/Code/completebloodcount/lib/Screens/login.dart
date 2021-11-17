@@ -9,6 +9,7 @@ class logInScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue[50],
       appBar: AppBar(
         title: const Text('LogIn'),
         backgroundColor: Colors.black,
@@ -39,6 +40,7 @@ class logInScreen extends StatelessWidget {
                 width: 5,
               ),
               ElevatedButton(
+                  style: ElevatedButton.styleFrom(primary: Colors.black),
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -65,6 +67,7 @@ class logInScreen extends StatelessWidget {
               height: 20,
             ),
             ElevatedButton(
+              style: ElevatedButton.styleFrom(primary: Colors.black),
               child: const Text('Log In'),
               onPressed: () {
                 Navigator.push(
