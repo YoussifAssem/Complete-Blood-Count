@@ -7,7 +7,10 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('CBC')),
+      appBar: AppBar(
+        title: const Text('CBC'),
+        backgroundColor: Colors.black,
+      ),
       body: ListView(
         children: [
           Center(
@@ -23,7 +26,8 @@ class MyHomePage extends StatelessWidget {
           children: [
             const DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: Colors.black,
+
                 image: DecorationImage(
                   image: AssetImage('images/home.jpg'),
                   fit: BoxFit.fill,
