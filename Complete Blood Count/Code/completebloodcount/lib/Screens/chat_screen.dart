@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -15,7 +14,7 @@ class _ChatScreenState extends State<ChatScreen> {
   final _firestore = FirebaseFirestore.instance;
   //final _auth = FirebaseAuth.instance;
   //late User signedInUser; //the email
-  String? messageText; //the message 
+  String? messageText; //the message
 
   @override
   void initState() {
@@ -38,13 +37,14 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue[50],
       appBar: AppBar(
-        backgroundColor: Colors.yellow[900],
+        backgroundColor: Colors.black,
         title: Row(
           children: [
             Image.asset('images/logo.png', height: 25),
-            SizedBox(width: 10),
-            Text('MessageMe')
+            const SizedBox(width: 10),
+            const Text('MessageMe')
           ],
         ),
         actions: [
@@ -53,7 +53,7 @@ class _ChatScreenState extends State<ChatScreen> {
               //_auth.signOut();
               Navigator.pop(context);
             },
-            icon: Icon(Icons.close),
+            icon: const Icon(Icons.close),
           )
         ],
       ),
@@ -64,10 +64,10 @@ class _ChatScreenState extends State<ChatScreen> {
           children: [
             Container(),
             Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 border: Border(
                   top: BorderSide(
-                    color: Colors.orange,
+                    color: Colors.black,
                     width: 2,
                   ),
                 ),
@@ -78,9 +78,9 @@ class _ChatScreenState extends State<ChatScreen> {
                   Expanded(
                     child: TextField(
                       onChanged: (value) {
-                        messageText=value;
+                        messageText = value;
                       },
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         contentPadding: EdgeInsets.symmetric(
                           vertical: 10,
                           horizontal: 20,
@@ -93,10 +93,10 @@ class _ChatScreenState extends State<ChatScreen> {
                   TextButton(
                     onPressed: () {
                       _firestore.collection('message').add({
-                        'text':messageText,
-                        'sender':'jimmy',
+                        'text': messageText,
+                        'sender': 'jimmy',
                         //'sender':signedInUser.email,
-                      });  
+                      });
                     },
                     child: Text(
                       'send',
