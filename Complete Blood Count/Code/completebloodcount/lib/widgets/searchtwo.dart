@@ -7,14 +7,13 @@ class search extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const appTitle = 'Search';
-    return MaterialApp(
-      title: appTitle,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text(appTitle),
-        ),
-        body: const MyCustomForm(),
+    return Scaffold(
+      backgroundColor: Colors.blue[50],
+      appBar: AppBar(
+        title: const Text(appTitle),
+        backgroundColor: Colors.black,
       ),
+      body: const MyCustomForm(),
     );
   }
 }
