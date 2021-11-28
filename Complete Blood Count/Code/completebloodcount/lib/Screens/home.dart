@@ -1,17 +1,13 @@
-import 'package:completebloodcount/Screens/cbc_test.dart';
-import 'package:completebloodcount/widgets/searchtwo.dart';
+import 'package:completebloodcount/Screens/menu.dart';
 import 'package:flutter/material.dart';
 
 // ignore: use_key_in_widget_constructors
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('CBC'),
-        backgroundColor: Colors.black,
-      ),
-      body: ListView(
+    return Menu(
+      'Home Page',
+      ListView(
         children: [
           Center(
             child: Column(
@@ -19,44 +15,6 @@ class MyHomePage extends StatelessWidget {
             ),
           )
         ],
-      ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.black,
-
-                image: DecorationImage(
-                  image: AssetImage('images/home.jpg'),
-                  fit: BoxFit.fill,
-                ),
-
-                //Center(child: Column(children: [SizedBox(height: 20), Image.asset('images/home.jpg')],),)
-              ),
-              child: Text('My account'),
-            ),
-            ListTile(
-              title: const Text('Home Page'),
-              onTap: () {},
-            ),
-            ListTile(
-              title: const Text('Examine Self'),
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => cbcTest()));
-              },
-            ),
-            ListTile(
-              title: const Text('Search'),
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const search()));
-              },
-            )
-          ],
-        ),
       ),
     );
   }
