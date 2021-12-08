@@ -1,5 +1,10 @@
+import 'dart:math';
+
+import 'package:completebloodcount/Screens/menu.dart';
+import 'package:completebloodcount/Screens/report.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:loading_alert_dialog/loading_alert_dialog.dart';
 
 // ignore: camel_case_types, use_key_in_widget_constructors
 class cbcTestTwo extends StatefulWidget {
@@ -18,16 +23,9 @@ class _cbcTestTwo extends State<cbcTestTwo> {
   final baso = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.blue[50],
-        appBar: AppBar(
-          backgroundColor: Colors.black,
-          title: const Text(
-            'CBC Test',
-            style: TextStyle(color: Colors.white),
-          ),
-        ),
-        body: Padding(
+    return Menu(
+        'CBC Test',
+        Padding(
             padding: const EdgeInsets.only(left: 0),
             child: ListView(children: [
               Table(
@@ -319,10 +317,44 @@ class _cbcTestTwo extends State<cbcTestTwo> {
               Padding(
                   padding: const EdgeInsets.only(top: 10),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      await showAlertDialog(context);
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Report()));
+                    },
                     child: const Text('View Report'),
                     style: ElevatedButton.styleFrom(primary: Colors.black),
                   ))
             ])));
   }
+
+  Future showAlertDialog(BuildContext context) =>
+      LoadingAlertDialog.showLoadingAlertDialog(
+        context: context,
+        builder: (
+          context,
+        ) =>
+            Card(
+          child: Padding(
+            padding: const EdgeInsets.all(
+              24.0,
+            ),
+            child: Column(
+              children: const <Widget>[
+                CircularProgressIndicator(),
+                Text(
+                  "Please Wait...",
+                ),
+              ],
+              mainAxisSize: MainAxisSize.min,
+            ),
+          ),
+          color: Colors.white,
+        ),
+        computation: Future.delayed(
+          const Duration(
+            seconds: 3,
+          ),
+        ),
+      );
 }

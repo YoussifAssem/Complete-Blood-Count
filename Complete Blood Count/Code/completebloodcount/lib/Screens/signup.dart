@@ -189,14 +189,8 @@ class _SignUp extends State<SignUp> {
                       }
                     else
                       {
-                        user.setFirstName(fN.text),
-                        user.setLastName(sN.text),
-                        user.setEmail(e.text),
-                        user.setPassword(p.text),
-                        user.setBirthDate(bD.text),
-                        user.setPhoneNumber(pN.text),
-                        user.setGender(gender),
-                        user.addIntoDataBase(),
+                        User.addUser(fN.text, sN.text, bD.text, e.text, pN.text,
+                            p.text, gender),
                         Navigator.push(
                           context,
                           MaterialPageRoute(

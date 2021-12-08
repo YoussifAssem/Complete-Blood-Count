@@ -23,7 +23,7 @@ class User {
     setPhoneNumber(pN);
     setPassword(p);
     setGender(g);
-    addIntoDataBase();
+    _addIntoDataBase();
   }
   getID() {
     //Read ID From DataBase
@@ -154,7 +154,7 @@ class User {
     //This Message will view Data From Class dataAnalyist
   }
 
-  addIntoDataBase() {
+  _addIntoDataBase() {
     _firestore.collection('signUp').add({
       'firstName': getFirstName(),
       'lastName': getLastName(),

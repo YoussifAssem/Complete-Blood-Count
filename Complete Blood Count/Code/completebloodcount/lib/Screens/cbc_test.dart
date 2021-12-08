@@ -484,10 +484,25 @@ class _cbcTest extends State<cbcTest> {
                   padding: const EdgeInsets.only(top: 10),
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => cbcTestTwo()));
+                      if (haemo.text == '' ||
+                          pcv.text == '' ||
+                          rbcs.text == '' ||
+                          mcv.text == '' ||
+                          mch.text == '' ||
+                          mchc.text == '' ||
+                          rdw.text == '' ||
+                          platCount.text == '' ||
+                          totalCount.text == '') {
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(const SnackBar(
+                          content: Text("Please Fill All Requriements"),
+                        ));
+                      } else {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => cbcTestTwo()));
+                      }
                     },
                     child: const Text('Next'),
                     style: ElevatedButton.styleFrom(primary: Colors.black),
