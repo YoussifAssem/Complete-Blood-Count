@@ -25,13 +25,16 @@ class Menu extends StatelessWidget {
                 color: Colors.black,
 
                 image: DecorationImage(
-                  image: AssetImage('images/home.jpg'),
-                  fit: BoxFit.fill,
+                  image: AssetImage('images/dnap.jpg'),
+                  fit: BoxFit.none,
                 ),
 
                 //Center(child: Column(children: [SizedBox(height: 20), Image.asset('images/home.jpg')],),)
               ),
-              child: Text('My account'),
+              child: Text(
+                'My account',
+                style: TextStyle(color: Colors.white),
+              ),
             ),
             ListTile(
               title: const Text('Home Page'),
