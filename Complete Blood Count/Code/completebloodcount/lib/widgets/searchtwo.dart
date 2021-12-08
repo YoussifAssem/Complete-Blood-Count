@@ -8,10 +8,9 @@ class search extends StatelessWidget {
   Widget build(BuildContext context) {
     const appTitle = 'Search';
     return Scaffold(
-      backgroundColor: Colors.blue[50],
       appBar: AppBar(
         title: const Text(appTitle),
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.pink[900],
       ),
       body: const MyCustomForm(),
     );
