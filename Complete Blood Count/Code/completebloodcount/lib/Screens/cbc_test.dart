@@ -102,7 +102,8 @@ class _cbcTest extends State<cbcTest> {
                             autocorrect: true,
                             textAlign: TextAlign.center,
                             inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.digitsOnly
+                              FilteringTextInputFormatter.deny(RegExp('[A-Z]')),
+                              FilteringTextInputFormatter.deny(RegExp('[a-z]')),
                             ],
                             decoration: InputDecoration(
                                 labelText: "Result",
@@ -148,6 +149,10 @@ class _cbcTest extends State<cbcTest> {
                             controller: pcv,
                             autocorrect: true,
                             textAlign: TextAlign.center,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.deny(RegExp('[A-Z]')),
+                              FilteringTextInputFormatter.deny(RegExp('[a-z]')),
+                            ],
                             decoration: InputDecoration(
                                 labelText: "Result",
                                 border: OutlineInputBorder(
@@ -192,6 +197,10 @@ class _cbcTest extends State<cbcTest> {
                             controller: rbcs,
                             autocorrect: true,
                             textAlign: TextAlign.center,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.deny(RegExp('[A-Z]')),
+                              FilteringTextInputFormatter.deny(RegExp('[a-z]')),
+                            ],
                             decoration: InputDecoration(
                                 labelText: "Result",
                                 border: OutlineInputBorder(
@@ -236,6 +245,10 @@ class _cbcTest extends State<cbcTest> {
                             controller: mcv,
                             autocorrect: true,
                             textAlign: TextAlign.center,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.deny(RegExp('[A-Z]')),
+                              FilteringTextInputFormatter.deny(RegExp('[a-z]')),
+                            ],
                             decoration: InputDecoration(
                                 labelText: "Result",
                                 border: OutlineInputBorder(
@@ -280,6 +293,10 @@ class _cbcTest extends State<cbcTest> {
                             controller: mch,
                             autocorrect: true,
                             textAlign: TextAlign.center,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.deny(RegExp('[A-Z]')),
+                              FilteringTextInputFormatter.deny(RegExp('[a-z]')),
+                            ],
                             decoration: InputDecoration(
                                 labelText: "Result",
                                 border: OutlineInputBorder(
@@ -324,6 +341,10 @@ class _cbcTest extends State<cbcTest> {
                             controller: mchc,
                             autocorrect: true,
                             textAlign: TextAlign.center,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.deny(RegExp('[A-Z]')),
+                              FilteringTextInputFormatter.deny(RegExp('[a-z]')),
+                            ],
                             decoration: InputDecoration(
                                 labelText: "Result",
                                 border: OutlineInputBorder(
@@ -368,6 +389,10 @@ class _cbcTest extends State<cbcTest> {
                             controller: rdw,
                             autocorrect: true,
                             textAlign: TextAlign.center,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.deny(RegExp('[A-Z]')),
+                              FilteringTextInputFormatter.deny(RegExp('[a-z]')),
+                            ],
                             decoration: InputDecoration(
                                 labelText: "Result",
                                 border: OutlineInputBorder(
@@ -412,6 +437,10 @@ class _cbcTest extends State<cbcTest> {
                             controller: platCount,
                             autocorrect: true,
                             textAlign: TextAlign.center,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.deny(RegExp('[A-Z]')),
+                              FilteringTextInputFormatter.deny(RegExp('[a-z]')),
+                            ],
                             decoration: InputDecoration(
                                 labelText: "Result",
                                 border: OutlineInputBorder(
@@ -456,6 +485,10 @@ class _cbcTest extends State<cbcTest> {
                             controller: totalCount,
                             autocorrect: true,
                             textAlign: TextAlign.center,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.deny(RegExp('[A-Z]')),
+                              FilteringTextInputFormatter.deny(RegExp('[a-z]')),
+                            ],
                             decoration: InputDecoration(
                                 labelText: "Result",
                                 border: OutlineInputBorder(
