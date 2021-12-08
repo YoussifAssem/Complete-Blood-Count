@@ -11,7 +11,7 @@ class PrimaryButton extends StatelessWidget {
       height: 60,
       width: 500,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16), color: Colors.black),
+          borderRadius: BorderRadius.circular(16), color: Colors.pink[900]),
       child: Text(buttonText,
           style: const TextStyle(
             color: Colors.white,
