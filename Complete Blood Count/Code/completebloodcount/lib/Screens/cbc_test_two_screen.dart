@@ -334,7 +334,8 @@ class _cbcTestTwo extends State<cbcTestTwo> {
                 ],
               ),
               Padding(
-                  padding: const EdgeInsets.only(top: 10),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   child: ElevatedButton(
                     onPressed: () async {
                       if (neto.text == '' ||
@@ -353,7 +354,7 @@ class _cbcTestTwo extends State<cbcTestTwo> {
                       }
                     },
                     child: const Text('View Report'),
-                    style: ElevatedButton.styleFrom(primary: Colors.black),
+                    style: ElevatedButton.styleFrom(primary: Colors.pink[900]),
                   ))
             ])));
   }
