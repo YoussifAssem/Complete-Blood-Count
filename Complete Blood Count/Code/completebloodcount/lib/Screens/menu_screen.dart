@@ -13,7 +13,7 @@ class Menu extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(_text),
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.pink[900],
       ),
       body: _body,
       drawer: Drawer(

@@ -518,7 +518,8 @@ class _cbcTest extends State<cbcTest> {
                 ],
               ),
               Padding(
-                  padding: const EdgeInsets.only(top: 10),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   child: ElevatedButton(
                     onPressed: () {
                       if (haemo.text == '' ||
@@ -542,7 +543,7 @@ class _cbcTest extends State<cbcTest> {
                       }
                     },
                     child: const Text('Next'),
-                    style: ElevatedButton.styleFrom(primary: Colors.black),
+                    style: ElevatedButton.styleFrom(primary: Colors.pink[900]),
                   ))
             ],
           )),
