@@ -4,6 +4,7 @@ import 'package:completebloodcount/Screens/menu.dart';
 import 'package:completebloodcount/Screens/report.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:loading_alert_dialog/loading_alert_dialog.dart';
 
 // ignore: camel_case_types, use_key_in_widget_constructors
@@ -100,6 +101,10 @@ class _cbcTestTwo extends State<cbcTestTwo> {
                             controller: neto,
                             autocorrect: true,
                             textAlign: TextAlign.center,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.deny(RegExp('[A-Z]')),
+                              FilteringTextInputFormatter.deny(RegExp('[a-z]')),
+                            ],
                             decoration: InputDecoration(
                                 labelText: "Result",
                                 border: OutlineInputBorder(
@@ -146,6 +151,10 @@ class _cbcTestTwo extends State<cbcTestTwo> {
                             controller: lympho,
                             autocorrect: true,
                             textAlign: TextAlign.center,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.deny(RegExp('[A-Z]')),
+                              FilteringTextInputFormatter.deny(RegExp('[a-z]')),
+                            ],
                             decoration: InputDecoration(
                                 labelText: "Result",
                                 border: OutlineInputBorder(
@@ -192,6 +201,10 @@ class _cbcTestTwo extends State<cbcTestTwo> {
                             controller: mono,
                             autocorrect: true,
                             textAlign: TextAlign.center,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.deny(RegExp('[A-Z]')),
+                              FilteringTextInputFormatter.deny(RegExp('[a-z]')),
+                            ],
                             decoration: InputDecoration(
                                 labelText: "Result",
                                 border: OutlineInputBorder(
@@ -238,6 +251,10 @@ class _cbcTestTwo extends State<cbcTestTwo> {
                             controller: eos,
                             autocorrect: true,
                             textAlign: TextAlign.center,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.deny(RegExp('[A-Z]')),
+                              FilteringTextInputFormatter.deny(RegExp('[a-z]')),
+                            ],
                             decoration: InputDecoration(
                                 labelText: "Result",
                                 border: OutlineInputBorder(
@@ -284,6 +301,10 @@ class _cbcTestTwo extends State<cbcTestTwo> {
                             controller: baso,
                             autocorrect: true,
                             textAlign: TextAlign.center,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.deny(RegExp('[A-Z]')),
+                              FilteringTextInputFormatter.deny(RegExp('[a-z]')),
+                            ],
                             decoration: InputDecoration(
                                 labelText: "Result",
                                 border: OutlineInputBorder(
@@ -318,9 +339,20 @@ class _cbcTestTwo extends State<cbcTestTwo> {
                   padding: const EdgeInsets.only(top: 10),
                   child: ElevatedButton(
                     onPressed: () async {
-                      await showAlertDialog(context);
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Report()));
+                      if (neto.text == '' ||
+                          lympho.text == '' ||
+                          mono.text == '' ||
+                          eos.text == '' ||
+                          baso.text == '') {
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(const SnackBar(
+                          content: Text("Please Fill All Requriements"),
+                        ));
+                      } else {
+                        await showAlertDialog(context);
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Report()));
+                      }
                     },
                     child: const Text('View Report'),
                     style: ElevatedButton.styleFrom(primary: Colors.black),
