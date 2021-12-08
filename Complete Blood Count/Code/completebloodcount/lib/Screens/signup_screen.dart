@@ -27,9 +27,9 @@ class _SignUp extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.blue[50],
         appBar: AppBar(
-          backgroundColor: Colors.pink[900],
+          backgroundColor: Colors.black,
           title: Text(
             'Sign Up',
             style: TextStyle(color: Colors.white),
@@ -178,7 +178,7 @@ class _SignUp extends State<SignUp> {
                         fontSize: 20,
                         fontWeight: FontWeight.bold),
                   ),
-                  style: ElevatedButton.styleFrom(primary: Colors.pink[900]),
+                  style: ElevatedButton.styleFrom(primary: Colors.black),
                   onPressed: () => {
                     if (fN.text == '' ||
                         sN.text == '' ||

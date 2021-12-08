@@ -1,6 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:completebloodcount/models/blood_analysis.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class User {
+  // ignore: prefer_final_fields, unused_field
+  int _userID = 0;
   String _firstname = '';
   String _lastname = '';
   String _birthdate = '';
@@ -10,9 +14,13 @@ class User {
   String _gender = '';
   final _firestore = FirebaseFirestore.instance;
   User() {
-    // Initialaize Connection (From another class)
-    //Add in dataBase
+    //_userID++;
   }
+  createData() {
+    // ignore: unused_local_variable
+    Map<String, dynamic> users = {'email': _email};
+  }
+
   //Named Constructor
   User.addUser(String fN, String lN, String bD, String e, String pN, String p,
       String g) {
@@ -151,11 +159,14 @@ class User {
     //This function will take an object from Registeration and use the class
   }
   viewResults() {
-    //This Message will view Data From Class dataAnalyist
+    // ignore: unused_local_variable
+    BloodAnalysis blood = BloodAnalysis();
+    print(blood.viewResults());
   }
 
   _addIntoDataBase() {
     _firestore.collection('signUp').add({
+      'ID': _userID,
       'firstName': getFirstName(),
       'lastName': getLastName(),
       'email': getEmail(),
