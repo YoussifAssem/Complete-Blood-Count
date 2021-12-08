@@ -3,6 +3,7 @@
 import 'package:completebloodcount/Classes/user.dart';
 import 'package:completebloodcount/Screens/login.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 // ignore: use_key_in_widget_constructors
 class SignUp extends StatefulWidget {
@@ -133,6 +134,9 @@ class _SignUp extends State<SignUp> {
               TextFormField(
                   controller: pN,
                   maxLength: 11,
+                  inputFormatters: <TextInputFormatter>[
+                    FilteringTextInputFormatter.digitsOnly
+                  ],
                   decoration: InputDecoration(
                       labelText: "Enter Phone Number",
                       border: OutlineInputBorder(

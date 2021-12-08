@@ -2,6 +2,7 @@ import 'package:completebloodcount/Screens/cbc_test_two.dart';
 import 'package:completebloodcount/Screens/menu.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 // ignore: camel_case_types, use_key_in_widget_constructors
 class cbcTest extends StatefulWidget {
@@ -100,6 +101,9 @@ class _cbcTest extends State<cbcTest> {
                             controller: haemo,
                             autocorrect: true,
                             textAlign: TextAlign.center,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.digitsOnly
+                            ],
                             decoration: InputDecoration(
                                 labelText: "Result",
                                 border: OutlineInputBorder(
