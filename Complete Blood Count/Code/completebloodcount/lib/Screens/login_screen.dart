@@ -9,10 +9,10 @@ class logInScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[50],
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('LogIn'),
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.pink[900],
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -40,7 +40,7 @@ class logInScreen extends StatelessWidget {
                 width: 5,
               ),
               ElevatedButton(
-                  style: ElevatedButton.styleFrom(primary: Colors.black),
+                  style: ElevatedButton.styleFrom(primary: Colors.pink[900]),
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -67,7 +67,7 @@ class logInScreen extends StatelessWidget {
               height: 20,
             ),
             ElevatedButton(
-              style: ElevatedButton.styleFrom(primary: Colors.black),
+              style: ElevatedButton.styleFrom(primary: Colors.pink[900]),
               child: const Text('Log In'),
               onPressed: () {
                 Navigator.push(
