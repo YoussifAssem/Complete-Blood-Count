@@ -16,6 +16,7 @@ class SignUp extends StatefulWidget {
 class _SignUp extends State<SignUp> {
   // ignore: unused_field
   String gender = 'Male';
+  String type = 'Patient';
   User user = User();
   final fN = TextEditingController();
   final sN = TextEditingController();
@@ -167,6 +168,33 @@ class _SignUp extends State<SignUp> {
                 }).toList(),
               ),
               const SizedBox(height: 20, width: 20),
+
+              const SizedBox(height: 20, width: 20),
+              Text(
+                'Type',
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 10, width: 10),
+              DropdownButton<String>(
+                value: type,
+                onChanged: (String? newValue) {
+                  setState(() {
+                    type = newValue!;
+                  });
+                },
+                items: <String>['Patient', 'Doctor']
+                    .map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
+              const SizedBox(height: 20, width: 20),
+
               // ignore: deprecated_member_use
               SizedBox(
                 height: 50,
@@ -195,7 +223,7 @@ class _SignUp extends State<SignUp> {
                     else
                       {
                         User.addUser(fN.text, sN.text, bD.text, e.text, pN.text,
-                            p.text, gender),
+                            p.text, gender, type),
                         Navigator.push(
                           context,
                           MaterialPageRoute(

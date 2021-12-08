@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:completebloodcount/models/blood_analysis.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 class User {
   // ignore: prefer_final_fields, unused_field
@@ -12,6 +11,9 @@ class User {
   String _phonenumber = '';
   String _password = '';
   String _gender = '';
+  // ignore: prefer_final_fields
+  String _type = '';
+  // ignore: unused_field
   final _firestore = FirebaseFirestore.instance;
   User() {
     //_userID++;
@@ -23,7 +25,7 @@ class User {
 
   //Named Constructor
   User.addUser(String fN, String lN, String bD, String e, String pN, String p,
-      String g) {
+      String g, String t) {
     setFirstName(fN);
     setLastName(lN);
     setBirthDate(bD);
@@ -31,10 +33,25 @@ class User {
     setPhoneNumber(pN);
     setPassword(p);
     setGender(g);
+    setType(t);
     _addIntoDataBase();
   }
   getID() {
     //Read ID From DataBase
+  }
+
+  setType(String t) {
+    if (t == 'Patient') {
+      _type = t;
+    } else if (t == 'Doctor') {
+      _type = t;
+    } else {
+      throw 'Error, Please Select Gender';
+    }
+  }
+
+  getType() {
+    return _type;
   }
 
   setFirstName(String fN) {
@@ -161,6 +178,7 @@ class User {
   viewResults() {
     // ignore: unused_local_variable
     BloodAnalysis blood = BloodAnalysis();
+    // ignore: avoid_print
     print(blood.viewResults());
   }
 
@@ -174,6 +192,7 @@ class User {
       'birthDate': getBirthDate(),
       'phoneNumber': getPhoneNumber(),
       'gender': getGender(),
+      'type': getType(),
       //'sender':signedInUser.email,
     });
   }
