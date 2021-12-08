@@ -1,5 +1,5 @@
-import 'package:completebloodcount/Screens/home.dart';
-import 'package:completebloodcount/Screens/signup.dart';
+import 'package:completebloodcount/Screens/home_screen.dart';
+import 'package:completebloodcount/Screens/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:completebloodcount/widgets/login_form.dart';
 import 'package:completebloodcount/widgets/login_option.dart';

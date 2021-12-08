@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:completebloodcount/Classes/user.dart';
-import 'package:completebloodcount/Screens/login.dart';
+import 'package:completebloodcount/Screens/login_screen.dart';
+import 'package:completebloodcount/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

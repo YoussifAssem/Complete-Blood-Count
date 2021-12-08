@@ -1,37 +1,32 @@
-import 'package:completebloodcount/Screens/cbc_test_two.dart';
-import 'package:completebloodcount/Screens/menu.dart';
+import 'package:completebloodcount/Screens/menu_screen.dart';
+import 'package:completebloodcount/Screens/report_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:loading_alert_dialog/loading_alert_dialog.dart';
 
 // ignore: camel_case_types, use_key_in_widget_constructors
-class cbcTest extends StatefulWidget {
+class cbcTestTwo extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _cbcTest();
+    return _cbcTestTwo();
   }
 }
 
 // ignore: camel_case_types
-class _cbcTest extends State<cbcTest> {
-  final haemo = TextEditingController();
-  final pcv = TextEditingController();
-  final rbcs = TextEditingController();
-  final mcv = TextEditingController();
-  final mch = TextEditingController();
-  final mchc = TextEditingController();
-  final rdw = TextEditingController();
-  final platCount = TextEditingController();
-  final totalCount = TextEditingController();
+class _cbcTestTwo extends State<cbcTestTwo> {
+  final neto = TextEditingController();
+  final lympho = TextEditingController();
+  final mono = TextEditingController();
+  final eos = TextEditingController();
+  final baso = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Menu(
-      'CBC Test',
-      Padding(
-          padding: const EdgeInsets.only(left: 0),
-          child: ListView(
-            children: [
-              // ignore: avoid_unnecessary_containers
+        'CBC Test',
+        Padding(
+            padding: const EdgeInsets.only(left: 0),
+            child: ListView(children: [
               Table(
                 defaultColumnWidth: const FixedColumnWidth(100.0),
                 border: TableBorder.all(
@@ -57,18 +52,20 @@ class _cbcTest extends State<cbcTest> {
                               color: Colors.black,
                               fontSize: 18,
                               fontWeight: FontWeight.bold),
-                        ),
+                          textAlign: TextAlign.center,
+                        )
                       ],
                     ),
                     Column(
                       children: const [
                         Text(
-                          '\nUnit',
+                          'Absolute Value',
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: 18,
                               fontWeight: FontWeight.bold),
-                        ),
+                          textAlign: TextAlign.center,
+                        )
                       ],
                     ),
                     Column(
@@ -79,15 +76,16 @@ class _cbcTest extends State<cbcTest> {
                               color: Colors.black,
                               fontSize: 18,
                               fontWeight: FontWeight.bold),
-                        ),
+                          textAlign: TextAlign.center,
+                        )
                       ],
-                    )
+                    ),
                   ]),
                   TableRow(children: [
                     Column(
                       children: const [
                         Text(
-                          '\nHaemoglobin',
+                          '\nNeutrophils',
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: 15,
@@ -98,12 +96,12 @@ class _cbcTest extends State<cbcTest> {
                     Column(
                       children: [
                         TextFormField(
-                            controller: haemo,
+                            controller: neto,
                             autocorrect: true,
                             textAlign: TextAlign.center,
                             inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.deny(RegExp('[^0-9.]')),
-                              
+                              FilteringTextInputFormatter.deny(
+                                  RegExp('[^0-9.]')),
                             ],
                             decoration: InputDecoration(
                                 labelText: "Result",
@@ -114,17 +112,19 @@ class _cbcTest extends State<cbcTest> {
                     ),
                     Column(
                       children: const [
+                        Text('%'),
                         Text(
-                          '\ng/dl',
+                          '1.60',
                           style: TextStyle(
                               fontSize: 15, fontWeight: FontWeight.bold),
                         ),
+                        Text('x10^9/L'),
                       ],
                     ),
                     Column(
                       children: const [
                         Text(
-                          '\n11.5-15.5',
+                          '\n2-7',
                           style: TextStyle(
                               fontSize: 15, fontWeight: FontWeight.bold),
                         ),
@@ -135,7 +135,7 @@ class _cbcTest extends State<cbcTest> {
                     Column(
                       children: const [
                         Text(
-                          '\nHaematocrit\n\t\t\t\t\t(PCV)',
+                          '\nLymphocytes',
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: 15,
@@ -146,12 +146,12 @@ class _cbcTest extends State<cbcTest> {
                     Column(
                       children: [
                         TextFormField(
-                            controller: pcv,
+                            controller: lympho,
                             autocorrect: true,
                             textAlign: TextAlign.center,
                             inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.deny(RegExp('[^0-9.]')),
-                              
+                              FilteringTextInputFormatter.deny(
+                                  RegExp('[^0-9.]')),
                             ],
                             decoration: InputDecoration(
                                 labelText: "Result",
@@ -162,17 +162,19 @@ class _cbcTest extends State<cbcTest> {
                     ),
                     Column(
                       children: const [
+                        Text('%'),
                         Text(
-                          '\n%',
+                          '2.25',
                           style: TextStyle(
                               fontSize: 15, fontWeight: FontWeight.bold),
                         ),
+                        Text('x10^9/L'),
                       ],
                     ),
                     Column(
                       children: const [
                         Text(
-                          '\n36-45',
+                          '\n1-4.8',
                           style: TextStyle(
                               fontSize: 15, fontWeight: FontWeight.bold),
                         ),
@@ -183,7 +185,7 @@ class _cbcTest extends State<cbcTest> {
                     Column(
                       children: const [
                         Text(
-                          '\nRBCs Count',
+                          '\nMonocytes',
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: 15,
@@ -194,12 +196,12 @@ class _cbcTest extends State<cbcTest> {
                     Column(
                       children: [
                         TextFormField(
-                            controller: rbcs,
+                            controller: mono,
                             autocorrect: true,
                             textAlign: TextAlign.center,
                             inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.deny(RegExp('[^0-9.]')),
-                              
+                              FilteringTextInputFormatter.deny(
+                                  RegExp('[^0-9.]')),
                             ],
                             decoration: InputDecoration(
                                 labelText: "Result",
@@ -210,17 +212,19 @@ class _cbcTest extends State<cbcTest> {
                     ),
                     Column(
                       children: const [
+                        Text('%'),
                         Text(
-                          '\nmillions/cmm',
+                          '0.40',
                           style: TextStyle(
                               fontSize: 15, fontWeight: FontWeight.bold),
                         ),
+                        Text('x10^9/L'),
                       ],
                     ),
                     Column(
                       children: const [
                         Text(
-                          '\n4-5.2',
+                          '\n0.2-1',
                           style: TextStyle(
                               fontSize: 15, fontWeight: FontWeight.bold),
                         ),
@@ -231,7 +235,7 @@ class _cbcTest extends State<cbcTest> {
                     Column(
                       children: const [
                         Text(
-                          '\nMCV',
+                          '\nEosinophils',
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: 15,
@@ -242,12 +246,12 @@ class _cbcTest extends State<cbcTest> {
                     Column(
                       children: [
                         TextFormField(
-                            controller: mcv,
+                            controller: eos,
                             autocorrect: true,
                             textAlign: TextAlign.center,
                             inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.deny(RegExp('[^0-9.]')),
-                              
+                              FilteringTextInputFormatter.deny(
+                                  RegExp('[^0-9.]')),
                             ],
                             decoration: InputDecoration(
                                 labelText: "Result",
@@ -258,17 +262,19 @@ class _cbcTest extends State<cbcTest> {
                     ),
                     Column(
                       children: const [
+                        Text('%'),
                         Text(
-                          '\nfl',
+                          '0.07',
                           style: TextStyle(
                               fontSize: 15, fontWeight: FontWeight.bold),
                         ),
+                        Text('x10^9/L'),
                       ],
                     ),
                     Column(
                       children: const [
                         Text(
-                          '\n80-100',
+                          '\n0.1-0.45',
                           style: TextStyle(
                               fontSize: 15, fontWeight: FontWeight.bold),
                         ),
@@ -279,7 +285,7 @@ class _cbcTest extends State<cbcTest> {
                     Column(
                       children: const [
                         Text(
-                          '\nMCH',
+                          '\nBasophils',
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: 15,
@@ -290,12 +296,12 @@ class _cbcTest extends State<cbcTest> {
                     Column(
                       children: [
                         TextFormField(
-                            controller: mch,
+                            controller: baso,
                             autocorrect: true,
                             textAlign: TextAlign.center,
                             inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.deny(RegExp('[^0-9.]')),
-                              
+                              FilteringTextInputFormatter.deny(
+                                  RegExp('[^0-9.]')),
                             ],
                             decoration: InputDecoration(
                                 labelText: "Result",
@@ -306,209 +312,19 @@ class _cbcTest extends State<cbcTest> {
                     ),
                     Column(
                       children: const [
+                        Text('%'),
                         Text(
-                          '\npg',
+                          '0.04',
                           style: TextStyle(
                               fontSize: 15, fontWeight: FontWeight.bold),
                         ),
+                        Text('x10^9/L'),
                       ],
                     ),
                     Column(
                       children: const [
                         Text(
-                          '\n27-33',
-                          style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                  ]),
-                  TableRow(children: [
-                    Column(
-                      children: const [
-                        Text(
-                          '\nMCHC',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        TextFormField(
-                            controller: mchc,
-                            autocorrect: true,
-                            textAlign: TextAlign.center,
-                            inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.deny(RegExp('[^0-9.]')),
-                              
-                            ],
-                            decoration: InputDecoration(
-                                labelText: "Result",
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(5.0),
-                                ))),
-                      ],
-                    ),
-                    Column(
-                      children: const [
-                        Text(
-                          '\ng/dl',
-                          style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: const [
-                        Text(
-                          '\n31-37',
-                          style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                  ]),
-                  TableRow(children: [
-                    Column(
-                      children: const [
-                        Text(
-                          '\nRDW-CV',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        TextFormField(
-                            controller: rdw,
-                            autocorrect: true,
-                            textAlign: TextAlign.center,
-                            inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.deny(RegExp('[^0-9.]')),
-                              
-                            ],
-                            decoration: InputDecoration(
-                                labelText: "Result",
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(5.0),
-                                ))),
-                      ],
-                    ),
-                    Column(
-                      children: const [
-                        Text(
-                          '\n%',
-                          style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: const [
-                        Text(
-                          '\n11.5-15',
-                          style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                  ]),
-                  TableRow(children: [
-                    Column(
-                      children: const [
-                        Text(
-                          '\nPlatelet Count\n(EDTA Blood)',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        TextFormField(
-                            controller: platCount,
-                            autocorrect: true,
-                            textAlign: TextAlign.center,
-                            inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.deny(RegExp('[^0-9.]')),
-                              
-                            ],
-                            decoration: InputDecoration(
-                                labelText: "Result",
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(5.0),
-                                ))),
-                      ],
-                    ),
-                    Column(
-                      children: const [
-                        Text(
-                          '\n\tthousands/cmm',
-                          style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: const [
-                        Text(
-                          '\n150-450',
-                          style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                  ]),
-                  TableRow(children: [
-                    Column(
-                      children: const [
-                        Text(
-                          '\nTotal\nleucocytic\n\t\tcount',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        TextFormField(
-                            controller: totalCount,
-                            autocorrect: true,
-                            textAlign: TextAlign.center,
-                            inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.deny(RegExp('[^0-9.]')),
-                              
-                            ],
-                            decoration: InputDecoration(
-                                labelText: "Result",
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(5.0),
-                                ))),
-                      ],
-                    ),
-                    Column(
-                      children: const [
-                        Text(
-                          '\n\tthousands/cmm',
-                          style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: const [
-                        Text(
-                          '\n4-11',
+                          '\n0-0.1',
                           style: TextStyle(
                               fontSize: 15, fontWeight: FontWeight.bold),
                         ),
@@ -520,32 +336,55 @@ class _cbcTest extends State<cbcTest> {
               Padding(
                   padding: const EdgeInsets.only(top: 10),
                   child: ElevatedButton(
-                    onPressed: () {
-                      if (haemo.text == '' ||
-                          pcv.text == '' ||
-                          rbcs.text == '' ||
-                          mcv.text == '' ||
-                          mch.text == '' ||
-                          mchc.text == '' ||
-                          rdw.text == '' ||
-                          platCount.text == '' ||
-                          totalCount.text == '') {
+                    onPressed: () async {
+                      if (neto.text == '' ||
+                          lympho.text == '' ||
+                          mono.text == '' ||
+                          eos.text == '' ||
+                          baso.text == '') {
                         ScaffoldMessenger.of(context)
                             .showSnackBar(const SnackBar(
                           content: Text("Please Fill All Requriements"),
                         ));
                       } else {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => cbcTestTwo()));
+                        await showAlertDialog(context);
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Report()));
                       }
                     },
-                    child: const Text('Next'),
+                    child: const Text('View Report'),
                     style: ElevatedButton.styleFrom(primary: Colors.black),
                   ))
-            ],
-          )),
-    );
+            ])));
   }
+
+  Future showAlertDialog(BuildContext context) =>
+      LoadingAlertDialog.showLoadingAlertDialog(
+        context: context,
+        builder: (
+          context,
+        ) =>
+            Card(
+          child: Padding(
+            padding: const EdgeInsets.all(
+              24.0,
+            ),
+            child: Column(
+              children: const <Widget>[
+                CircularProgressIndicator(),
+                Text(
+                  "Please Wait...",
+                ),
+              ],
+              mainAxisSize: MainAxisSize.min,
+            ),
+          ),
+          color: Colors.white,
+        ),
+        computation: Future.delayed(
+          const Duration(
+            seconds: 3,
+          ),
+        ),
+      );
 }
