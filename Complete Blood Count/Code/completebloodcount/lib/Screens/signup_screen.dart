@@ -189,7 +189,7 @@ class _SignUp extends State<SignUp> {
                         !e.text.contains('@'))
                       {
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: Text("Please Fill All Requriements"),
+                          content: Text("Please Fill All the Requriements"),
                         ))
                       }
                     else
