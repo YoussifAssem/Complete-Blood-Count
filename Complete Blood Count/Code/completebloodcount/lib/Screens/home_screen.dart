@@ -12,7 +12,7 @@ class MyHomePage extends StatelessWidget {
         children: [
           Center(
             child: Column(
-              children: [Image.asset('images/home.jpg')],
+              children: [Image.asset('images/dnap.jpg')],
             ),
           )
         ],
