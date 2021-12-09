@@ -57,35 +57,9 @@ class search extends StatefulWidget {
         ],
         centerTitle: true,
       ),
-      body: const MyCustomForm(),
+      
     );
   }
   
 }
 
-class MyCustomForm extends StatelessWidget {
-  
-  const MyCustomForm({Key? key}) : super(key: key);
-  
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: const <Widget>[
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-          child: TextField(
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              hintText: 'Enter a search term',
-            ),
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-        ),
-      ],
-    );
-  }
-}
