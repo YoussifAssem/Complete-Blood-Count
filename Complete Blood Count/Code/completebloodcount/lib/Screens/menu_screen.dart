@@ -1,5 +1,6 @@
 import 'package:completebloodcount/Screens/cbc_test_screen.dart';
 import 'package:completebloodcount/Screens/chat_screen.dart';
+import 'package:completebloodcount/editprofileone.dart';
 import 'package:completebloodcount/widgets/searchtwo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,15 @@ class Menu extends StatelessWidget {
       appBar: AppBar(
         title: Text(_text),
         backgroundColor: Colors.pink[900],
+        actions: [
+          IconButton(
+            onPressed: () {
+              //_auth.signOut();
+              Navigator.pop(context);
+            },
+            icon: const Icon(Icons.close),
+          )
+        ],
       ),
       body: _body,
       drawer: Drawer(
@@ -55,6 +65,15 @@ class Menu extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) => const ChatScreen()));
+              },
+            ),
+            ListTile(
+              title: const Text('Edit profile'),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const EditProfilePage()));
               },
             ),
             ListTile(

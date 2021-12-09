@@ -1,3 +1,4 @@
+import 'package:completebloodcount/Screens/menu_screen.dart';
 import 'package:flutter/material.dart';
 
 class EditProfilePage extends StatefulWidget {
@@ -11,20 +12,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
   bool showPassword = false;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Edit Profile '),
-        backgroundColor: Colors.pink[900],
-        elevation: 1,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back,
-            color: Colors.white,
-          ),
-          onPressed: () {},
-        ),
-      ),
-      body: Container(
+    return Menu(
+      'Edit Profile',
+      Container(
         padding: const EdgeInsets.only(left: 16, top: 25, right: 16),
         child: GestureDetector(
           onTap: () {

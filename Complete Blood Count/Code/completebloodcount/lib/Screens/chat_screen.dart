@@ -1,3 +1,4 @@
+import 'package:completebloodcount/Screens/menu_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -38,7 +39,7 @@ class _ChatScreenState extends State<ChatScreen> {
   // void getmessages () async
   // {
   //   final messages =  await _firestore.collection('message').get();
-  //   for(var message in messages.docs) 
+  //   for(var message in messages.docs)
   //   {
   //     print (message.data());
   //   }
@@ -46,29 +47,9 @@ class _ChatScreenState extends State<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.pink[900],
-        title: Row(
-          children: [
-            Image.asset('images/logo.png', height: 25),
-            const SizedBox(width: 10),
-            const Text('MessageMe')
-          ],
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              
-              //_auth.signOut();
-              Navigator.pop(context);
-            },
-            icon: const Icon(Icons.close),
-          )
-        ],
-      ),
-      body: SafeArea(
+    return Menu(
+      'Chat',
+      SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,

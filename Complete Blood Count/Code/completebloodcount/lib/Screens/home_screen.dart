@@ -28,7 +28,8 @@ class _MyHomePageState extends State<MyHomePage>
   Widget build(BuildContext context) {
     return Menu(
       'Home Page',
-      Center(
+      Padding(
+        padding: const EdgeInsets.only(top: 80),
         child: Column(
           children: <Widget>[
             RotationTransition(
