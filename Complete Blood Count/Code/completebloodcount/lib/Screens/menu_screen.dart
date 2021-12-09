@@ -1,4 +1,5 @@
 import 'package:completebloodcount/Screens/cbc_test_screen.dart';
+import 'package:completebloodcount/Screens/chat_screen.dart';
 import 'package:completebloodcount/widgets/searchtwo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -45,6 +46,15 @@ class Menu extends StatelessWidget {
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => cbcTest()));
+              },
+            ),
+            ListTile(
+              title: const Text('Messages'),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ChatScreen()));
               },
             ),
             ListTile(
