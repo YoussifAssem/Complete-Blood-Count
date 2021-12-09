@@ -14,7 +14,7 @@ class logInForm extends State<StatefulWidget> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        buildInputForm('username'),
+        buildInputForm('Email'),
         buildInputForm('password'),
       ],
     );
