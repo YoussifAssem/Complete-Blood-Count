@@ -25,21 +25,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
           ),
           onPressed: () {},
         ),
-        actions: const [
-          /*
-          IconButton(
-            // ignore: prefer_const_constructors
-            
-            icon: Icon(
-              Icons.settings,
-              color: Colors.white,
-            ),
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (BuildContext context) => SettingsPage()));
-            },
-          ),*/
-        ],
       ),
       body: Container(
         padding: const EdgeInsets.only(left: 16, top: 25, right: 16),
