@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'menu_screen.dart';
 
+// ignore: use_key_in_widget_constructors
 class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
