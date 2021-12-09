@@ -14,6 +14,7 @@ class _ChatScreenState extends State<ChatScreen> {
   final _firestore = FirebaseFirestore.instance;
   //final _auth = FirebaseAuth.instance;
   //late User signedInUser; //the email
+  //var signedInUser = "jimmy";
   String? messageText; //the message
 
   @override
@@ -34,6 +35,15 @@ class _ChatScreenState extends State<ChatScreen> {
   //   }
   // }
 
+  // void getmessages () async
+  // {
+  //   final messages =  await _firestore.collection('message').get();
+  //   for(var message in messages.docs) 
+  //   {
+  //     print (message.data());
+  //   }
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,6 +60,7 @@ class _ChatScreenState extends State<ChatScreen> {
         actions: [
           IconButton(
             onPressed: () {
+              
               //_auth.signOut();
               Navigator.pop(context);
             },
@@ -94,7 +105,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     onPressed: () {
                       _firestore.collection('message').add({
                         'text': messageText,
-                        'sender': 'jimmy',
+                        'sender': 'the sender',
                         //'sender':signedInUser.email,
                       });
                     },
