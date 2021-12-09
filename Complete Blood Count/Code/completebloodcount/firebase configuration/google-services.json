@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "942983529169",
+    "project_id": "complete-blood-count",
+    "storage_bucket": "complete-blood-count.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:942983529169:android:ce40742997532b23303bf0",
+        "android_client_info": {
+          "package_name": "com.example.completebloodcount"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "942983529169-el1dehcba3tlrmncnvn85kmu729o61sd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3TDm-0o1WPqybVa82FYJ7QivUJRai_4Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "942983529169-el1dehcba3tlrmncnvn85kmu729o61sd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
