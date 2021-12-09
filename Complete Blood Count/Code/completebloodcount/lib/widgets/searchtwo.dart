@@ -10,13 +10,12 @@ class search extends StatefulWidget {
 
 }
   class _SearchState extends State<search>{
-    //Icon customIcon = const Icon(Icons.search);
-    //Widget customSearchBar = const Text('Search');
+    
     bool isSearching = false;
  @override
   Widget build(BuildContext context) {
     
-    //Icon customIcon = const Icon(Icons.search);  //custom icon
+   
     const appTitle = 'Search';
     return Scaffold(
       appBar: AppBar(
