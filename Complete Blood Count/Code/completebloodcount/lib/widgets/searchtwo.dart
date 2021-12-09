@@ -46,6 +46,14 @@ class _SearchState extends State<search> {
         ],
         centerTitle: true,
       ),
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("images/dnap.jpg"),
+            fit: BoxFit.cover,
+          ),
+        ),
+      ),
     );
   }
 }
