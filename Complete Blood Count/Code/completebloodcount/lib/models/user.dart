@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:completebloodcount/models/blood_analysis.dart';
+import 'package:http/http.dart' as http;
 
 class User {
   // ignore: prefer_final_fields, unused_field
@@ -15,6 +18,8 @@ class User {
   String _type = '';
   // ignore: unused_field
   final _firestore = FirebaseFirestore.instance;
+  final url = Uri.https(
+      'complete-blood-count-default-rtdb.firebaseio.com', 'signup.json');
   User() {
     //_userID++;
   }
@@ -34,7 +39,9 @@ class User {
     setPassword(p);
     setGender(g);
     setType(t);
-    _addIntoDataBase();
+    //_addIntoDataBase();
+    _addData();
+    _getData();
   }
   getID() {
     //Read ID From DataBase
@@ -165,7 +172,7 @@ class User {
     setPhoneNumber(phone!);
 
     //This will edit the user profile and update the database
-    updateDataInDataBase(getFirstName(), getLastName(), getEmail(),
+    _updateDataInDataBase(getFirstName(), getLastName(), getEmail(),
         getBirthDate(), getPhoneNumber(), getPassword());
   }
 
@@ -182,6 +189,7 @@ class User {
     print(blood.viewResults());
   }
 
+/*
   _addIntoDataBase() {
     _firestore.collection('signUp').add({
       'ID': _userID,
@@ -196,9 +204,57 @@ class User {
       //'sender':signedInUser.email,
     });
   }
+*/
+  // ignore: unused_element
+  _addData() async {
+    Map<dynamic, dynamic> map = {
+      // 'ID': _userID,
+      'firstName': getFirstName(),
+      'lastName': getLastName(),
+      'email': getEmail(),
+      'password': getPassword(),
+      'birthDate': getBirthDate(),
+      'phoneNumber': getPhoneNumber(),
+      'gender': getGender(),
+      'type': getType(),
+    };
+    // ignore: unused_local_variable
 
-  updateDataInDataBase(String firstName, String lastName, String email,
-      String birthDate, int phone, String password) {
+    // ignore: unused_local_variable
+    await http.post(url, body: json.encode(map));
+  }
+
+  // ignore: unused_element
+  _getData() async {
+    // ignore: unused_local_variable
+    final res = await http.get(url);
+    // ignore: unused_local_variable
+    final data = jsonDecode(res.body) as Map<dynamic, dynamic>;
+    data.forEach((key, value) {
+      // ignore: avoid_print
+      print(value);
+    });
+  }
+
+  // ignore: unused_element
+  _updateDataInDataBase(String firstName, String lastName, String email,
+      String birthDate, String phone, String password) async {
     //This function will update data into data base
+    // ignore: unused_local_variable
+    Map<dynamic, dynamic> map = {
+      'firstName': firstName,
+      'lastName': lastName,
+      'email': email,
+      'password': password,
+      'birthDate': birthDate,
+      'phoneNumber': phone,
+    };
+    // ignore: unused_local_variable
+    final res = await http.get(url);
+    // ignore: unused_local_variable
+    final data = jsonDecode(res.body) as Map<dynamic, dynamic>;
+    data.forEach((key, value) async {
+      if (email == value) {}
+    });
   }
 }
