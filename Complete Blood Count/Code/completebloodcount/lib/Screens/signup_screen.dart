@@ -134,7 +134,6 @@ class _SignUp extends State<SignUp> {
                     fontWeight: FontWeight.w800,
                   ),
                 ),
-                obscureText: true,
               ),
               TextFormField(
                 focusNode: f3,
@@ -258,14 +257,11 @@ class _SignUp extends State<SignUp> {
                   ),
                   style: ElevatedButton.styleFrom(primary: Colors.pink[900]),
                   onPressed: () => {
-                    if (user.addUser(
-                            name: name.text,
-                            email: e.text,
-                            phone: pN.text,
-                            password: p.text,
-                            gender: gender,
-                            type: type) !=
-                        '')
+                    if (name.text == '' ||
+                        e.text == '' ||
+                        pN.text == '' ||
+                        p.text == '' ||
+                        cP.text == '')
                       {
                         text = 'Error, Please fill all requirements',
                         showAlertDialog(context),
@@ -280,13 +276,33 @@ class _SignUp extends State<SignUp> {
                         text = 'Email format is not true',
                         showAlertDialog(context),
                       }
+                    else if (pN.text.length <= 10)
+                      {
+                        text = 'Error, Phone Number less than 11 Number',
+                        showAlertDialog(context),
+                      }
                     else
                       {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => logInScreen()),
-                        )
+                        if (user.signUp(
+                                name: name.text,
+                                email: e.text,
+                                phone: pN.text,
+                                password: p.text,
+                                gender: gender,
+                                type: type) ==
+                            'Error')
+                          {
+                            text = 'Error in Data',
+                            showAlertDialog(context),
+                          }
+                        else
+                          {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => logInScreen()),
+                            )
+                          }
                       }
                   },
                 ),

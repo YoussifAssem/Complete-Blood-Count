@@ -1,173 +1,127 @@
-import 'package:completebloodcount/models/blood_analysis.dart';
+import 'package:completebloodcount/Services/user_services.dart';
 
 class User {
   // ignore: prefer_final_fields, unused_field
-  String _name = '';
-  String _email = '';
-  String _phonenumber = '';
-  String _password = '';
-  String _gender = '';
+  late String _name;
+  late String _email;
+  late String _phonenumber;
+  late String _password;
+  late String _gender;
+  userServices uS = userServices();
   // ignore: prefer_final_fields
-  String _type = '';
-  addUser(
+  late String _type;
+  signUp(
       {required String name,
       required String email,
       required String phone,
       required String password,
       required String gender,
       required String type}) {
-    setName(name);
-    setEmail(email);
-    setPhoneNumber(phone);
-    setPassword(password);
-    setGender(gender);
-    setType(type);
-    if (setName(name) == '' &&
-        setEmail(email) == '' &&
-        setPhoneNumber(phone) == '' &&
-        setPassword(password) == '') {
+    _setName(name);
+    _setEmail(email);
+    _setPhoneNumber(phone);
+    _setPassword(password);
+    _setGender(gender);
+    _setType(type);
+    _addUserInDB();
+    if (_checkUser() == '') {
       return '';
     } else {
       return 'Error';
     }
   }
 
-  setType(String t) {
-    if (t == 'Patient') {
-      _type = t;
-      return '';
-    } else if (t == 'Doctor') {
-      _type = t;
+  Future<String?> _addUserInDB() async {
+    await uS.addUser(
+        name: getName(),
+        email: getEmail(),
+        password: getPassword(),
+        phoneNumber: getPhoneNumber(),
+        gender: getGender(),
+        type: getType());
+  }
+
+  _checkUser() {
+    if (_name == '' ||
+        _email == '' ||
+        _phonenumber == '' ||
+        _password == '' ||
+        _phonenumber.length <= 10) {
+      return 'Error';
     } else {
-      return 'Error, Please Select Gender';
+      return '';
     }
+  }
+
+  _setType(String t) {
+    _type = t;
   }
 
   getType() {
-    return _type;
+    if (_type == 'Patient' || _type == 'Doctor') {
+      return _type;
+    } else {
+      return 'Error';
+    }
   }
 
-  setName(String n) {
-    if (n == '') {
-      //Display error in UI
-      return 'Error, please Enter Your First Name';
-    }
+  _setName(String n) {
     _name = n;
-    return '';
   }
 
   getName() {
-    return _name;
+    if (_name == '') {
+      return 'Error';
+    } else {
+      return _name;
+    }
   }
 
-  setEmail(String e) {
-    if (e == '') {
-      //Display error in UI
-      return 'Error, please Enter Your Email';
-    }
+  _setEmail(String e) {
     _email = e;
-    return '';
   }
 
   getEmail() {
-    return _email;
+    if (_email == '') {
+      return 'Error';
+    } else {
+      return _email;
+    }
   }
 
-  setPhoneNumber(String pN) {
-    if (pN.length == 11) {
-      _phonenumber = pN;
-      return '';
-    } else {
-      return 'Error, please Enter Your Phone Number Correctly';
-    }
+  _setPhoneNumber(String pN) {
+    _phonenumber = pN;
   }
 
   getPhoneNumber() {
-    return _phonenumber;
+    if (_phonenumber.length == 11) {
+      return _phonenumber;
+    } else {
+      return 'Error';
+    }
   }
 
-  setPassword(String p) {
-    if (p == '') {
-      return 'Error, please Enter Your Password';
-    }
+  _setPassword(String p) {
     _password = p;
-    return '';
   }
 
   getPassword() {
-    return _password;
+    if (_password == '') {
+      return 'Error';
+    } else {
+      return _password;
+    }
   }
 
-  setGender(String g) {
-    if (g == 'Male') {
-      _gender = g;
-    } else if (g == 'Female') {
-      _gender = g;
-    } else {
-      return 'Error, Please Select Gender';
-    }
-    return '';
+  _setGender(String g) {
+    _gender = g;
   }
 
   getGender() {
-    return _gender;
-  }
-
-  logIn(String email, String password) {
-    setEmail(email);
-    setPassword(password);
-  }
-
-  sendMessage(String email, String message) {
-    //Check from database the email if it consists we will send the message
-  }
-
-  editProfile({String? name, String? email, String? phone, String? password}) {
-    setName(name!);
-    setEmail(email!);
-    setPassword(password!);
-    setPhoneNumber(phone!);
-  }
-
-  viewMessages() {
-    //This function will view data from database
-  }
-  register() {
-    //This function will take an object from Registeration and use the class
-  }
-  viewResults() {
-    // ignore: unused_local_variable
-    BloodAnalysis blood = BloodAnalysis();
-    // ignore: avoid_print
-    print(blood.viewResults());
-  }
-
-/*
-  _addIntoDataBase() {
-    _firestore.collection('signUp').add({
-      'ID': _userID,
-      'firstName': getFirstName(),
-      'lastName': getLastName(),
-      'email': getEmail(),
-      'password': getPassword(),
-      'birthDate': getBirthDate(),
-      'phoneNumber': getPhoneNumber(),
-      'gender': getGender(),
-      'type': getType(),
-      //'sender':signedInUser.email,
-    });
-  }
-*/
-  // ignore: unused_element
-  _addData() async {
-    Map<dynamic, dynamic> map = {
-      // 'ID': _userID,
-      'name': getName(),
-      'email': getEmail(),
-      'password': getPassword(),
-      'phoneNumber': getPhoneNumber(),
-      'gender': getGender(),
-      'type': getType(),
-    };
+    if (_gender == 'Male' || _gender == 'Female') {
+      return _gender;
+    } else {
+      return 'Error';
+    }
   }
 }
