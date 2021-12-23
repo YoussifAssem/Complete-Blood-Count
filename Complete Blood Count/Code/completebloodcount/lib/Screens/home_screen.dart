@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'menu_screen.dart';
-
-import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/painting.dart';
 import 'package:completebloodcount/firestore-data/notificationList.dart';
@@ -12,11 +9,12 @@ import 'package:completebloodcount/models/cardModel.dart';
 //import 'package:completebloodcount/firestore-data/searchList.dart';
 //import 'package:completebloodcount/firestore-data/topRatedList.dart';
 import 'package:intl/intl.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_fonts/google_fonts.dart';
 //import 'package:flutter_icons/flutter_icons.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -24,24 +22,17 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   TextEditingController _doctorName = TextEditingController();
-  final _auth = FirebaseAuth.instance;
   //late User user;
   @override
   void initState() {
     super.initState();
     //_getUser();
-    _doctorName = new TextEditingController();
+    _doctorName = TextEditingController();
   }
 
   // void _getUser() {
   //   final user = _auth.currentUser;
   // }
-
-  Future _signOut() async {
-    await _auth.signOut();
-  }
-
-
 
   @override
   void dispose() {
@@ -71,12 +62,12 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.white,
       key: _scaffoldKey,
       appBar: AppBar(
+        backgroundColor: Colors.pink[900],
         automaticallyImplyLeading: false,
         actions: <Widget>[Container()],
-        backgroundColor: Colors.white,
         elevation: 0,
         title: Container(
-          padding: EdgeInsets.only(top: 5),
+          padding: const EdgeInsets.only(top: 5),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
@@ -86,18 +77,19 @@ class _HomePageState extends State<HomePage> {
                 child: Text(
                   _message,
                   style: GoogleFonts.lato(
-                    color: Colors.black54,
+                    color: Colors.white,
                     fontSize: 20,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 55,
               ),
               IconButton(
                 splashRadius: 20,
-                icon: Icon(Icons.notifications_active),
+                color: Colors.white,
+                icon: const Icon(Icons.notifications_active),
                 onPressed: () {
                   Navigator.push(
                       context,
@@ -108,7 +100,7 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color: Colors.black,
         ),
       ),
@@ -119,17 +111,17 @@ class _HomePageState extends State<HomePage> {
             return true;
           },
           child: ListView(
-            physics: ClampingScrollPhysics(),
+            physics: const ClampingScrollPhysics(),
             shrinkWrap: true,
             children: <Widget>[
               Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   Container(
                     alignment: Alignment.centerLeft,
-                    padding: EdgeInsets.only(left: 20, bottom: 10),
+                    padding: const EdgeInsets.only(left: 20, bottom: 10),
                     child: Text(
                       //"Hello " + user.displayName!,
                       'hello ahmed',
@@ -141,7 +133,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Container(
                     alignment: Alignment.centerLeft,
-                    padding: EdgeInsets.only(left: 20, bottom: 25),
+                    padding: const EdgeInsets.only(left: 20, bottom: 25),
                     child: Text(
                       "Let's Find Your\nDoctor",
                       style: GoogleFonts.lato(
@@ -151,14 +143,14 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.fromLTRB(20, 0, 20, 25),
+                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 25),
                     child: TextFormField(
                       textInputAction: TextInputAction.search,
                       controller: _doctorName,
                       decoration: InputDecoration(
-                        contentPadding:
-                            EdgeInsets.only(left: 20, top: 10, bottom: 10),
-                        border: OutlineInputBorder(
+                        contentPadding: const EdgeInsets.only(
+                            left: 20, top: 10, bottom: 10),
+                        border: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(15.0)),
                           borderSide: BorderSide.none,
                         ),
@@ -191,14 +183,14 @@ class _HomePageState extends State<HomePage> {
                       onFieldSubmitted: (String value) {
                         setState(
                           () {
-                            value.length == 0
+                            value.isEmpty
                                 ? Container()
                                 : Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => HomePage(
-                                        //searchKey: value,
-                                      ),
+                                      builder: (context) => const HomePage(
+                                          //searchKey: value,
+                                          ),
                                     ),
                                   );
                           },
@@ -207,7 +199,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.only(left: 23, bottom: 10),
+                    padding: const EdgeInsets.only(left: 23, bottom: 10),
                     alignment: Alignment.centerLeft,
                     child: Text(
                       "We care for you",
@@ -223,7 +215,7 @@ class _HomePageState extends State<HomePage> {
                     //child: Carouselslider(), // to be Carouselslider
                   ),
                   Container(
-                    padding: EdgeInsets.only(left: 20),
+                    padding: const EdgeInsets.only(left: 20),
                     alignment: Alignment.centerLeft,
                     child: Text(
                       "Specialists",
@@ -236,23 +228,23 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Container(
                     height: 150,
-                    padding: EdgeInsets.only(top: 14),
+                    padding: const EdgeInsets.only(top: 14),
                     child: ListView.builder(
-                      physics: ClampingScrollPhysics(),
+                      physics: const ClampingScrollPhysics(),
                       scrollDirection: Axis.horizontal,
-                      padding: EdgeInsets.symmetric(horizontal: 20.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
                       itemCount: cards.length,
                       itemBuilder: (context, index) {
                         //print("images path: ${cards[index].cardImage.toString()}");
                         return Container(
-                          margin: EdgeInsets.only(right: 14),
+                          margin: const EdgeInsets.only(right: 14),
                           height: 150,
                           width: 140,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               color: Color(cards[index].cardBackground),
                               boxShadow: [
-                                BoxShadow(
+                                const BoxShadow(
                                   color: Colors.grey,
                                   blurRadius: 4.0,
                                   spreadRadius: 0.0,
@@ -270,13 +262,14 @@ class _HomePageState extends State<HomePage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => HomePage( //to be ExploreList 
-                                          //type: cards[index].doctor,
-                                        )),
+                                    builder: (context) =>
+                                        const HomePage(//to be ExploreList
+                                            //type: cards[index].doctor,
+                                            )),
                               );
                             },
-                            shape: new RoundedRectangleBorder(
-                                borderRadius: new BorderRadius.circular(20)),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20)),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -318,7 +311,7 @@ class _HomePageState extends State<HomePage> {
                     height: 30,
                   ),
                   Container(
-                    padding: EdgeInsets.only(left: 20),
+                    padding: const EdgeInsets.only(left: 20),
                     alignment: Alignment.centerLeft,
                     child: Text(
                       "Top Rated",
@@ -348,4 +341,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
