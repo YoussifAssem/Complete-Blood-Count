@@ -98,11 +98,7 @@ packages:
       name: cupertino_icons
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "1.0.4"
-=======
-    version: "1.0.3"
->>>>>>> f70c983a05415af69fdd6c4e60f479d9d9266aea
   dio:
     dependency: "direct main"
     description:
@@ -192,13 +188,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_icons:
-    dependency: "direct main"
-    description:
-      name: flutter_icons
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.0"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -237,7 +226,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "9.2.0"
-<<<<<<< HEAD
   google_fonts:
     dependency: "direct main"
     description:
@@ -245,8 +233,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.1"
-=======
->>>>>>> f70c983a05415af69fdd6c4e60f479d9d9266aea
   google_nav_bar:
     dependency: "direct main"
     description:
@@ -408,7 +394,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.2"
-<<<<<<< HEAD
   process:
     dependency: transitive
     description:
@@ -416,8 +401,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.2.4"
-=======
->>>>>>> f70c983a05415af69fdd6c4e60f479d9d9266aea
   provider:
     dependency: "direct main"
     description:
@@ -527,22 +510,14 @@ packages:
       name: url_launcher_linux
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "2.0.0"
-=======
-    version: "2.0.2"
->>>>>>> f70c983a05415af69fdd6c4e60f479d9d9266aea
   url_launcher_macos:
     dependency: transitive
     description:
       name: url_launcher_macos
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "2.0.0"
-=======
-    version: "2.0.2"
->>>>>>> f70c983a05415af69fdd6c4e60f479d9d9266aea
   url_launcher_platform_interface:
     dependency: transitive
     description:
@@ -556,22 +531,14 @@ packages:
       name: url_launcher_web
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "2.0.0"
-=======
-    version: "2.0.5"
->>>>>>> f70c983a05415af69fdd6c4e60f479d9d9266aea
   url_launcher_windows:
     dependency: transitive
     description:
       name: url_launcher_windows
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "2.0.0"
-=======
-    version: "2.0.2"
->>>>>>> f70c983a05415af69fdd6c4e60f479d9d9266aea
   vector_math:
     dependency: transitive
     description:
