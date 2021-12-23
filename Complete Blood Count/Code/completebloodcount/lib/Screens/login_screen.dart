@@ -72,7 +72,7 @@ class logInScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => MyHomePage()),
+                  MaterialPageRoute(builder: (context) => HomePage()),
                 );
               },
             ),

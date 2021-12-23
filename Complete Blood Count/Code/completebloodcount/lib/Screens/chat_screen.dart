@@ -1,4 +1,5 @@
 import 'package:completebloodcount/Screens/menu_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -13,28 +14,27 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   final _firestore = FirebaseFirestore.instance;
-  //final _auth = FirebaseAuth.instance;
-  //late User signedInUser; //the email
-  //var signedInUser = "jimmy";
+  final _auth = FirebaseAuth.instance;
+  late User signedInUser; //the email
   String? messageText; //the message
 
   @override
   void initState() {
     super.initState();
-    //getCurrentUser();
+    getCurrentUser();
   }
 
-  // void getCurrentUser() {
-  //   try {
-  //     final user = _auth.currentUser;
-  //     if (user != null) {
-  //       signedInUser = user;
-  //       print(signedInUser.email);
-  //     }
-  //   } catch (e) {
-  //     print(e);
-  //   }
-  // }
+  void getCurrentUser() {
+    try {
+      final user = _auth.currentUser;
+      if (user != null) {
+        signedInUser = user;
+        print(signedInUser.email);
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
 
   // void getmessages () async
   // {
@@ -86,8 +86,8 @@ class _ChatScreenState extends State<ChatScreen> {
                     onPressed: () {
                       _firestore.collection('message').add({
                         'text': messageText,
-                        'sender': 'the sender',
-                        //'sender':signedInUser.email,
+                        //'sender': 'the sender',
+                        'sender':signedInUser.email,
                       });
                     },
                     child: Text(
