@@ -22,6 +22,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   TextEditingController _doctorName = TextEditingController();
+
+  get icon => null;
   //late User user;
   @override
   void initState() {
@@ -62,6 +64,7 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.white,
       key: _scaffoldKey,
       appBar: AppBar(
+        // leading: Image.asset('images/dnap.jpg', fit: BoxFit.cover),
         backgroundColor: Colors.pink[900],
         automaticallyImplyLeading: false,
         actions: <Widget>[Container()],
@@ -337,6 +340,24 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.pink[900],
+        selectedItemColor: Colors.white,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.bloodtype),
+            label: 'Enter Blood Data',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.chat),
+            label: 'Chats',
+          ),
+        ],
       ),
     );
   }
