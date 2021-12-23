@@ -9,7 +9,7 @@ class User {
   String _gender = '';
   // ignore: prefer_final_fields
   String _type = '';
-  User.addUser(
+  addUser(
       {required String name,
       required String email,
       required String phone,
@@ -22,14 +22,24 @@ class User {
     setPassword(password);
     setGender(gender);
     setType(type);
+    if (setName(name) == '' &&
+        setEmail(email) == '' &&
+        setPhoneNumber(phone) == '' &&
+        setPassword(password) == '') {
+      return '';
+    } else {
+      return 'Error';
+    }
   }
+
   setType(String t) {
     if (t == 'Patient') {
       _type = t;
+      return '';
     } else if (t == 'Doctor') {
       _type = t;
     } else {
-      throw 'Error, Please Select Gender';
+      return 'Error, Please Select Gender';
     }
   }
 
@@ -40,9 +50,10 @@ class User {
   setName(String n) {
     if (n == '') {
       //Display error in UI
-      throw 'Error, please Enter Your First Name';
+      return 'Error, please Enter Your First Name';
     }
     _name = n;
+    return '';
   }
 
   getName() {
@@ -52,9 +63,10 @@ class User {
   setEmail(String e) {
     if (e == '') {
       //Display error in UI
-      throw 'Error, please Enter Your Email';
+      return 'Error, please Enter Your Email';
     }
     _email = e;
+    return '';
   }
 
   getEmail() {
@@ -64,9 +76,9 @@ class User {
   setPhoneNumber(String pN) {
     if (pN.length == 11) {
       _phonenumber = pN;
+      return '';
     } else {
-      //Display error in UI
-      throw 'Error, please Enter Your Phone Number Correctly';
+      return 'Error, please Enter Your Phone Number Correctly';
     }
   }
 
@@ -76,10 +88,10 @@ class User {
 
   setPassword(String p) {
     if (p == '') {
-      //Display error in UI
-      throw 'Error, please Enter Your Password';
+      return 'Error, please Enter Your Password';
     }
     _password = p;
+    return '';
   }
 
   getPassword() {
@@ -92,8 +104,9 @@ class User {
     } else if (g == 'Female') {
       _gender = g;
     } else {
-      throw 'Error, Please Select Gender';
+      return 'Error, Please Select Gender';
     }
+    return '';
   }
 
   getGender() {

@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:completebloodcount/Screens/login_screen.dart';
 import 'package:completebloodcount/models/user.dart';
 import 'package:flutter/material.dart';
@@ -17,11 +15,19 @@ class _SignUp extends State<SignUp> {
   // ignore: unused_field
   String gender = 'Male';
   String type = 'Patient';
-  late User user;
+  User user = User();
   final name = TextEditingController();
   final e = TextEditingController();
   final p = TextEditingController();
   final pN = TextEditingController();
+  final cP = TextEditingController();
+  String text = '';
+
+  FocusNode f1 = FocusNode();
+  FocusNode f2 = FocusNode();
+  FocusNode f3 = FocusNode();
+  FocusNode f4 = FocusNode();
+  FocusNode f5 = FocusNode();
 
   @override
   Widget build(BuildContext context) {
@@ -29,140 +35,221 @@ class _SignUp extends State<SignUp> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.pink[900],
-          title: Text(
+          title: const Text(
             'Sign Up',
             style: TextStyle(color: Colors.white),
           ),
         ),
         body: Padding(
-            padding: EdgeInsets.all(8),
+            padding: const EdgeInsets.all(2),
             child: ListView(children: <Widget>[
-              Text(
-                'Name',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 10, width: 10),
+              const Center(
+                  child: Text('Sign Up',
+                      style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          fontStyle: FontStyle.italic))),
+              const SizedBox(height: 25),
               TextFormField(
-                  controller: name,
-                  autocorrect: true,
-                  decoration: InputDecoration(
-                      labelText: "Enter Name",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                      ))),
-              const SizedBox(height: 20, width: 20),
-              Text(
-                'Email',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold),
+                focusNode: f1,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w800,
+                ),
+                keyboardType: TextInputType.emailAddress,
+                controller: name,
+                inputFormatters: <TextInputFormatter>[
+                  FilteringTextInputFormatter.deny(RegExp('[^a-zA-Z]')),
+                ],
+                decoration: InputDecoration(
+                  contentPadding:
+                      const EdgeInsets.only(left: 20, top: 10, bottom: 10),
+                  border: const OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(90.0)),
+                    borderSide: BorderSide.none,
+                  ),
+                  filled: true,
+                  fillColor: Colors.grey[350],
+                  hintText: 'Name',
+                  hintStyle: const TextStyle(
+                    color: Colors.black26,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
               ),
-              const SizedBox(height: 10, width: 10),
+              const SizedBox(height: 25.0),
               TextFormField(
-                  autocorrect: true,
-                  controller: e,
-                  decoration: InputDecoration(
-                      labelText: "Enter Your Email",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                      ))),
-              const SizedBox(height: 20, width: 20),
-              Text(
-                'Password',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold),
+                focusNode: f2,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w800,
+                ),
+                keyboardType: TextInputType.emailAddress,
+                controller: e,
+                decoration: InputDecoration(
+                  contentPadding:
+                      const EdgeInsets.only(left: 20, top: 10, bottom: 10),
+                  border: const OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(90.0)),
+                    borderSide: BorderSide.none,
+                  ),
+                  filled: true,
+                  fillColor: Colors.grey[350],
+                  hintText: 'Email',
+                  hintStyle: const TextStyle(
+                    color: Colors.black26,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
               ),
-              const SizedBox(height: 10, width: 10),
+              const SizedBox(
+                height: 25.0,
+              ),
               TextFormField(
-                  controller: p,
-                  obscureText: true,
-                  decoration: InputDecoration(
-                      labelText: "Password",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                      ))),
-              const SizedBox(height: 20, width: 20),
-              Text(
-                'Phone Number',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold),
+                focusNode: f5,
+                maxLength: 11,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w800,
+                ),
+                controller: pN,
+                inputFormatters: <TextInputFormatter>[
+                  FilteringTextInputFormatter.deny(RegExp('[^0-9]')),
+                ],
+                decoration: InputDecoration(
+                  contentPadding:
+                      const EdgeInsets.only(left: 20, top: 10, bottom: 10),
+                  border: const OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(90.0)),
+                    borderSide: BorderSide.none,
+                  ),
+                  filled: true,
+                  fillColor: Colors.grey[350],
+                  hintText: 'Phone Number',
+                  hintStyle: const TextStyle(
+                    color: Colors.black26,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+                obscureText: true,
               ),
-              const SizedBox(height: 10, width: 10),
               TextFormField(
-                  controller: pN,
-                  maxLength: 11,
-                  inputFormatters: <TextInputFormatter>[
-                    FilteringTextInputFormatter.digitsOnly
-                  ],
-                  decoration: InputDecoration(
-                      labelText: "Enter Phone Number",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                      ))),
-              const SizedBox(height: 20, width: 20),
-              Text(
-                'Gender',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold),
+                focusNode: f3,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w800,
+                ),
+                //keyboardType: TextInputType.visiblePassword,
+                controller: p,
+                decoration: InputDecoration(
+                  contentPadding:
+                      const EdgeInsets.only(left: 20, top: 10, bottom: 10),
+                  border: const OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(90.0)),
+                    borderSide: BorderSide.none,
+                  ),
+                  filled: true,
+                  fillColor: Colors.grey[350],
+                  hintText: 'Password',
+                  hintStyle: const TextStyle(
+                    color: Colors.black26,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+                obscureText: true,
               ),
-              const SizedBox(height: 10, width: 10),
-              DropdownButton<String>(
-                value: gender,
-                onChanged: (String? newValue) {
-                  setState(() {
-                    gender = newValue!;
-                  });
-                },
-                items: <String>['Male', 'Female']
-                    .map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
+              const SizedBox(
+                height: 25.0,
               ),
-              const SizedBox(height: 20, width: 20),
-              const SizedBox(height: 20, width: 20),
-              Text(
-                'Type',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold),
+              TextFormField(
+                focusNode: f4,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w800,
+                ),
+                controller: cP,
+                decoration: InputDecoration(
+                  contentPadding:
+                      const EdgeInsets.only(left: 20, top: 10, bottom: 10),
+                  border: const OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(90.0)),
+                    borderSide: BorderSide.none,
+                  ),
+                  filled: true,
+                  fillColor: Colors.grey[350],
+                  hintText: 'Confirm Password',
+                  hintStyle: const TextStyle(
+                    color: Colors.black26,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+                obscureText: true,
               ),
-              const SizedBox(height: 10, width: 10),
-              DropdownButton<String>(
-                value: type,
-                onChanged: (String? newValue) {
-                  setState(() {
-                    type = newValue!;
-                  });
-                },
-                items: <String>['Patient', 'Doctor']
-                    .map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
+              const SizedBox(
+                height: 25.0,
               ),
-              const SizedBox(height: 20, width: 20),
-
-              // ignore: deprecated_member_use
+              Row(
+                children: [
+                  const Text(
+                    'Gender',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 10, width: 10),
+                  DropdownButton<String>(
+                    value: gender,
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        gender = newValue!;
+                      });
+                    },
+                    items: <String>['Male', 'Female']
+                        .map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                  ),
+                  const SizedBox(height: 20, width: 20),
+                  const SizedBox(height: 20, width: 20),
+                  const Text(
+                    'Type',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 10, width: 10),
+                  DropdownButton<String>(
+                    value: type,
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        type = newValue!;
+                      });
+                    },
+                    items: <String>['Patient', 'Doctor']
+                        .map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                  ),
+                  const SizedBox(height: 20, width: 20),
+                ],
+              ),
               SizedBox(
                 height: 50,
                 child: ElevatedButton(
-                  child: Text(
+                  child: const Text(
                     'Sign Up',
                     style: TextStyle(
                         color: Colors.white,
@@ -171,34 +258,68 @@ class _SignUp extends State<SignUp> {
                   ),
                   style: ElevatedButton.styleFrom(primary: Colors.pink[900]),
                   onPressed: () => {
-                    if (name.text == '' ||
-                        e.text == '' ||
-                        p.text == '' ||
-                        pN.text == '' ||
-                        !e.text.contains('@'))
-                      {
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: Text("Please Fill All the Requriements"),
-                        ))
-                      }
-                    else
-                      {
-                        User.addUser(
+                    if (user.addUser(
                             name: name.text,
                             email: e.text,
                             phone: pN.text,
                             password: p.text,
                             gender: gender,
-                            type: type),
+                            type: type) !=
+                        '')
+                      {
+                        text = 'Error, Please fill all requirements',
+                        showAlertDialog(context),
+                      }
+                    else if (p.text != cP.text)
+                      {
+                        text = 'Error, Password is not match',
+                        showAlertDialog(context),
+                      }
+                    else if (!e.text.contains('@'))
+                      {
+                        text = 'Email format is not true',
+                        showAlertDialog(context),
+                      }
+                    else
+                      {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => logInScreen()),
                         )
-                      },
+                      }
                   },
                 ),
               )
             ])));
+  }
+
+  showAlertDialog(
+    BuildContext context,
+  ) {
+    // Create button
+    Widget okButton = TextButton(
+      child: const Text("OK"),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+
+    // Create AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: const Text("Alert"),
+      content: Text(text),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
   }
 }

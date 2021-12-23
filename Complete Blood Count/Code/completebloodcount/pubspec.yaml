@@ -39,7 +39,6 @@ dependencies:
   loading_alert_dialog: ^1.1.0
   flutter_spinkit: ^5.1.0
   dio: ^4.0.4
-  google_fonts: ^2.1.0
   url_launcher: ^6.0.17
 
   # The following adds the Cupertino Icons font to your application.
