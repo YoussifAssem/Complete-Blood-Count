@@ -17,12 +17,10 @@ class _SignUp extends State<SignUp> {
   // ignore: unused_field
   String gender = 'Male';
   String type = 'Patient';
-  User user = User();
-  final fN = TextEditingController();
-  final sN = TextEditingController();
+  late User user;
+  final name = TextEditingController();
   final e = TextEditingController();
   final p = TextEditingController();
-  final bD = TextEditingController();
   final pN = TextEditingController();
 
   @override
@@ -40,7 +38,7 @@ class _SignUp extends State<SignUp> {
             padding: EdgeInsets.all(8),
             child: ListView(children: <Widget>[
               Text(
-                'First Name',
+                'Name',
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 20,
@@ -48,27 +46,10 @@ class _SignUp extends State<SignUp> {
               ),
               const SizedBox(height: 10, width: 10),
               TextFormField(
-                  controller: fN,
+                  controller: name,
                   autocorrect: true,
                   decoration: InputDecoration(
-                      labelText: "Enter First Name",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                      ))),
-              const SizedBox(height: 20, width: 20),
-              Text(
-                'Second Name',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 10, width: 10),
-              TextFormField(
-                  controller: sN,
-                  autocorrect: true,
-                  decoration: InputDecoration(
-                      labelText: "Enter Second Name",
+                      labelText: "Enter Name",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5.0),
                       ))),
@@ -103,23 +84,6 @@ class _SignUp extends State<SignUp> {
                   obscureText: true,
                   decoration: InputDecoration(
                       labelText: "Password",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                      ))),
-              const SizedBox(height: 20, width: 20),
-              Text(
-                'Birth Date',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 10, width: 10),
-              TextFormField(
-                  controller: bD,
-                  autocorrect: true,
-                  decoration: InputDecoration(
-                      labelText: "Enter Birth Date",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5.0),
                       ))),
@@ -207,11 +171,9 @@ class _SignUp extends State<SignUp> {
                   ),
                   style: ElevatedButton.styleFrom(primary: Colors.pink[900]),
                   onPressed: () => {
-                    if (fN.text == '' ||
-                        sN.text == '' ||
+                    if (name.text == '' ||
                         e.text == '' ||
                         p.text == '' ||
-                        bD.text == '' ||
                         pN.text == '' ||
                         !e.text.contains('@'))
                       {
@@ -221,8 +183,13 @@ class _SignUp extends State<SignUp> {
                       }
                     else
                       {
-                        User.addUser(fN.text, sN.text, bD.text, e.text, pN.text,
-                            p.text, gender, type),
+                        User.addUser(
+                            name: name.text,
+                            email: e.text,
+                            phone: pN.text,
+                            password: p.text,
+                            gender: gender,
+                            type: type),
                         Navigator.push(
                           context,
                           MaterialPageRoute(

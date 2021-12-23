@@ -1,8 +1,4 @@
-import 'dart:convert';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:completebloodcount/models/blood_analysis.dart';
-import 'package:http/http.dart' as http;
 
 class User {
   // ignore: prefer_final_fields, unused_field
@@ -13,14 +9,19 @@ class User {
   String _gender = '';
   // ignore: prefer_final_fields
   String _type = '';
-
-  User.addUser(String n, String e, String pN, String p, String g, String t) {
-    setName(n);
-    setEmail(e);
-    setPhoneNumber(pN);
-    setPassword(p);
-    setGender(g);
-    setType(t);
+  User.addUser(
+      {required String name,
+      required String email,
+      required String phone,
+      required String password,
+      required String gender,
+      required String type}) {
+    setName(name);
+    setEmail(email);
+    setPhoneNumber(phone);
+    setPassword(password);
+    setGender(gender);
+    setType(type);
   }
   setType(String t) {
     if (t == 'Patient') {
@@ -47,7 +48,6 @@ class User {
   getName() {
     return _name;
   }
-
 
   setEmail(String e) {
     if (e == '') {
@@ -109,16 +109,12 @@ class User {
     //Check from database the email if it consists we will send the message
   }
 
-  editProfile(
-      {String? name,
-      String? email,
-      String? phone,
-      String? password}) {
+  editProfile({String? name, String? email, String? phone, String? password}) {
     setName(name!);
     setEmail(email!);
     setPassword(password!);
     setPhoneNumber(phone!);
- }
+  }
 
   viewMessages() {
     //This function will view data from database
@@ -161,4 +157,4 @@ class User {
       'type': getType(),
     };
   }
- 
+}
