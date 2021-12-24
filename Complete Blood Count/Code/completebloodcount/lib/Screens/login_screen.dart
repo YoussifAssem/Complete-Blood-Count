@@ -3,8 +3,16 @@ import 'package:completebloodcount/Screens/signup_screen.dart';
 import 'package:completebloodcount/models/user.dart';
 import 'package:flutter/material.dart';
 
-// ignore: camel_case_types, use_key_in_widget_constructors
-class logInScreen extends StatelessWidget {
+// ignore: camel_case_types, use_key_in_widget_constructors, must_be_immutable
+class logInScreen extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _logInScreen();
+  }
+}
+
+// ignore: camel_case_types
+class _logInScreen extends State<logInScreen> {
   final email = TextEditingController();
   final password = TextEditingController();
   User user = User();
