@@ -20,6 +20,7 @@ class _cbcTestTwo extends State<cbcTestTwo> {
   final mono = TextEditingController();
   final eos = TextEditingController();
   final baso = TextEditingController();
+  late String text;
   @override
   Widget build(BuildContext context) {
     return Menu(
@@ -343,10 +344,8 @@ class _cbcTestTwo extends State<cbcTestTwo> {
                           mono.text == '' ||
                           eos.text == '' ||
                           baso.text == '') {
-                        ScaffoldMessenger.of(context)
-                            .showSnackBar(const SnackBar(
-                          content: Text("Please Fill All Requriements"),
-                        ));
+                        text = 'Error, Please Fill All Requriements';
+                        sAlertDialog(context);
                       } else {
                         await showAlertDialog(context);
                         Navigator.push(context,
@@ -388,4 +387,30 @@ class _cbcTestTwo extends State<cbcTestTwo> {
           ),
         ),
       );
+  sAlertDialog(BuildContext context) {
+    // Create button
+    Widget okButton = TextButton(
+      child: const Text("OK"),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+
+    // Create AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: const Text("Alert"),
+      content: Text(text),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
 }

@@ -1,6 +1,5 @@
 import 'package:completebloodcount/Services/user_services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 class User {
   // ignore: prefer_final_fields, unused_field
