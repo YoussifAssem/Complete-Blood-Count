@@ -353,7 +353,7 @@ class _cbcTestTwo extends State<cbcTestTwo> {
                       }
                     },
                     child: const Text('View Report'),
-                    style: ElevatedButton.styleFrom(primary: Colors.pink[900]),
+                    style: ElevatedButton.styleFrom(primary: Colors.blue[600]),
                   ))
             ])));
   }

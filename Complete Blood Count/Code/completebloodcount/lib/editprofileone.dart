@@ -143,13 +143,13 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           style: TextStyle(
                               fontSize: 14,
                               letterSpacing: 2.2,
-                              color: Colors.black)),
+                              color: Colors.white)),
                     ),
                   ),
                   ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.pink[900],
+                      primary: Colors.blue[500],
                       padding: const EdgeInsets.symmetric(horizontal: 50),
                       elevation: 2,
                       shape: RoundedRectangleBorder(

@@ -17,7 +17,7 @@ class Menu extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(_text),
-        backgroundColor: Colors.pink[900],
+        backgroundColor: Colors.blue[600],
         actions: [
           IconButton(
             onPressed: () {
@@ -31,7 +31,7 @@ class Menu extends StatelessWidget {
       body: _body,
       drawer: Drawer(
         child: Material(
-          color: Colors.pink[900],
+          color: Colors.blue[600],
           child: ListView(
             padding: EdgeInsets.zero,
             children: [

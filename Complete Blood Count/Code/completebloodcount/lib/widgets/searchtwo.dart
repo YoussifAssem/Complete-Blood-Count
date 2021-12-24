@@ -24,7 +24,7 @@ class _SearchState extends State<search> {
                     hintText: 'Search Here...',
                     hintStyle: TextStyle(color: Colors.white)),
               ),
-        backgroundColor: Colors.pink[900],
+        backgroundColor: Colors.blue[600],
         actions: <Widget>[
           isSearching
               ? IconButton(

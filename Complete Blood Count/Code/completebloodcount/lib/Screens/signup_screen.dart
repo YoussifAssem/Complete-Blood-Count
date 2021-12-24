@@ -263,6 +263,7 @@ class _SignUp extends State<SignUp> {
                   ),
                   
                   style: ElevatedButton.styleFrom(primary: Colors.blue[600]),
+                  
                   onPressed: () => {
                     if (name.text == '' ||
                         e.text == '' ||
@@ -320,7 +321,7 @@ class _SignUp extends State<SignUp> {
                 ),
                 
               )
-              Padding(padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),),
+             
             ])));
   }
 

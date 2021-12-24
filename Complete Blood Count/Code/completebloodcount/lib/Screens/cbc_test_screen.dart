@@ -542,7 +542,7 @@ class _cbcTest extends State<cbcTest> {
                       }
                     },
                     child: const Text('Next'),
-                    style: ElevatedButton.styleFrom(primary: Colors.pink[900]),
+                    style: ElevatedButton.styleFrom(primary: Colors.blue[600]),
                   ))
             ],
           )),
