@@ -248,9 +248,11 @@ class _SignUp extends State<SignUp> {
               SizedBox(
                 height: 50,
                 
+                child: Padding( padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 child: ElevatedButton(
                   
                   child: const Text(
+                    
                     'Sign Up',
                         
                         style: TextStyle(
@@ -261,6 +263,7 @@ class _SignUp extends State<SignUp> {
                         fontWeight: FontWeight.bold),
                         
                   ),
+                  
                   
                   style: ElevatedButton.styleFrom(primary: Colors.blue[600]),
                   
@@ -318,6 +321,7 @@ class _SignUp extends State<SignUp> {
                           }
                       }
                   },
+                ),
                 ),
                 
               )
