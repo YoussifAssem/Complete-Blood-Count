@@ -28,62 +28,85 @@ class Menu extends StatelessWidget {
       ),
       body: _body,
       drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.black,
-
-                image: DecorationImage(
-                  image: AssetImage('images/dnap.jpg'),
-                  fit: BoxFit.none,
+        child: Material(
+          color: Colors.pink[900],
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              const DrawerHeader(
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
                 ),
-
-                //Center(child: Column(children: [SizedBox(height: 20), Image.asset('images/home.jpg')],),)
+                child: Text(
+                  'My account',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
               ),
-              child: Text(
-                'My account',
-                style: TextStyle(color: Colors.white),
+              ListTile(
+                leading: const Icon(
+                  Icons.home,
+                  color: Colors.white,
+                ),
+                title: const Text('Home Page',
+                    style: TextStyle(color: Colors.white)),
+                onTap: () {},
               ),
-            ),
-            ListTile(
-              title: const Text('Home Page'),
-              onTap: () {},
-            ),
-            ListTile(
-              title: const Text('Examine Self'),
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => cbcTest()));
-              },
-            ),
-            ListTile(
-              title: const Text('Messages'),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const ChatScreen()));
-              },
-            ),
-            ListTile(
-              title: const Text('Edit profile'),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const EditProfilePage()));
-              },
-            ),
-            ListTile(
-              title: const Text('Search'),
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const search()));
-              },
-            )
-          ],
+              ListTile(
+                leading: const Icon(
+                  Icons.bloodtype,
+                  color: Colors.white,
+                ),
+                title: const Text('Examine Self',
+                    style: TextStyle(color: Colors.white)),
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => cbcTest()));
+                },
+              ),
+              ListTile(
+                leading: const Icon(
+                  Icons.chat,
+                  color: Colors.white,
+                ),
+                title: const Text('Messages',
+                    style: TextStyle(color: Colors.white)),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ChatScreen()));
+                },
+              ),
+              ListTile(
+                leading: const Icon(
+                  Icons.edit,
+                  color: Colors.white,
+                ),
+                title: const Text('Edit profile',
+                    style: TextStyle(color: Colors.white)),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const EditProfilePage()));
+                },
+              ),
+              ListTile(
+                leading: const Icon(
+                  Icons.search,
+                  color: Colors.white,
+                ),
+                title:
+                    const Text('Search', style: TextStyle(color: Colors.white)),
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const search()));
+                },
+              )
+            ],
+          ),
         ),
       ),
     );
