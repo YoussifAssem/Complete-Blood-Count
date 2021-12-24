@@ -1,5 +1,7 @@
 import 'package:completebloodcount/Screens/cbc_test_screen.dart';
 import 'package:completebloodcount/Screens/chat_screen.dart';
+import 'package:completebloodcount/Screens/home_screen.dart';
+import 'package:completebloodcount/Screens/login_screen.dart';
 import 'package:completebloodcount/editprofileone.dart';
 import 'package:completebloodcount/widgets/searchtwo.dart';
 import 'package:flutter/cupertino.dart';
@@ -51,7 +53,12 @@ class Menu extends StatelessWidget {
                 ),
                 title: const Text('Home Page',
                     style: TextStyle(color: Colors.white)),
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const HomePage()));
+                },
               ),
               ListTile(
                 leading: const Icon(
@@ -103,6 +110,18 @@ class Menu extends StatelessWidget {
                 onTap: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const search()));
+                },
+              ),
+              ListTile(
+                leading: const Icon(
+                  Icons.logout,
+                  color: Colors.white,
+                ),
+                title: const Text('log out',
+                    style: TextStyle(color: Colors.white)),
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => logInScreen()));
                 },
               )
             ],
