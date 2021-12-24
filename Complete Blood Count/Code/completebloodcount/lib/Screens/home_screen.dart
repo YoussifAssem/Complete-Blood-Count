@@ -20,7 +20,8 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin{
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
   late AnimationController animationController;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   TextEditingController _doctorName = TextEditingController();
@@ -78,19 +79,24 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         actions: <Widget>[Container()],
         elevation: 0,
         title: Container(
-          padding: const EdgeInsets.only(top: 5,),
+          padding: const EdgeInsets.only(
+            top: 5,
+          ),
           child: Row(
-            
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              RotationTransition(turns: Tween(begin: 0.0, end: 1.0).animate(animationController),
-              child: Row(
-                children: [Image.asset('images/dnap.jpg',
-                width: 40,
-                height: 50,
-                alignment: Alignment.topLeft,
-                fit:BoxFit.fill  )],
-              ),),
+              RotationTransition(
+                turns: Tween(begin: 0.0, end: 1.0).animate(animationController),
+                child: Row(
+                  children: [
+                    Image.asset('images/dnap.jpg',
+                        width: 40,
+                        height: 50,
+                        alignment: Alignment.topLeft,
+                        fit: BoxFit.fill)
+                  ],
+                ),
+              ),
               Container(
                 //width: MediaQuery.of(context).size.width/1.3,
                 alignment: Alignment.center,
@@ -118,8 +124,6 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
               ),
             ],
           ),
-        
-          
         ),
         iconTheme: const IconThemeData(
           color: Colors.black,
@@ -385,7 +389,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                           MaterialPageRoute(
                               builder: (context) => const ChatScreen()))
                     },
-                icon: const Icon(Icons.bloodtype)),
+                icon: const Icon(Icons.chat)),
           ),
         ],
       ),
