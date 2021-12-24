@@ -1,3 +1,6 @@
+import 'package:completebloodcount/Screens/cbc_test_screen.dart';
+import 'package:completebloodcount/Screens/chat_screen.dart';
+import 'package:completebloodcount/Screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
 // ignore: camel_case_types
@@ -24,7 +27,7 @@ class _SearchState extends State<search> {
                     hintText: 'Search Here...',
                     hintStyle: TextStyle(color: Colors.white)),
               ),
-        backgroundColor: Colors.blue[600],
+        backgroundColor: Colors.blue[700],
         actions: <Widget>[
           isSearching
               ? IconButton(
@@ -49,10 +52,46 @@ class _SearchState extends State<search> {
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("images/dnap.jpg"),
+            image: AssetImage("images/bluedna.jpg"),
             fit: BoxFit.cover,
           ),
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.blue[600],
+        selectedItemColor: Colors.white,
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+              label: 'Home',
+              icon: IconButton(
+                  onPressed: () => {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const HomePage()))
+                      },
+                  icon: const Icon(Icons.home))),
+          BottomNavigationBarItem(
+            label: 'Enter Blood Data',
+            icon: IconButton(
+                onPressed: () => {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => cbcTest()))
+                    },
+                icon: const Icon(Icons.bloodtype)),
+          ),
+          BottomNavigationBarItem(
+            label: 'Chats',
+            icon: IconButton(
+                onPressed: () => {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ChatScreen()))
+                    },
+                icon: const Icon(Icons.bloodtype)),
+          ),
+        ],
       ),
     );
   }
