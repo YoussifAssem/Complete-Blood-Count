@@ -34,7 +34,7 @@ class _SignUp extends State<SignUp> {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          backgroundColor: Colors.pink[900],
+          backgroundColor: Colors.blue[600],
           title: const Text(
             'Sign Up',
             style: TextStyle(color: Colors.white),
@@ -247,15 +247,22 @@ class _SignUp extends State<SignUp> {
               ),
               SizedBox(
                 height: 50,
+                
                 child: ElevatedButton(
+                  
                   child: const Text(
                     'Sign Up',
-                    style: TextStyle(
+                        
+                        style: TextStyle(
+                                
                         color: Colors.white,
                         fontSize: 20,
+                        
                         fontWeight: FontWeight.bold),
+                        
                   ),
-                  style: ElevatedButton.styleFrom(primary: Colors.pink[900]),
+                  
+                  style: ElevatedButton.styleFrom(primary: Colors.blue[600]),
                   onPressed: () => {
                     if (name.text == '' ||
                         e.text == '' ||
@@ -268,22 +275,22 @@ class _SignUp extends State<SignUp> {
                       }
                     else if (p.text != cP.text)
                       {
-                        text = 'Error, Password is not match',
+                        text = 'Error, Password does not match',
                         showAlertDialog(context),
                       }
                     else if (!e.text.contains('@'))
                       {
-                        text = 'Email format is not true',
+                        text = 'Email format is not applicable',
                         showAlertDialog(context),
                       }
                     else if (pN.text.length <= 10)
                       {
-                        text = 'Error, Phone Number less than 11 Number',
+                        text = 'Error, Phone Number must be less than 11 Numbers',
                         showAlertDialog(context),
                       }
                     else if (p.text.length <= 6)
                       {
-                        text = 'Error, Weak Password',
+                        text = ' Weak Password !',
                         showAlertDialog(context),
                       }
                     else
@@ -311,7 +318,9 @@ class _SignUp extends State<SignUp> {
                       }
                   },
                 ),
+                
               )
+              Padding(padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),),
             ])));
   }
 

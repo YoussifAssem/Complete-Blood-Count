@@ -26,7 +26,7 @@ class _logInScreen extends State<logInScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('LogIn'),
-        backgroundColor: Colors.pink[900],
+        backgroundColor: Colors.blue[600],
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -54,7 +54,7 @@ class _logInScreen extends State<logInScreen> {
                 width: 5,
               ),
               ElevatedButton(
-                  style: ElevatedButton.styleFrom(primary: Colors.pink[900]),
+                  style: ElevatedButton.styleFrom(primary: Colors.blue[600]),
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -134,7 +134,7 @@ class _logInScreen extends State<logInScreen> {
               height: 20,
             ),
             ElevatedButton(
-              style: ElevatedButton.styleFrom(primary: Colors.pink[900]),
+              style: ElevatedButton.styleFrom(primary: Colors.blue[600]),
               child: const Text('Log In'),
               onPressed: () async {
                 if (email.text == '' || password.text == '') {
