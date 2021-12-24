@@ -1,53 +1,45 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 // ignore: camel_case_types
 class userServices {
-  Future<String?> addUser(
+  final FirebaseAuth _auth;
+  userServices(this._auth);
+  Future<String?> register(
       {required String name,
       required String email,
       required String password,
       required String phoneNumber,
       required String gender,
       required String type}) async {
+    try {
+      await _auth.createUserWithEmailAndPassword(
+          email: email, password: password);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        return e.message;
+      } else if (e.code == 'email-already-in-use') {
+        return e.message;
+      } else {
+        return e.message;
+      }
+    }
+    String uid = _auth.currentUser!.uid;
     await FirebaseFirestore.instance.collection('signUp').add({
+      'id': uid,
       'name': name,
-      'email': email,
-      'password': password,
       'phoneNumber': phoneNumber,
       'gender': gender,
       'type': type,
-      //'sender':signedInUser.email,
     });
   }
 
-/*
-  logIn(String email, String password) {
-    _setEmail(email);
-    _setPassword(password);
+  Future<String?> signOut() async {
+    await _auth.signOut();
   }
 
-  sendMessage(String email, String message) {
-    //Check from database the email if it consists we will send the message
+  Future<String?> logIn(String email, String password) async {
+    await _auth.signInWithEmailAndPassword(email: email, password: password);
   }
-
-  editProfile({String? name, String? email, String? phone, String? password}) {
-    _setName(name!);
-    _setEmail(email!);
-    _setPassword(password!);
-    _setPhoneNumber(phone!);
-  }
-
-  viewMessages() {
-    //This function will view data from database
-  }
-  register() {
-    //This function will take an object from Registeration and use the class
-  }
-  viewResults() {
-    // ignore: unused_local_variable
-    BloodAnalysis blood = BloodAnalysis();
-    // ignore: avoid_print
-    print(blood.viewResults());
-  }
-  */
 }

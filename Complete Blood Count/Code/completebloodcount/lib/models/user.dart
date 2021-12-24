@@ -1,4 +1,6 @@
 import 'package:completebloodcount/Services/user_services.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class User {
   // ignore: prefer_final_fields, unused_field
@@ -7,7 +9,7 @@ class User {
   late String _phonenumber;
   late String _password;
   late String _gender;
-  userServices uS = userServices();
+  late userServices uS = userServices(FirebaseAuth.instance);
   // ignore: prefer_final_fields
   late String _type;
   signUp(
@@ -31,8 +33,16 @@ class User {
     }
   }
 
+  Future<String?> signOut() async {
+    await uS.signOut();
+  }
+
+  Future<String?> login(String email, String password) async {
+    await uS.logIn(email, password);
+  }
+
   Future<String?> _addUserInDB() async {
-    await uS.addUser(
+    await uS.register(
         name: getName(),
         email: getEmail(),
         password: getPassword(),

@@ -1,4 +1,4 @@
-import 'package:completebloodcount/Screens/login_screen.dart';
+import 'package:completebloodcount/Screens/home_screen.dart';
 import 'package:completebloodcount/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -281,6 +281,11 @@ class _SignUp extends State<SignUp> {
                         text = 'Error, Phone Number less than 11 Number',
                         showAlertDialog(context),
                       }
+                    else if (p.text.length <= 6)
+                      {
+                        text = 'Error, Weak Password',
+                        showAlertDialog(context),
+                      }
                     else
                       {
                         if (user.signUp(
@@ -300,7 +305,7 @@ class _SignUp extends State<SignUp> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => logInScreen()),
+                                  builder: (context) => const HomePage()),
                             )
                           }
                       }

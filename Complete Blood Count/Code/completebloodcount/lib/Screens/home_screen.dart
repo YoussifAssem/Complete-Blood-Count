@@ -1,20 +1,21 @@
+import 'package:completebloodcount/Screens/cbc_test_screen.dart';
+import 'package:completebloodcount/Screens/chat_screen.dart';
+import 'package:completebloodcount/Screens/chat_screen.dart';
+import 'package:completebloodcount/Screens/login_screen.dart';
+import 'package:completebloodcount/editprofileone.dart';
 import 'package:flutter/material.dart';
-
 import 'dart:ui';
 import 'package:flutter/painting.dart';
 import 'package:completebloodcount/firestore-data/notificationList.dart';
 import 'package:completebloodcount/models/cardModel.dart';
-//import 'package:completebloodcount/carouselSlider.dart';
-//import 'package:completebloodcount/screens/exploreList.dart';
-//import 'package:completebloodcount/firestore-data/searchList.dart';
-//import 'package:completebloodcount/firestore-data/topRatedList.dart';
+import 'package:completebloodcount/models/user.dart';
+
 import 'package:intl/intl.dart';
 import 'package:google_fonts/google_fonts.dart';
 //import 'package:flutter_icons/flutter_icons.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
-
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -22,9 +23,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   TextEditingController _doctorName = TextEditingController();
+  late User user = User();
 
-  get icon => null;
-  //late User user;
+//late User user;
   @override
   void initState() {
     super.initState();
@@ -92,12 +93,11 @@ class _HomePageState extends State<HomePage> {
               IconButton(
                 splashRadius: 20,
                 color: Colors.white,
-                icon: const Icon(Icons.notifications_active),
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (contex) => NotificationList()));
+                icon: const Icon(Icons.logout),
+                onPressed: () async {
+                  await user.signOut();
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (contex) => logInScreen()));
                 },
               ),
             ],
@@ -344,18 +344,30 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.pink[900],
         selectedItemColor: Colors.white,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
+        items: <BottomNavigationBarItem>[
+          const BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.bloodtype),
             label: 'Enter Blood Data',
+            icon: IconButton(
+                onPressed: () => {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => cbcTest()))
+                    },
+                icon: const Icon(Icons.bloodtype)),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.chat),
             label: 'Chats',
+            icon: IconButton(
+                onPressed: () => {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ChatScreen()))
+                    },
+                icon: const Icon(Icons.bloodtype)),
           ),
         ],
       ),
