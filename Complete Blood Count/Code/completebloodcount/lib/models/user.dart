@@ -9,7 +9,7 @@ class User {
   late String _phonenumber;
   late String _password;
   late String _gender;
-  late userServices uS = userServices(FirebaseAuth.instance);
+  userServices uS = userServices(FirebaseAuth.instance);
   // ignore: prefer_final_fields
   late String _type;
   signUp(
@@ -37,8 +37,15 @@ class User {
     await uS.signOut();
   }
 
-  Future<String?> login(String email, String password) async {
-    await uS.logIn(email, password);
+  login(String email, String password) async {
+    userServices u = userServices(FirebaseAuth.instance);
+    _setEmail(email);
+    _setPassword(password);
+    if (await u.logIn(getEmail(), getPassword()) == 'Done') {
+      return '';
+    } else {
+      return 'Error';
+    }
   }
 
   Future<String?> _addUserInDB() async {

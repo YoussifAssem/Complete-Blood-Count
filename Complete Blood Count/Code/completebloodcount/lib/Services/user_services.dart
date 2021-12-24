@@ -16,6 +16,15 @@ class userServices {
     try {
       await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
+      String uid = _auth.currentUser!.uid;
+      await FirebaseFirestore.instance.collection('signUp').add({
+        'id': uid,
+        'name': name,
+        'phoneNumber': phoneNumber,
+        'gender': gender,
+        'type': type,
+      });
+      return 'Done';
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         return e.message;
@@ -25,14 +34,6 @@ class userServices {
         return e.message;
       }
     }
-    String uid = _auth.currentUser!.uid;
-    await FirebaseFirestore.instance.collection('signUp').add({
-      'id': uid,
-      'name': name,
-      'phoneNumber': phoneNumber,
-      'gender': gender,
-      'type': type,
-    });
   }
 
   Future<String?> signOut() async {
@@ -40,6 +41,11 @@ class userServices {
   }
 
   Future<String?> logIn(String email, String password) async {
-    await _auth.signInWithEmailAndPassword(email: email, password: password);
+    try {
+      await _auth.signInWithEmailAndPassword(email: email, password: password);
+      return 'Done';
+    } on FirebaseAuthException catch (e) {
+      return e.message;
+    }
   }
 }
