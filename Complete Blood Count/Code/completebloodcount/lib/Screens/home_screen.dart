@@ -90,10 +90,10 @@ class _HomePageState extends State<HomePage>
                 child: Row(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(9.0),
+                      padding: const EdgeInsets.all(25.0),
                       child: Image.asset(
                         "images/dnap.jpg",
-                        scale: 9.0,
+                        scale: 5.0,
                         width: 50,
                         height: 40,
                       ),

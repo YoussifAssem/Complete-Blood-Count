@@ -89,7 +89,7 @@ class _SearchState extends State<search> {
                           MaterialPageRoute(
                               builder: (context) => const ChatScreen()))
                     },
-                icon: const Icon(Icons.bloodtype)),
+                icon: const Icon(Icons.chat)),
           ),
         ],
       ),
