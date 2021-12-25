@@ -50,7 +50,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           image: const DecorationImage(
                               fit: BoxFit.cover,
                               image: NetworkImage(
-                                "https://smartsalem.com/wp-content/uploads/2020/08/676bf0e9f3c16649cd7f426c6dcd755a-flat-user-sign-with-round-background-by-vexels.png",
+                                "https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/user-male-circle-blue-512.png",
                               ))),
                     ),
                     Positioned(
