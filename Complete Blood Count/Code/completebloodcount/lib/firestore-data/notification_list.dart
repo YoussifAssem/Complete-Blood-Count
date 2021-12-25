@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// ignore: use_key_in_widget_constructors
 class NotificationList extends StatefulWidget {
   @override
   _NotificationListState createState() => _NotificationListState();
@@ -14,7 +15,7 @@ class _NotificationListState extends State<NotificationList> {
         backgroundColor: Colors.white,
         leading: IconButton(
             splashRadius: 20,
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_ios,
               color: Colors.indigo,
             ),

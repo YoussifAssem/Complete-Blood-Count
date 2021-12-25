@@ -4,7 +4,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 // ignore: camel_case_types
 class userServices {
   final FirebaseAuth _auth;
+  CollectionReference user = FirebaseFirestore.instance.collection('Users');
+
   userServices(this._auth);
+
   Future<String?> register(
       {required String name,
       required String email,
@@ -15,15 +18,12 @@ class userServices {
     try {
       await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
-      String uid = _auth.currentUser!.uid;
-      await FirebaseFirestore.instance.collection('signUp').add({
-        'id': uid,
-        'name': name,
-        'phoneNumber': phoneNumber,
-        'gender': gender,
-        'type': type,
-      });
-      return 'Done';
+      _addUser(
+          id: _auth.currentUser!.uid,
+          name: name,
+          phoneNumber: phoneNumber,
+          gender: gender,
+          type: type);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         return e.message;
@@ -32,6 +32,30 @@ class userServices {
       } else {
         return e.message;
       }
+    }
+  }
+
+  Future<Object?> _addUser(
+      {required String id,
+      required String name,
+      required String phoneNumber,
+      required String gender,
+      required String type}) async {
+    try {
+      DocumentReference ref = user.doc(_auth.currentUser!.uid);
+      FirebaseFirestore.instance.runTransaction((transaction) async {
+        DocumentSnapshot snapShot = await transaction.get(ref);
+        if (!snapShot.exists) {
+          ref.set({
+            'name': name,
+            'phoneNumber': phoneNumber,
+            'gender': gender,
+            'type': type
+          });
+        }
+      });
+    } catch (e) {
+      return e;
     }
   }
 
@@ -45,6 +69,29 @@ class userServices {
       return 'Done';
     } on FirebaseAuthException catch (e) {
       return e.message;
+    }
+  }
+
+  Future<Object?> editProfile(
+      {required String name,
+      required String phone,
+      required String gender,
+      required String type,
+      required String password}) async {
+    try {
+      DocumentReference ref = user.doc(_auth.currentUser!.uid);
+      FirebaseFirestore.instance.runTransaction((transaction) async {
+        DocumentSnapshot snapShot = await transaction.get(ref);
+        _auth.currentUser!.updatePassword(password);
+        if (snapShot.exists) {
+          transaction.update(ref, {
+            'name': name,
+            'phoneNumber': phone,
+          });
+        }
+      });
+    } catch (e) {
+      return e;
     }
   }
 }

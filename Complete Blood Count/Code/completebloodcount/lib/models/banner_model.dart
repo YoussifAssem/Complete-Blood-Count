@@ -9,16 +9,16 @@ class BannerModel {
 }
 
 List<BannerModel> bannerCards = [
-  new BannerModel(
+  BannerModel(
       "Check Disease",
-      [
+      const [
         Color(0xffa1d4ed),
         Color(0xffc0eaff),
       ],
       "assets/414-bg.png"),
-  new BannerModel(
+  BannerModel(
       "Covid-19",
-      [
+      const [
         Color(0xffb6d4fa),
         Color(0xffcfe3fc),
       ],

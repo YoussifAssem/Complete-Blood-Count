@@ -247,85 +247,76 @@ class _SignUp extends State<SignUp> {
               ),
               SizedBox(
                 height: 50,
-                
-                child: Padding( padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                child: ElevatedButton(
-                  
-                  child: const Text(
-                    
-                    'Sign Up',
-                        
-                        style: TextStyle(
-                                
-                        color: Colors.white,
-                        fontSize: 20,
-                        
-                        fontWeight: FontWeight.bold),
-                        
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  child: ElevatedButton(
+                    child: const Text(
+                      'Sign Up',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    style: ElevatedButton.styleFrom(primary: Colors.blue[600]),
+                    onPressed: () => {
+                      if (name.text == '' ||
+                          e.text == '' ||
+                          pN.text == '' ||
+                          p.text == '' ||
+                          cP.text == '')
+                        {
+                          text = 'Error, Please fill all requirements',
+                          showAlertDialog(context),
+                        }
+                      else if (p.text != cP.text)
+                        {
+                          text = 'Error, Password does not match',
+                          showAlertDialog(context),
+                        }
+                      else if (!e.text.contains('@'))
+                        {
+                          text = 'Email format is not applicable',
+                          showAlertDialog(context),
+                        }
+                      else if (pN.text.length <= 10)
+                        {
+                          text =
+                              'Error, Phone Number must be less than 11 Numbers',
+                          showAlertDialog(context),
+                        }
+                      else if (p.text.length <= 6)
+                        {
+                          text = ' Weak Password !',
+                          showAlertDialog(context),
+                        }
+                      else
+                        {
+                          if (user.signUp(
+                                  name: name.text,
+                                  email: e.text,
+                                  phone: pN.text,
+                                  password: p.text,
+                                  gender: gender,
+                                  type: type) ==
+                              'Error')
+                            {
+                              text = 'Error in Data',
+                              showAlertDialog(context),
+                            }
+                          else
+                            {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const HomePage()),
+                              )
+                            }
+                        }
+                    },
                   ),
-                  
-                  
-                  style: ElevatedButton.styleFrom(primary: Colors.blue[600]),
-                  
-                  onPressed: () => {
-                    if (name.text == '' ||
-                        e.text == '' ||
-                        pN.text == '' ||
-                        p.text == '' ||
-                        cP.text == '')
-                      {
-                        text = 'Error, Please fill all requirements',
-                        showAlertDialog(context),
-                      }
-                    else if (p.text != cP.text)
-                      {
-                        text = 'Error, Password does not match',
-                        showAlertDialog(context),
-                      }
-                    else if (!e.text.contains('@'))
-                      {
-                        text = 'Email format is not applicable',
-                        showAlertDialog(context),
-                      }
-                    else if (pN.text.length <= 10)
-                      {
-                        text = 'Error, Phone Number must be less than 11 Numbers',
-                        showAlertDialog(context),
-                      }
-                    else if (p.text.length <= 6)
-                      {
-                        text = ' Weak Password !',
-                        showAlertDialog(context),
-                      }
-                    else
-                      {
-                        if (user.signUp(
-                                name: name.text,
-                                email: e.text,
-                                phone: pN.text,
-                                password: p.text,
-                                gender: gender,
-                                type: type) ==
-                            'Error')
-                          {
-                            text = 'Error in Data',
-                            showAlertDialog(context),
-                          }
-                        else
-                          {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const HomePage()),
-                            )
-                          }
-                      }
-                  },
                 ),
-                ),
-                
               )
-             
             ])));
   }
 

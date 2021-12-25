@@ -1,13 +1,10 @@
 import 'package:completebloodcount/Screens/cbc_test_screen.dart';
 import 'package:completebloodcount/Screens/chat_screen.dart';
-import 'package:completebloodcount/Screens/chat_screen.dart';
 import 'package:completebloodcount/Screens/login_screen.dart';
-import 'package:completebloodcount/editprofileone.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui';
 import 'package:flutter/painting.dart';
-import 'package:completebloodcount/firestore-data/notificationList.dart';
-import 'package:completebloodcount/models/cardModel.dart';
+import 'package:completebloodcount/models/card_model.dart';
 import 'package:completebloodcount/models/user.dart';
 
 import 'package:intl/intl.dart';
@@ -33,7 +30,7 @@ class _HomePageState extends State<HomePage>
     super.initState();
     //_getUser();
     _doctorName = TextEditingController();
-    animationController = new AnimationController(
+    animationController = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 7),
     );
@@ -90,10 +87,10 @@ class _HomePageState extends State<HomePage>
                 child: Row(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(25.0),
+                      padding: const EdgeInsets.all(9.0),
                       child: Image.asset(
                         "images/dnap.jpg",
-                        scale: 5.0,
+                        scale: 9.0,
                         width: 50,
                         height: 40,
                       ),
@@ -272,8 +269,8 @@ class _HomePageState extends State<HomePage>
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               color: Color(cards[index].cardBackground),
-                              boxShadow: [
-                                const BoxShadow(
+                              boxShadow: const [
+                                BoxShadow(
                                   color: Colors.grey,
                                   blurRadius: 4.0,
                                   spreadRadius: 0.0,
@@ -302,21 +299,18 @@ class _HomePageState extends State<HomePage>
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   height: 16,
                                 ),
-                                Container(
-                                  child: CircleAvatar(
-                                      backgroundColor: Colors.white,
-                                      radius: 29,
-                                      child: Icon(
-                                        cards[index].cardIcon,
-                                        size: 26,
-                                        color:
-                                            Color(cards[index].cardBackground),
-                                      )),
-                                ),
-                                SizedBox(
+                                CircleAvatar(
+                                    backgroundColor: Colors.white,
+                                    radius: 29,
+                                    child: Icon(
+                                      cards[index].cardIcon,
+                                      size: 26,
+                                      color: Color(cards[index].cardBackground),
+                                    )),
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 Container(
@@ -336,7 +330,7 @@ class _HomePageState extends State<HomePage>
                       },
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   Container(
@@ -351,14 +345,14 @@ class _HomePageState extends State<HomePage>
                           fontSize: 18),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Container(
-                    padding: EdgeInsets.only(left: 15, right: 15),
+                    padding: const EdgeInsets.only(left: 15, right: 15),
                     //child: TopRatedList(),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                 ],

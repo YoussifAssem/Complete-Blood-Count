@@ -16,7 +16,7 @@ class _logInScreen extends State<logInScreen> {
   final email = TextEditingController();
   final password = TextEditingController();
   User user = User();
-  String text = '';
+  late String text;
   FocusNode f1 = FocusNode();
   FocusNode f2 = FocusNode();
 

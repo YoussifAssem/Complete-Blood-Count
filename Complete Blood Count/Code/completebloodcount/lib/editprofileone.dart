@@ -1,4 +1,5 @@
 import 'package:completebloodcount/Screens/menu_screen.dart';
+import 'package:completebloodcount/models/user.dart';
 import 'package:flutter/material.dart';
 
 class EditProfilePage extends StatefulWidget {
@@ -10,6 +11,13 @@ class EditProfilePage extends StatefulWidget {
 
 class _EditProfilePageState extends State<EditProfilePage> {
   bool showPassword = false;
+  final name = TextEditingController();
+  final phone = TextEditingController();
+  final email = TextEditingController();
+  final password = TextEditingController();
+  late String text;
+  User user = User();
+
   @override
   Widget build(BuildContext context) {
     return Menu(
@@ -80,46 +88,31 @@ class _EditProfilePageState extends State<EditProfilePage> {
               ),
               TextFormField(
                   autocorrect: true,
+                  // initialValue: user.viewUsers()['name'],
+                  controller: name,
                   decoration: InputDecoration(
-                      labelText: "Fristname",
+                      labelText: "Name",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5.0),
                       ))),
               const SizedBox(height: 20, width: 20),
               TextFormField(
-                  autocorrect: true,
-                  decoration: InputDecoration(
-                      labelText: "Lastname",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                      ))),
+                autocorrect: true,
+                controller: password,
+                // initialValue: user.viewUsers()['password'],
+                decoration: InputDecoration(
+                    labelText: "Password",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    )),
+                obscureText: true,
+              ),
               const SizedBox(height: 20, width: 20),
               TextFormField(
                   autocorrect: true,
-                  decoration: InputDecoration(
-                      labelText: " Birth Date",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                      ))),
-              const SizedBox(height: 20, width: 20),
-              TextFormField(
-                  autocorrect: true,
-                  decoration: InputDecoration(
-                      labelText: "Email",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                      ))),
-              const SizedBox(height: 20, width: 20),
-              TextFormField(
-                  autocorrect: true,
-                  decoration: InputDecoration(
-                      labelText: "Password",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                      ))),
-              const SizedBox(height: 20, width: 20),
-              TextFormField(
-                  autocorrect: true,
+                  controller: phone,
+                  maxLength: 11,
+                  // initialValue: user.viewUsers()['phoneNumber'],
                   decoration: InputDecoration(
                       labelText: "Phone",
                       border: OutlineInputBorder(
@@ -138,7 +131,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
                       child: const Text("CANCEL",
                           style: TextStyle(
                               fontSize: 14,
@@ -147,7 +142,30 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      if (name.text == '' ||
+                          phone.text == '' ||
+                          password.text == '') {
+                        text = 'Error, Please Fill All Requirements';
+                        showAlertDialog(context);
+                      } else if (phone.text.length <= 10) {
+                        text =
+                            'Error, Phone Number must be less than 11 Numbers';
+                        showAlertDialog(context);
+                      } else if (password.text.length <= 6) {
+                        text = ' Weak Password !';
+                        showAlertDialog(context);
+                      } else {
+                        user.editProfile(
+                            name: name.text,
+                            phone: phone.text,
+                            gender: 'Male',
+                            type: 'Patient',
+                            password: password.text);
+                        text = 'Done, Data Updated successfully';
+                        showAlertDialog(context);
+                      }
+                    },
                     style: ElevatedButton.styleFrom(
                       primary: Colors.blue[500],
                       padding: const EdgeInsets.symmetric(horizontal: 50),
@@ -202,6 +220,35 @@ class _EditProfilePageState extends State<EditProfilePage> {
               color: Colors.black,
             )),
       ),
+    );
+  }
+
+  showAlertDialog(
+    BuildContext context,
+  ) {
+    // Create button
+    Widget okButton = TextButton(
+      child: const Text("OK"),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+
+    // Create AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: const Text("Alert"),
+      content: Text(text),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
     );
   }
 }
