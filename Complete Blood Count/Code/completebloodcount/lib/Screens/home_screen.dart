@@ -80,7 +80,7 @@ class _HomePageState extends State<HomePage>
         elevation: 0,
         title: Container(
           padding: const EdgeInsets.only(
-            top: 5,
+            right: 1,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -89,11 +89,15 @@ class _HomePageState extends State<HomePage>
                 turns: Tween(begin: 0.0, end: 1.0).animate(animationController),
                 child: Row(
                   children: [
-                    Image.asset('images/dnap.jpg',
-                        width: 40,
-                        height: 50,
-                        alignment: Alignment.topLeft,
-                        fit: BoxFit.fill)
+                    Padding(
+                      padding: const EdgeInsets.all(9.0),
+                      child: Image.asset(
+                        "images/dnap.jpg",
+                        scale: 9.0,
+                        width: 50,
+                        height: 40,
+                      ),
+                    ),
                   ],
                 ),
               ),
