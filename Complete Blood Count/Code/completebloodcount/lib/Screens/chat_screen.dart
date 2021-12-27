@@ -152,14 +152,13 @@ class messagestreambulder extends StatelessWidget {
                 final messagetext = message.get('text');
                 final messagesender = message.get('sender');
 
-                final curentuser = signedInUser.email;
-
-                if (curentuser == curentuser ) {
-                  
-                }
+                final currentuser = signedInUser.email;
 
                 final messagewidget  = messageline(
-                  sender:messagesender, text:messagetext);
+                  sender:messagesender,
+                  text:messagetext,
+                  isme: currentuser == messagesender, // short if stament
+                  );
                 messagewidgets.add(messagewidget);
               }
 
@@ -175,16 +174,18 @@ class messagestreambulder extends StatelessWidget {
 }
 
 class messageline extends StatelessWidget {
-  messageline ({this.text, this.sender, Key? key }) : super(key: key);
+  messageline ({this.text, this.sender, required this.isme, Key? key }) : super(key: key);
 
   String? text;
   String? sender;
+  final bool isme;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
+        crossAxisAlignment: 
+        isme ? CrossAxisAlignment.end : CrossAxisAlignment.start,
         children:[
           Text(
           '$sender',
@@ -197,11 +198,11 @@ class messageline extends StatelessWidget {
               bottomLeft: Radius.circular(30),
               bottomRight: Radius.circular(30),
             ),
-          color: Colors.blue[800],
+          color: isme? Colors.blue[800] : Colors.white, //check the user to change the message color
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 10),
             child: Text('$text',
-              style: TextStyle(fontSize: 15, color: Colors.white)),
+              style: TextStyle(fontSize: 15, color: isme? Colors.white : Colors.black45 )), //check the user to change the text color
           ),
         ),
         ]
