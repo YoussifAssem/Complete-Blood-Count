@@ -193,8 +193,12 @@ class messageline extends StatelessWidget {
           ),
           Material(
             elevation: 5,
-            borderRadius: BorderRadius.only(
+            borderRadius: isme? BorderRadius.only( //check the user to change the message color when typing
               topLeft: Radius.circular(30),
+              bottomLeft: Radius.circular(30),
+              bottomRight: Radius.circular(30),
+            ) : BorderRadius.only(
+              topRight: Radius.circular(30),
               bottomLeft: Radius.circular(30),
               bottomRight: Radius.circular(30),
             ),
