@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
   final _firestore = FirebaseFirestore.instance;
-
+  late User signedInUser; //the user
 class ChatScreen extends StatefulWidget {
   static const String screenRoute = 'chat_screen';
 
@@ -19,7 +19,6 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   final messagetextcontroller = TextEditingController();
   final _auth = FirebaseAuth.instance;
-  late User signedInUser; //the email
   String? messageText; //the message
 
   @override
@@ -152,7 +151,15 @@ class messagestreambulder extends StatelessWidget {
               for(var message in messages){
                 final messagetext = message.get('text');
                 final messagesender = message.get('sender');
-                final messagewidget  = messageline(sender:messagesender, text:messagetext);
+
+                final curentuser = signedInUser.email;
+
+                if (curentuser == curentuser ) {
+                  
+                }
+
+                final messagewidget  = messageline(
+                  sender:messagesender, text:messagetext);
                 messagewidgets.add(messagewidget);
               }
 
@@ -181,11 +188,15 @@ class messageline extends StatelessWidget {
         children:[
           Text(
           '$sender',
-          style: TextStyle(fontSize: 12, color: Colors.black45),
+          style: TextStyle(fontSize: 12, color: Colors.yellow[900]),
           ),
           Material(
             elevation: 5,
-            borderRadius: BorderRadius.circular(30),
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(30),
+              bottomLeft: Radius.circular(30),
+              bottomRight: Radius.circular(30),
+            ),
           color: Colors.blue[800],
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 10),
