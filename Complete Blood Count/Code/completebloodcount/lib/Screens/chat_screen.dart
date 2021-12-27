@@ -21,20 +21,22 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   void initState() {
     super.initState();
-    //getCurrentUser();
+    getCurrentUser();
+    //messagesstreams();
+    //getmessages();
   }
 
-  // void getCurrentUser() {
-  //   try {
-  //     final user = _auth.currentUser;
-  //     if (user != null) {
-  //       signedInUser = user;
-  //       print(signedInUser.email);
-  //     }
-  //   } catch (e) {
-  //     print(e);
-  //   }
-  // }
+  void getCurrentUser() {
+    try {
+      final user = _auth.currentUser;
+      if (user != null) {
+        signedInUser = user;
+        //print(signedInUser.email); to test  that the method is working correctly
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
 
   // void getmessages () async
   // {
@@ -45,6 +47,18 @@ class _ChatScreenState extends State<ChatScreen> {
   //   }
   // }
 
+
+  void messagesstreams () async {
+    await for(var snapshot in _firestore.collection('message').snapshots())
+    {
+      for(var message in snapshot.docs)
+    {
+      // ignore: avoid_print
+      print (message.data());
+    }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Menu(
@@ -54,7 +68,29 @@ class _ChatScreenState extends State<ChatScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(),
+            StreamBuilder<QuerySnapshot>(
+              stream : _firestore.collection('message').snapshots(),
+              builder: (context, snapshot){
+                List<Text> messagewidgets =[];
+
+              if (!snapshot.hasData)
+              {
+                //add here a spinner
+              }
+
+              final messages = snapshot.data!.docs;
+              for(var message in messages){
+                final messageText = message.get('text');
+                final messagesender = message.get('sender');
+                final messagewidget  = Text('$messageText - $messagesender');
+                messagewidgets.add(messagewidget);
+              }
+
+                return Column(
+                  children : messagewidgets,
+                );
+              },
+              ),
             Container(
               decoration: const BoxDecoration(
                 border: Border(
