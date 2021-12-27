@@ -1,7 +1,11 @@
+// ignore_for_file: prefer_const_constructors, camel_case_types, must_be_immutable
+
 import 'package:completebloodcount/Screens/menu_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+
+  final _firestore = FirebaseFirestore.instance;
 
 class ChatScreen extends StatefulWidget {
   static const String screenRoute = 'chat_screen';
@@ -13,7 +17,7 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-  final _firestore = FirebaseFirestore.instance;
+  final messagetextcontroller = TextEditingController();
   final _auth = FirebaseAuth.instance;
   late User signedInUser; //the email
   String? messageText; //the message
@@ -68,29 +72,7 @@ class _ChatScreenState extends State<ChatScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            StreamBuilder<QuerySnapshot>(
-              stream : _firestore.collection('message').snapshots(),
-              builder: (context, snapshot){
-                List<Text> messagewidgets =[];
-
-              if (!snapshot.hasData)
-              {
-                //add here a spinner
-              }
-
-              final messages = snapshot.data!.docs;
-              for(var message in messages){
-                final messageText = message.get('text');
-                final messagesender = message.get('sender');
-                final messagewidget  = Text('$messageText - $messagesender');
-                messagewidgets.add(messagewidget);
-              }
-
-                return Column(
-                  children : messagewidgets,
-                );
-              },
-              ),
+            messagestreambulder(),
             Container(
               decoration: const BoxDecoration(
                 border: Border(
@@ -105,6 +87,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 children: [
                   Expanded(
                     child: TextField(
+                      controller:messagetextcontroller,
                       onChanged: (value) {
                         messageText = value;
                       },
@@ -120,6 +103,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   ),
                   TextButton(
                     onPressed: () {
+                      messagetextcontroller.clear(); //to clear text feild
                       _firestore.collection('message').add({
                         'text': messageText,
                         //'sender': 'the sender',
@@ -140,6 +124,76 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class messagestreambulder extends StatelessWidget {
+  const messagestreambulder({ Key? key }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return             StreamBuilder<QuerySnapshot>(
+              stream : _firestore.collection('message').snapshots(),
+              builder: (context, snapshot){
+                List<messageline> messagewidgets =[];
+
+              if (!snapshot.hasData) //loading if there is no data found
+              {
+                return Center(
+                  child :CircularProgressIndicator(
+                    backgroundColor: Colors.blue,
+                  ),
+                );
+              }
+
+              final messages = snapshot.data!.docs;
+              for(var message in messages){
+                final messagetext = message.get('text');
+                final messagesender = message.get('sender');
+                final messagewidget  = messageline(sender:messagesender, text:messagetext);
+                messagewidgets.add(messagewidget);
+              }
+
+                return Expanded(
+                  child: ListView(
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  children : messagewidgets,
+                  ),
+                );
+              },
+              );
+  }
+}
+
+class messageline extends StatelessWidget {
+  messageline ({this.text, this.sender, Key? key }) : super(key: key);
+
+  String? text;
+  String? sender;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children:[
+          Text(
+          '$sender',
+          style: TextStyle(fontSize: 12, color: Colors.black45),
+          ),
+          Material(
+            elevation: 5,
+            borderRadius: BorderRadius.circular(30),
+          color: Colors.blue[800],
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 10),
+            child: Text('$text',
+              style: TextStyle(fontSize: 15, color: Colors.white)),
+          ),
+        ),
+        ]
       ),
     );
   }
