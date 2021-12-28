@@ -12,6 +12,8 @@ import 'package:google_fonts/google_fonts.dart';
 //import 'package:flutter_icons/flutter_icons.dart';
 
 class HomePage extends StatefulWidget {
+
+  static const String screenRoute = 'home_screen';
   const HomePage({Key? key}) : super(key: key);
   @override
   _HomePageState createState() => _HomePageState();

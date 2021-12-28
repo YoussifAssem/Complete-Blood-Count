@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 // ignore: camel_case_types, use_key_in_widget_constructors, must_be_immutable
 class logInScreen extends StatefulWidget {
+  static const String screenRoute = 'login_screen';
   @override
   State<StatefulWidget> createState() {
     return _logInScreen();

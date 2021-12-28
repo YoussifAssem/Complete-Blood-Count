@@ -1,8 +1,11 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
 import 'Screens/login_screen.dart';
-
+import 'Screens/home_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -11,6 +14,7 @@ void main() async {
 
 // ignore: use_key_in_widget_constructors
 class MyApp extends StatelessWidget {
+  final _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
@@ -20,7 +24,14 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.landscapeLeft,
     ]);
     return MaterialApp(
-      home: logInScreen(),
+      //home: logInScreen(),
+      initialRoute: _auth.currentUser != null
+      ?  HomePage.screenRoute : 
+      logInScreen.screenRoute,
+      routes: {
+          HomePage.screenRoute: (context) => HomePage(),
+          logInScreen.screenRoute: (context) => logInScreen(),
+        }
     );
   }
 }
