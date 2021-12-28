@@ -103,10 +103,11 @@ class _ChatScreenState extends State<ChatScreen> {
                   TextButton(
                     onPressed: () {
                       messagetextcontroller.clear(); //to clear text feild
-                      _firestore.collection('message').add({
+                      _firestore.collection('message').add({ //map key - value
                         'text': messageText,
                         //'sender': 'the sender',
                         'sender':signedInUser.email,
+                        'time' : FieldValue.serverTimestamp(), //to arrange messages
                       });
                     },
                     child: Text(
@@ -133,8 +134,9 @@ class messagestreambulder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return             StreamBuilder<QuerySnapshot>(
-              stream : _firestore.collection('message').snapshots(),
+    return  
+    StreamBuilder<QuerySnapshot>(
+              stream : _firestore.collection('message').orderBy('time').snapshots(), //oreder by to arrange massages
               builder: (context, snapshot){
                 List<messageline> messagewidgets =[];
 
