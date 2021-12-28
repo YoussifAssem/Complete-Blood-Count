@@ -25,8 +25,8 @@ class MyApp extends StatelessWidget {
     ]);
     return MaterialApp(
       //home: logInScreen(),
-      initialRoute: _auth.currentUser != null
-      ?  HomePage.screenRoute : 
+      initialRoute: _auth.currentUser != null //dont need to log in every time added
+      ?  HomePage.screenRoute :  //short if statment if loged in go to home if not go to login_screen
       logInScreen.screenRoute,
       routes: {
           HomePage.screenRoute: (context) => HomePage(),
