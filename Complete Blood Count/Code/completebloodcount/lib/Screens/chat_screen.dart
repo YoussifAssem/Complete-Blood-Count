@@ -149,7 +149,7 @@ class messagestreambulder extends StatelessWidget {
                 );
               }
 
-              final messages = snapshot.data!.docs;
+              final messages = snapshot.data!.docs.reversed; //reversed to show message is send
               for(var message in messages){
                 final messagetext = message.get('text');
                 final messagesender = message.get('sender');
@@ -166,6 +166,7 @@ class messagestreambulder extends StatelessWidget {
 
                 return Expanded(
                   child: ListView(
+                    reverse: true,
                     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   children : messagewidgets,
                   ),
