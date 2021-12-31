@@ -6,7 +6,7 @@ import 'dart:ui';
 import 'package:flutter/painting.dart';
 import 'package:completebloodcount/models/card_model.dart';
 import 'package:completebloodcount/models/user.dart';
-
+import 'package:completebloodcount/Screens/carouselSlider.dart';
 import 'package:intl/intl.dart';
 import 'package:google_fonts/google_fonts.dart';
 //import 'package:flutter_icons/flutter_icons.dart';
@@ -240,7 +240,7 @@ class _HomePageState extends State<HomePage>
                   ),
                   Container(
                     width: MediaQuery.of(context).size.width,
-                    //child: Carouselslider(), // to be Carouselslider
+                    child: Carouselslider(), // to be Carouselslider
                   ),
                   Container(
                     padding: const EdgeInsets.only(left: 20),
