@@ -1,3 +1,6 @@
+
+// ignore_for_file: file_names, prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace
+
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,8 +18,6 @@ class Carouselslider extends StatelessWidget {
         itemCount: bannerCards.length,
         itemBuilder: (context, index, realIndex) {
           return Container(
-            //alignment:  Alignment.centerLeft,
-            //width: MediaQuery.of(context).size.width,
             height: 140,
             margin: EdgeInsets.only(left: 0, right: 0, bottom: 20),
             padding: EdgeInsets.only(left: 0),
@@ -45,7 +46,6 @@ class Carouselslider extends StatelessWidget {
                 children: [
                   Image.asset(
                     bannerCards[index].image,
-                    //'assets/414.jpg',
                     fit: BoxFit.fitHeight,
                   ),
                   Container(
