@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:942983529169:android:ce40742997532b23303bf0",
         "android_client_info": {
-          "package_name": "com.example.completebloodcount"
+          "package_name": "com.blood.count"
         }
       },
       "oauth_client": [
