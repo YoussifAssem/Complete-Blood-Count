@@ -1,5 +1,8 @@
+// ignore_for_file: unused_field
+
 import 'package:completebloodcount/Screens/menu_screen.dart';
 import 'package:completebloodcount/Screens/report_screen.dart';
+import 'package:completebloodcount/models/blood_analysis.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,9 +10,51 @@ import 'package:loading_alert_dialog/loading_alert_dialog.dart';
 
 // ignore: camel_case_types, use_key_in_widget_constructors
 class cbcTestTwo extends StatefulWidget {
+  late final String _haemo;
+  late final String _pcv;
+  late final String _rbcs;
+  late final String _mcv;
+  late final String _mch;
+  late final String _mchc;
+  late final String _rdw;
+  late final String _platCount;
+  late final String _totalCount;
   @override
   State<StatefulWidget> createState() {
-    return _cbcTestTwo();
+    // ignore: no_logic_in_create_state
+    return _cbcTestTwo(
+        h: _haemo,
+        mch: _mch,
+        mchc: _mchc,
+        mcv: _mcv,
+        pcv: _pcv,
+        plat: _platCount,
+        rbcs: _rbcs,
+        rdw: _rdw,
+        total: _totalCount);
+  }
+
+  // ignore: use_key_in_widget_constructors
+  cbcTestTwo({
+    required String h,
+    required String pcv,
+    required String rbcs,
+    required String mcv,
+    required String mch,
+    required String mchc,
+    required String rdw,
+    required String plat,
+    required String total,
+  }) {
+    _haemo = h;
+    _pcv = pcv;
+    _rbcs = rbcs;
+    _mcv = mcv;
+    _mch = mch;
+    _mchc = mchc;
+    _rdw = rdw;
+    _platCount = plat;
+    _totalCount = total;
   }
 }
 
@@ -20,7 +65,40 @@ class _cbcTestTwo extends State<cbcTestTwo> {
   final mono = TextEditingController();
   final eos = TextEditingController();
   final baso = TextEditingController();
+
+  late final String _haemo;
+  late final String _pcv;
+  late final String _rbcs;
+  late final String _mcv;
+  late final String _mch;
+  late final String _mchc;
+  late final String _rdw;
+  late final String _platCount;
+  late final String _totalCount;
+  late final BloodAnalysis user;
+
   late String text;
+  _cbcTestTwo({
+    required String h,
+    required String pcv,
+    required String rbcs,
+    required String mcv,
+    required String mch,
+    required String mchc,
+    required String rdw,
+    required String plat,
+    required String total,
+  }) {
+    _haemo = h;
+    _pcv = pcv;
+    _rbcs = rbcs;
+    _mcv = mcv;
+    _mch = mch;
+    _mchc = mchc;
+    _rdw = rdw;
+    _platCount = plat;
+    _totalCount = total;
+  }
   @override
   Widget build(BuildContext context) {
     return Menu(
@@ -348,8 +426,25 @@ class _cbcTestTwo extends State<cbcTestTwo> {
                         sAlertDialog(context);
                       } else {
                         await showAlertDialog(context);
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Report()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Report(
+                                      h: _haemo,
+                                      mch: _mch,
+                                      mchc: _mchc,
+                                      mcv: _mcv,
+                                      pcv: _pcv,
+                                      plat: _platCount,
+                                      rbcs: _rbcs,
+                                      rdw: _rdw,
+                                      total: _totalCount,
+                                      n: neto.text,
+                                      m: mono.text,
+                                      e: eos.text,
+                                      l: lympho.text,
+                                      b: baso.text,
+                                    )));
                       }
                     },
                     child: const Text('View Report'),

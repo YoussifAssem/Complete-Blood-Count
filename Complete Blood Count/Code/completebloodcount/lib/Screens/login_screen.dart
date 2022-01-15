@@ -1,4 +1,4 @@
-import 'package:completebloodcount/Screens/home_screen.dart';
+import 'package:completebloodcount/Screens/cbc_test_screen.dart';
 import 'package:completebloodcount/Screens/signup_screen.dart';
 import 'package:completebloodcount/models/user.dart';
 import 'package:flutter/material.dart';
@@ -151,7 +151,7 @@ class _logInScreen extends State<logInScreen> {
                   } else {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const HomePage()),
+                      MaterialPageRoute(builder: (context) => cbcTest()),
                     );
                   }
                 }

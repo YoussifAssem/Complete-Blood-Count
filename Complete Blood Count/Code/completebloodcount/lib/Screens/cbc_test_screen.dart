@@ -538,7 +538,17 @@ class _cbcTest extends State<cbcTest> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => cbcTestTwo()));
+                                builder: (context) => cbcTestTwo(
+                                      h: haemo.text,
+                                      pcv: pcv.text,
+                                      rbcs: rbcs.text,
+                                      mch: mch.text,
+                                      mchc: mchc.text,
+                                      mcv: mcv.text,
+                                      plat: platCount.text,
+                                      rdw: rdw.text,
+                                      total: totalCount.text,
+                                    )));
                       }
                     },
                     child: const Text('Next'),

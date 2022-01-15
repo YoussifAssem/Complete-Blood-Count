@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:completebloodcount/screens/diseasedetail.dart';
+//import 'package:completebloodcount/screens/diseasedetail.dart';
 
 class Disease extends StatefulWidget {
   @override
@@ -54,6 +54,7 @@ class _DiseaseState extends State<Disease> {
                       ))),
                       child: TextButton(
                         onPressed: () {
+/*
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -61,6 +62,7 @@ class _DiseaseState extends State<Disease> {
                                       disease: document['Name'],
                                     )),
                           );
+                          */
                         },
                         child: Row(
                           children: [
