@@ -101,7 +101,7 @@ class _cbcTestTwo extends State<cbcTestTwo> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
+        
         backgroundColor: Colors.blue[600],
         title : Center(
         child: Text('Examine me', textAlign: TextAlign.center,),

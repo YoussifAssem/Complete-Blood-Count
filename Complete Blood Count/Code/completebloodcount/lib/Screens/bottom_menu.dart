@@ -4,7 +4,9 @@ import 'package:completebloodcount/Screens/chat_screen.dart';
 import 'package:completebloodcount/Screens/home_screen.dart';
 import 'package:completebloodcount/Screens/login_screen.dart';
 import 'package:completebloodcount/editprofileone.dart';
+import 'package:completebloodcount/models/user.dart';
 import 'package:completebloodcount/widgets/searchtwo.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -22,14 +24,16 @@ class BottomMenu extends StatefulWidget{
 
 
 class _BottomMenu extends State<BottomMenu>{
-
+  User d7ka = User();
   int currentIndex = 0;
   final screens = [
     HomePage(),
     ChatScreen(),
     EditProfilePage(),
     cbcTest(),
+    // cbcTestTwo(h: "",mch: "",mchc: "",mcv: "",pcv: "",plat: "",rbcs: "",rdw: "",total: "",),
     logInScreen(),
+    
 
   ];
   @override
@@ -39,16 +43,30 @@ class _BottomMenu extends State<BottomMenu>{
     
       body: screens[currentIndex],
   bottomNavigationBar: BottomNavigationBar(
+    onTap: (index)  {
+      if (index == 4) {
+        d7ka.signOut();
+        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => logInScreen()));
+        };
+      setState(() => currentIndex = index);
+    },
     type: BottomNavigationBarType.fixed,
-    backgroundColor: Colors.blue,
+    backgroundColor: Colors.blue.shade500,
     selectedItemColor: Colors.white,
     unselectedItemColor: Colors.white70,
-    iconSize: 40,
-    showSelectedLabels: false,
+    iconSize: 30,
+    selectedFontSize: 20,
+    unselectedFontSize: 15,
+    
+
+    //showSelectedLabels: false,
     showUnselectedLabels: false,
 
     currentIndex: currentIndex,
-    onTap: (index) => setState(() => currentIndex = index),
+    
     items: [
       BottomNavigationBarItem(
         icon: Icon(Icons.home),
@@ -78,7 +96,9 @@ class _BottomMenu extends State<BottomMenu>{
         icon: Icon(Icons.logout),
         label: 'Logout',
         
+        
       ),
+      
     ],),
   
   );
