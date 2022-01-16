@@ -64,9 +64,16 @@ class _ChatScreenState extends State<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Menu(
-      'Chat',
-      SafeArea(
+   return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.blue[600],
+        title : Center(
+        child: Text('Chat', textAlign: TextAlign.center,),
+        ),
+      ),
+      
+        body : SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,

@@ -9,6 +9,7 @@ import 'package:completebloodcount/models/user.dart';
 import 'package:completebloodcount/Screens/carouselSlider.dart';
 import 'package:intl/intl.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:completebloodcount/Screens/bottom_menu.dart';
 //import 'package:flutter_icons/flutter_icons.dart';
 
 class HomePage extends StatefulWidget {
@@ -52,11 +53,12 @@ class _HomePageState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) {
+    
     late String _message;
     DateTime now = DateTime.now();
     String _currentHour = DateFormat('kk').format(now);
     int hour = int.parse(_currentHour);
-
+  
     setState(
       () {
         if (hour >= 5 && hour < 12) {
@@ -68,10 +70,14 @@ class _HomePageState extends State<HomePage>
         }
       },
     );
+    
     return Scaffold(
+      
       backgroundColor: Colors.white,
       key: _scaffoldKey,
       appBar: AppBar(
+        
+        
         // leading: Image.asset('images/dnap.jpg', fit: BoxFit.cover),
         backgroundColor: Colors.blue[600],
         automaticallyImplyLeading: false,
@@ -132,6 +138,8 @@ class _HomePageState extends State<HomePage>
           color: Colors.black,
         ),
       ),
+      
+      
       body: SafeArea(
         child: NotificationListener<OverscrollIndicatorNotification>(
           onNotification: (OverscrollIndicatorNotification overscroll) {
@@ -139,9 +147,11 @@ class _HomePageState extends State<HomePage>
             return true;
           },
           child: ListView(
+            
             physics: const ClampingScrollPhysics(),
             shrinkWrap: true,
             children: <Widget>[
+              
               Column(
                 children: [
                   const SizedBox(
@@ -328,6 +338,7 @@ class _HomePageState extends State<HomePage>
                               ],
                             ),
                           ),
+                          
                         );
                       },
                     ),
@@ -353,6 +364,7 @@ class _HomePageState extends State<HomePage>
                   Container(
                     padding: const EdgeInsets.only(left: 15, right: 15),
                     //child: TopRatedList(),
+                    
                   ),
                   const SizedBox(
                     height: 20,
@@ -360,39 +372,20 @@ class _HomePageState extends State<HomePage>
                 ],
               ),
             ],
+            
           ),
+          
+        
+        
         ),
+      
+      
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.blue[600],
-        selectedItemColor: Colors.white,
-        items: <BottomNavigationBarItem>[
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'home',
-          ),
-          BottomNavigationBarItem(
-            label: 'Enter Blood Data',
-            icon: IconButton(
-                onPressed: () => {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => cbcTest()))
-                    },
-                icon: const Icon(Icons.bloodtype)),
-          ),
-          BottomNavigationBarItem(
-            label: 'Chats',
-            icon: IconButton(
-                onPressed: () => {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const ChatScreen()))
-                    },
-                icon: const Icon(Icons.chat)),
-          ),
-        ],
-      ),
+      
+        
+      
     );
+    
+    
   }
 }

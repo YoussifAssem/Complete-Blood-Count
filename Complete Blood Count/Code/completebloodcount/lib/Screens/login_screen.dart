@@ -2,6 +2,7 @@ import 'package:completebloodcount/Screens/cbc_test_screen.dart';
 import 'package:completebloodcount/Screens/signup_screen.dart';
 import 'package:completebloodcount/models/user.dart';
 import 'package:flutter/material.dart';
+import 'package:completebloodcount/Screens/bottom_menu.dart';
 
 // ignore: camel_case_types, use_key_in_widget_constructors, must_be_immutable
 class logInScreen extends StatefulWidget {
@@ -26,6 +27,7 @@ class _logInScreen extends State<logInScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text('LogIn'),
         backgroundColor: Colors.blue[600],
       ),
@@ -151,7 +153,7 @@ class _logInScreen extends State<logInScreen> {
                   } else {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => cbcTest()),
+                      MaterialPageRoute(builder: (context) => BottomMenu()),
                     );
                   }
                 }

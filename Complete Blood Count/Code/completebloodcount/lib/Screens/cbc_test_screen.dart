@@ -26,9 +26,17 @@ class _cbcTest extends State<cbcTest> {
   late String text;
   @override
   Widget build(BuildContext context) {
-    return Menu(
-      'CBC Test',
-      Padding(
+     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.blue[600],
+        title : Center(
+        child: Text('Examine me', textAlign: TextAlign.center,),
+        ),
+      ),
+      
+        
+          body:Padding(
           padding: const EdgeInsets.only(left: 0),
           child: ListView(
             children: [

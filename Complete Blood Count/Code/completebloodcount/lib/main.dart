@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'Screens/login_screen.dart';
 import 'Screens/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'Screens/bottom_menu.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,11 +29,11 @@ class MyApp extends StatelessWidget {
         //home: logInScreen(),
         initialRoute: _auth.currentUser !=
                 null //dont need to log in every time added
-            ? HomePage.screenRoute
+            ? BottomMenu.screenRoute
             : //short if statment if loged in go to home if not go to login_screen
             logInScreen.screenRoute,
         routes: {
-          HomePage.screenRoute: (context) => logInScreen(),
+          BottomMenu.screenRoute: (context) => logInScreen(),
           logInScreen.screenRoute: (context) => logInScreen(),
         });
   }

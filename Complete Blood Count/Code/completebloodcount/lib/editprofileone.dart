@@ -20,9 +20,16 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Menu(
-      'Edit Profile',
-      Container(
+    return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.blue[600],
+        title : Center(
+        child: Text('Update Profile', textAlign: TextAlign.center,),
+        ),
+      ),
+      
+        body: Container(
         padding: const EdgeInsets.only(left: 16, top: 25, right: 16),
         child: GestureDetector(
           onTap: () {
