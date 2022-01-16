@@ -1,6 +1,4 @@
 // ignore_for_file: unused_field
-
-import 'package:completebloodcount/Screens/menu_screen.dart';
 import 'package:completebloodcount/Screens/report_screen.dart';
 import 'package:completebloodcount/models/blood_analysis.dart';
 import 'package:flutter/cupertino.dart';
@@ -101,9 +99,18 @@ class _cbcTestTwo extends State<cbcTestTwo> {
   }
   @override
   Widget build(BuildContext context) {
-    return Menu(
-        'CBC Test',
-        Padding(
+    return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.blue[600],
+        title : Center(
+        child: Text('Examine me', textAlign: TextAlign.center,),
+        ),
+      ),
+      
+        
+          
+        body:Padding(
             padding: const EdgeInsets.only(left: 0),
             child: ListView(children: [
               Table(

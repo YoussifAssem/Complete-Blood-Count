@@ -1,6 +1,4 @@
 // ignore_for_file: use_key_in_widget_constructors, unused_field, prefer_typing_uninitialized_variables
-
-import 'package:completebloodcount/Screens/menu_screen.dart';
 import 'package:completebloodcount/models/blood_analysis.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -70,9 +68,18 @@ class Report extends StatelessWidget {
   }
   @override
   Widget build(BuildContext context) {
-    return Menu(
-      'Report',
-      Column(
+    return Scaffold(
+      appBar: AppBar(
+        
+        backgroundColor: Colors.blue[600],
+        title : Center(
+        child: Text('Report', textAlign: TextAlign.center,),
+        ),
+      ),
+      
+        
+          
+      body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Center(
