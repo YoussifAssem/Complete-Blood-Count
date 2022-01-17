@@ -1,5 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
+//import 'package:completebloodcount/splash_screen.dart';
+import 'dart:async';
+import 'package:completebloodcount/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
@@ -15,7 +18,7 @@ void main() async {
 
 // ignore: use_key_in_widget_constructors
 class MyApp extends StatelessWidget {
-  final _auth = FirebaseAuth.instance;
+  // auth
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
@@ -25,15 +28,35 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.landscapeLeft,
     ]);
     return MaterialApp(
-        //home: logInScreen(),
-        initialRoute: _auth.currentUser !=
+        home: Splash(),       
+      );
+      
+  }
+}
+
+class FirstScreen extends StatefulWidget {
+  @override
+  
+  _FirstScreen createState() => _FirstScreen();
+
+}
+
+class _FirstScreen extends State<FirstScreen> {
+  @override
+  final _auth = FirebaseAuth.instance;
+  Widget build(BuildContext context){
+    return MaterialApp(
+      initialRoute: ((_auth.currentUser) !=
                 null //dont need to log in every time added
-            ? BottomMenu.screenRoute
+            ? (BottomMenu.screenRoute)
             : //short if statment if loged in go to home if not go to login_screen
-            logInScreen.screenRoute,
+            (logInScreen.screenRoute)),
         routes: {
           BottomMenu.screenRoute: (context) => logInScreen(),
           logInScreen.screenRoute: (context) => logInScreen(),
-        });
+        },
+    );
   }
 }
+
+
