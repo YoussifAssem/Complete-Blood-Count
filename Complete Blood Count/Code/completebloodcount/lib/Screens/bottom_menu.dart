@@ -4,7 +4,6 @@ import 'package:completebloodcount/Screens/home_screen.dart';
 import 'package:completebloodcount/Screens/login_screen.dart';
 import 'package:completebloodcount/editprofileone.dart';
 import 'package:completebloodcount/models/user.dart';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -17,14 +16,13 @@ class BottomMenu extends StatefulWidget {
 }
 
 class _BottomMenu extends State<BottomMenu> {
-  User d7ka = User();
+  User profile = User();
   int currentIndex = 0;
   final screens = [
     HomePage(),
     ChatScreen(),
     EditProfilePage(),
     cbcTest(),
-    // cbcTestTwo(h: "",mch: "",mchc: "",mcv: "",pcv: "",plat: "",rbcs: "",rdw: "",total: "",),
     logInScreen(),
   ];
   @override
@@ -33,7 +31,7 @@ class _BottomMenu extends State<BottomMenu> {
         bottomNavigationBar: BottomNavigationBar(
           onTap: (index) {
             if (index == 4) {
-              d7ka.signOut();
+              profile.signOut();
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => logInScreen()));
             }

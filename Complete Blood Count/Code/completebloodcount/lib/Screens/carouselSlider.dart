@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:completebloodcount/models/bannerModel.dart';
-//import 'package:completebloodcount/screens/disease.dart';
-//import 'package:completebloodcount/screens/diseasedetail.dart';
+
 
 class Carouselslider extends StatelessWidget {
   @override
