@@ -83,7 +83,7 @@ class _HomePageState extends State<HomePage>
                     Padding(
                       padding: const EdgeInsets.all(9.0),
                       child: Image.asset(
-                        "images/dnap.jpg",
+                        "images/app_icon.jpg",
                         scale: 9.0,
                         width: 50,
                         height: 40,

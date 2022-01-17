@@ -23,12 +23,12 @@ class _SplashScreenState extends State<Splash> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[500],
+      backgroundColor: Colors.blue[600],
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('images/bluedna.jpg', height: 120,),
+            Image.asset('images/app_icon.jpg', height: 120,),
             SizedBox(height: 20,),
             CircularProgressIndicator(
               valueColor: AlwaysStoppedAnimation<Color>(Colors.white),

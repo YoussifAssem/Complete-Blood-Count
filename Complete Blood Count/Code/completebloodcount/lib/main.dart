@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 //import 'package:completebloodcount/splash_screen.dart';
+// ignore: unused_import
 import 'dart:async';
 import 'package:completebloodcount/splash_screen.dart';
 import 'package:flutter/material.dart';
