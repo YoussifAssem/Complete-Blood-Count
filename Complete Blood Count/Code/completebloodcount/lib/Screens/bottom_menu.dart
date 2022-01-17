@@ -27,6 +27,7 @@ class _BottomMenu extends State<BottomMenu> {
   ];
   @override
   Widget build(BuildContext) => Scaffold(
+      
         body: screens[currentIndex],
         bottomNavigationBar: BottomNavigationBar(
           onTap: (index) {

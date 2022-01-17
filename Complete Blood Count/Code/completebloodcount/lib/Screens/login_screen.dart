@@ -1,7 +1,11 @@
 import 'package:completebloodcount/Screens/signup_screen.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:completebloodcount/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:completebloodcount/Screens/bottom_menu.dart';
+import 'package:provider/provider.dart';
+
+import '../google_sign_in.dart';
 
 // ignore: camel_case_types, use_key_in_widget_constructors, must_be_immutable
 class logInScreen extends StatefulWidget {
@@ -168,26 +172,47 @@ class _logInScreen extends State<logInScreen> {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              
               children: [
                 // ignore: deprecated_member_use
-                FlatButton(
+                ElevatedButton(
+                  
+                  
                   // ignore: prefer_const_constructors
                   onPressed: () {},
                   child: Padding(
-                    padding: const EdgeInsets.only(right: 80, top: 1),
+                    padding: const EdgeInsets.only(right: 0, top: 1),
                     // ignore: deprecated_member_use
                     child: Image.asset(
                       'images/facebook.png',
                       width: 40,
+                     
                       height: 50,
                     ),
+                    
+                    
+                  ),
+                  
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.white,
+                    onPrimary: Colors.black,
+                    
                   ),
                 ),
 
                 // ignore: deprecated_member_use
-                FlatButton(
+                ElevatedButton(
                   // ignore: prefer_const_constructors
-                  onPressed: () {},
+                  onPressed: () {
+                    final provider = Provider.of<GoogleSignInProvider>(context, listen: false);
+                    provider.googleLogin();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.white,
+                    onPrimary: Colors.black,
+                    
+                    
+                  ),
                   // ignore: deprecated_member_use
                   child: Image.asset(
                     'images/Google.png',
