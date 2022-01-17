@@ -65,10 +65,8 @@ class _SearchState extends State<search> {
               label: 'Home',
               icon: IconButton(
                   onPressed: () => {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const HomePage()))
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => HomePage()))
                       },
                   icon: const Icon(Icons.home))),
           BottomNavigationBarItem(

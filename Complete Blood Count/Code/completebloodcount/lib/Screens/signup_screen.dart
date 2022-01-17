@@ -309,7 +309,7 @@ class _SignUp extends State<SignUp> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => const HomePage()),
+                                    builder: (context) => HomePage()),
                               )
                             }
                         }
