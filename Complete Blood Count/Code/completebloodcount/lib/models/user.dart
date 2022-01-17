@@ -100,15 +100,8 @@ class User {
   Future<Map<String, dynamic>?> editProfile(
       {required String name,
       required String phone,
-      required String gender,
-      required String type,
       required String password}) async {
-    uS.editProfile(
-        name: name,
-        phone: phone,
-        gender: gender,
-        type: type,
-        password: password);
+    await uS.editProfile(name: name, phone: phone, password: password);
   }
 
   getEmail() {

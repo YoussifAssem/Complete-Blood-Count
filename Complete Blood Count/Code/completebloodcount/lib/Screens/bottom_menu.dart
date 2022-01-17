@@ -2,7 +2,7 @@ import 'package:completebloodcount/Screens/cbc_test_screen.dart';
 import 'package:completebloodcount/Screens/chat_screen.dart';
 import 'package:completebloodcount/Screens/home_screen.dart';
 import 'package:completebloodcount/Screens/login_screen.dart';
-import 'package:completebloodcount/editprofileone.dart';
+import 'package:completebloodcount/Screens/editprofileone.dart';
 import 'package:completebloodcount/models/user.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

@@ -7,7 +7,6 @@ class userServices {
   CollectionReference user = FirebaseFirestore.instance.collection('Users');
 
   userServices(this._auth);
-
   Future<String?> register(
       {required String name,
       required String email,
@@ -66,6 +65,8 @@ class userServices {
   Future<String?> logIn(String email, String password) async {
     try {
       if (email == 'joo@gmail.com' && password == '12345678') {
+        await _auth.signInWithEmailAndPassword(
+            email: email, password: password);
         return 'Done';
       }
       await _auth.signInWithEmailAndPassword(email: email, password: password);
@@ -75,11 +76,22 @@ class userServices {
     }
   }
 
+  Future<List?> getUser() async {
+    DocumentReference ref = user.doc(_auth.currentUser!.uid);
+    FirebaseFirestore.instance.runTransaction((transaction) async {
+      DocumentSnapshot snapShot = await transaction.get(ref);
+      List<String> u = [];
+      if (snapShot.exists) {
+        u.add(snapShot.get('name'));
+        u.add(snapShot.get('phoneNumber'));
+        return u;
+      }
+    });
+  }
+
   Future<Object?> editProfile(
       {required String name,
       required String phone,
-      required String gender,
-      required String type,
       required String password}) async {
     try {
       DocumentReference ref = user.doc(_auth.currentUser!.uid);

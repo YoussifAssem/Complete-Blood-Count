@@ -29,35 +29,31 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.landscapeLeft,
     ]);
     return MaterialApp(
-        home: Splash(),       
-      );
-      
+      home: Splash(),
+    );
   }
 }
 
 class FirstScreen extends StatefulWidget {
   @override
-  
   _FirstScreen createState() => _FirstScreen();
-
 }
 
 class _FirstScreen extends State<FirstScreen> {
   @override
+  // ignore: override_on_non_overriding_member
   final _auth = FirebaseAuth.instance;
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return MaterialApp(
       initialRoute: ((_auth.currentUser) !=
-                null //dont need to log in every time added
-            ? (BottomMenu.screenRoute)
-            : //short if statment if loged in go to home if not go to login_screen
-            (logInScreen.screenRoute)),
-        routes: {
-          BottomMenu.screenRoute: (context) => logInScreen(),
-          logInScreen.screenRoute: (context) => logInScreen(),
-        },
+              null //dont need to log in every time added
+          ? (BottomMenu.screenRoute)
+          : //short if statment if loged in go to home if not go to login_screen
+          (logInScreen.screenRoute)),
+      routes: {
+        BottomMenu.screenRoute: (context) => logInScreen(),
+        logInScreen.screenRoute: (context) => logInScreen(),
+      },
     );
   }
 }
-
-
