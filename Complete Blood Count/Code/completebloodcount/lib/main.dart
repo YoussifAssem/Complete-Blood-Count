@@ -1,8 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 //import 'package:completebloodcount/splash_screen.dart';
-import 'dart:async';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:completebloodcount/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -32,11 +30,10 @@ class MyApp extends StatelessWidget {
     ]);
     return ChangeNotifierProvider(
       create: (context) => GoogleSignInProvider(),
-      child : MaterialApp(
-        home: Splash(),   
-      ),    
-      );
-      
+      child: MaterialApp(
+        home: Splash(),
+      ),
+    );
   }
 }
 

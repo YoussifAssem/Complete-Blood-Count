@@ -1,8 +1,9 @@
 // ignore_for_file: unused_element
 
+import 'package:completebloodcount/Services/user_services.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 class BloodAnalysis {
-  // ignore: unused_field
-  late final int _patientID = 0;
   // ignore: unused_field
   late final String _results = '';
 
@@ -22,7 +23,7 @@ class BloodAnalysis {
   late final double _monocytes;
   late final double _eosinophils;
   late final double _basophils;
-
+  userServices uS = userServices(FirebaseAuth.instance);
   BloodAnalysis(
       {required double haemog,
       required double haemato,
@@ -136,6 +137,25 @@ class BloodAnalysis {
     } else {
       return 'Normal';
     }
+  }
+
+  Future<Object?> saveTest() async {
+    await uS.saveTest(
+      haemog: _haemoglobin,
+      haema: _haematocrit,
+      rbcs: _rbcsCount,
+      mcv: _mcv,
+      mch: _mch,
+      mchc: _mchc,
+      rdw: _rdwCv,
+      platelet: _plateletCount,
+      total: _totalLeucocytic,
+      neutro: _neutrophils,
+      lympho: _lymphocytes,
+      mono: _monocytes,
+      eos: _eosinophils,
+      baso: _basophils,
+    );
   }
 
   _getHaematocrit() {

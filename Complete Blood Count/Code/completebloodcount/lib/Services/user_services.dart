@@ -34,6 +34,54 @@ class userServices {
     }
   }
 
+  Future<Object?> saveTest({
+    required double haemog,
+    required double haema,
+    required double rbcs,
+    required double mcv,
+    required double mch,
+    required double mchc,
+    required double rdw,
+    required double platelet,
+    required double total,
+    required double neutro,
+    required double lympho,
+    required double mono,
+    required double eos,
+    required double baso,
+  }) async {
+    try {
+      var data = {
+        'Haemoglobin': haemog,
+        'Haematocrit(PCV)': haema,
+        'RBCs Count': rbcs,
+        'MCV': mcv,
+        'MCH': mch,
+        'MCHC': mchc,
+        'RDW-CV': rdw,
+        'Platelet Count(EDTA Blood)': platelet,
+        'Total leucocytic count': total,
+        'Neutrophils': neutro,
+        'Lymphocytes': lympho,
+        'Monocytes': mono,
+        'Eosinphols': eos,
+        'Basophils': baso
+      };
+      DocumentReference doc =
+          user.doc(_auth.currentUser!.uid).collection('Test').doc();
+      FirebaseFirestore.instance.runTransaction((transaction) async {
+        DocumentSnapshot snapShot = await transaction.get(doc);
+        if (!snapShot.exists) {
+          doc.set(data);
+        } else {
+          doc.set(data);
+        }
+      });
+    } catch (e) {
+      return e;
+    }
+  }
+
   Future<Object?> _addUser(
       {required String id,
       required String name,

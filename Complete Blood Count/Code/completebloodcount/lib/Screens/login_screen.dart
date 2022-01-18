@@ -1,5 +1,4 @@
 import 'package:completebloodcount/Screens/signup_screen.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:completebloodcount/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:completebloodcount/Screens/bottom_menu.dart';
@@ -172,12 +171,9 @@ class _logInScreen extends State<logInScreen> {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              
               children: [
                 // ignore: deprecated_member_use
                 ElevatedButton(
-                  
-                  
                   // ignore: prefer_const_constructors
                   onPressed: () {},
                   child: Padding(
@@ -186,17 +182,13 @@ class _logInScreen extends State<logInScreen> {
                     child: Image.asset(
                       'images/facebook.png',
                       width: 40,
-                     
                       height: 50,
                     ),
-                    
-                    
                   ),
-                  
+
                   style: ElevatedButton.styleFrom(
                     primary: Colors.white,
                     onPrimary: Colors.black,
-                    
                   ),
                 ),
 
@@ -204,14 +196,13 @@ class _logInScreen extends State<logInScreen> {
                 ElevatedButton(
                   // ignore: prefer_const_constructors
                   onPressed: () {
-                    final provider = Provider.of<GoogleSignInProvider>(context, listen: false);
+                    final provider = Provider.of<GoogleSignInProvider>(context,
+                        listen: false);
                     provider.googleLogin();
                   },
                   style: ElevatedButton.styleFrom(
                     primary: Colors.white,
                     onPrimary: Colors.black,
-                    
-                    
                   ),
                   // ignore: deprecated_member_use
                   child: Image.asset(

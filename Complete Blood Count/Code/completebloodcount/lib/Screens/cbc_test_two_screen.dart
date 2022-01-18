@@ -73,7 +73,6 @@ class _cbcTestTwo extends State<cbcTestTwo> {
   late final String _rdw;
   late final String _platCount;
   late final String _totalCount;
-  late final BloodAnalysis user;
 
   late String text;
   _cbcTestTwo({
@@ -100,17 +99,16 @@ class _cbcTestTwo extends State<cbcTestTwo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        
-        backgroundColor: Colors.blue[600],
-        title : Center(
-        child: Text('Examine me', textAlign: TextAlign.center,),
+        appBar: AppBar(
+          backgroundColor: Colors.blue[600],
+          title: Center(
+            child: Text(
+              'Examine me',
+              textAlign: TextAlign.center,
+            ),
+          ),
         ),
-      ),
-      
-        
-          
-        body:Padding(
+        body: Padding(
             padding: const EdgeInsets.only(left: 0),
             child: ListView(children: [
               Table(
@@ -432,6 +430,22 @@ class _cbcTestTwo extends State<cbcTestTwo> {
                         text = 'Error, Please Fill All Requriements';
                         sAlertDialog(context);
                       } else {
+                        BloodAnalysis user = BloodAnalysis(
+                            haemog: double.parse(_haemo),
+                            haemato: double.parse(_pcv),
+                            rbcs: double.parse(_rbcs),
+                            mcv: double.parse(_mcv),
+                            mch: double.parse(_mch),
+                            mchc: double.parse(_mchc),
+                            rdwCv: double.parse(_rdw),
+                            platelet: double.parse(_platCount),
+                            total: double.parse(_totalCount),
+                            neutro: double.parse(neto.text),
+                            lympho: double.parse(lympho.text),
+                            mono: double.parse(mono.text),
+                            eosino: double.parse(eos.text),
+                            baso: double.parse(baso.text));
+                        await user.saveTest();
                         await showAlertDialog(context);
                         Navigator.push(
                             context,

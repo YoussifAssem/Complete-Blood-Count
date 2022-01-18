@@ -1,4 +1,4 @@
-import 'package:completebloodcount/Screens/home_screen.dart';
+import 'package:completebloodcount/Screens/login_screen.dart';
 import 'package:completebloodcount/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -309,7 +309,7 @@ class _SignUp extends State<SignUp> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => HomePage()),
+                                    builder: (context) => logInScreen()),
                               )
                             }
                         }
