@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:completebloodcount/Screens/login_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:typicons_flutter/typicons_flutter.dart';
 
 class Splash extends StatefulWidget {
   @override
@@ -24,6 +25,13 @@ class _SplashScreenState extends State<Splash> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Text("Welcome",
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 40,
+              
+            ),),
             Image.asset(
               'images/app_icon.jpg',
               height: 120,
