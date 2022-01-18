@@ -18,6 +18,7 @@ class BottomMenu extends StatefulWidget {
 class _BottomMenu extends State<BottomMenu> {
   User profile = User();
   int currentIndex = 0;
+  
   final screens = [
     HomePage(),
     ChatScreen(),
