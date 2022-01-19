@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:completebloodcount/Screens/login_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:typicons_flutter/typicons_flutter.dart';
+
 
 class Splash extends StatefulWidget {
   @override
