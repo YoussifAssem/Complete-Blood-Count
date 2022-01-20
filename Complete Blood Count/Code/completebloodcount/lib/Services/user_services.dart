@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 // ignore: camel_case_types
 class userServices {
   final FirebaseAuth _auth;
-  CollectionReference user = FirebaseFirestore.instance.collection('Users');
+  CollectionReference _user = FirebaseFirestore.instance.collection('Users');
 
   userServices(this._auth);
   Future<String?> register(
@@ -68,7 +68,7 @@ class userServices {
         'Basophils': baso
       };
       DocumentReference doc =
-          user.doc(_auth.currentUser!.uid).collection('Test').doc();
+          _user.doc(_auth.currentUser!.uid).collection('Test').doc();
       FirebaseFirestore.instance.runTransaction((transaction) async {
         DocumentSnapshot snapShot = await transaction.get(doc);
         if (!snapShot.exists) {
@@ -89,7 +89,7 @@ class userServices {
       required String gender,
       required String type}) async {
     try {
-      DocumentReference ref = user.doc(_auth.currentUser!.uid);
+      DocumentReference ref = _user.doc(_auth.currentUser!.uid);
       FirebaseFirestore.instance.runTransaction((transaction) async {
         DocumentSnapshot snapShot = await transaction.get(ref);
         if (!snapShot.exists) {
@@ -125,7 +125,7 @@ class userServices {
   }
 
   Future<List?> getUser() async {
-    DocumentReference ref = user.doc(_auth.currentUser!.uid);
+    DocumentReference ref = _user.doc(_auth.currentUser!.uid);
     FirebaseFirestore.instance.runTransaction((transaction) async {
       DocumentSnapshot snapShot = await transaction.get(ref);
       List<String> u = [];
@@ -142,7 +142,7 @@ class userServices {
       required String phone,
       required String password}) async {
     try {
-      DocumentReference ref = user.doc(_auth.currentUser!.uid);
+      DocumentReference ref = _user.doc(_auth.currentUser!.uid);
       FirebaseFirestore.instance.runTransaction((transaction) async {
         DocumentSnapshot snapShot = await transaction.get(ref);
         _auth.currentUser!.updatePassword(password);

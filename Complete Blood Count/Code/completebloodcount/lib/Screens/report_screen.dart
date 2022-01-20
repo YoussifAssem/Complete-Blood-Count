@@ -70,15 +70,14 @@ class Report extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        
         backgroundColor: Colors.blue[600],
-        title : Center(
-        child: Text('Report', textAlign: TextAlign.center,),
+        title: Center(
+          child: Text(
+            'Report',
+            textAlign: TextAlign.center,
+          ),
         ),
       ),
-      
-        
-          
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
