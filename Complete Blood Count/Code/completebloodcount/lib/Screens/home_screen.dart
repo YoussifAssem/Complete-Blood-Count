@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage>
 
   @override
   void dispose() {
-    
+    animationController.dispose();
     super.dispose();
   }
   @override
