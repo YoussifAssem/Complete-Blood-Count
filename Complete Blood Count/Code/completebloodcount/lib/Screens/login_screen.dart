@@ -21,8 +21,6 @@ class _logInScreen extends State<logInScreen> {
   final password = TextEditingController();
   User user = User();
   late String text;
-  FocusNode f1 = FocusNode();
-  FocusNode f2 = FocusNode();
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +35,7 @@ class _logInScreen extends State<logInScreen> {
         backgroundColor: Colors.blue[600],
       ),
       body: Padding(
-        // padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(0),
         child: ListView(
           children: [
             const SizedBox(
@@ -75,7 +73,6 @@ class _logInScreen extends State<logInScreen> {
               height: 10,
             ),
             TextFormField(
-              focusNode: f1,
               style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w800,
@@ -103,7 +100,6 @@ class _logInScreen extends State<logInScreen> {
               height: 20,
             ),
             TextFormField(
-              focusNode: f2,
               style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w800,

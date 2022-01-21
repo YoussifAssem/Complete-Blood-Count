@@ -2,8 +2,6 @@ import 'package:completebloodcount/models/user.dart';
 import 'package:flutter/material.dart';
 
 class EditProfilePage extends StatefulWidget {
-  const EditProfilePage({Key? key}) : super(key: key);
-
   @override
   _EditProfilePageState createState() => _EditProfilePageState();
 }
@@ -54,7 +52,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   // initialValue: user.viewUsers()['name'],
                   controller: name,
                   decoration: InputDecoration(
-                      labelText: "Name",
+                      labelText: "New Name",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5.0),
                       ))),
@@ -64,7 +62,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 controller: password,
                 // initialValue: user.viewUsers()['password'],
                 decoration: InputDecoration(
-                    labelText: "Password",
+                    labelText: "Old Password OR New Password",
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.0),
                     )),
@@ -77,7 +75,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   maxLength: 11,
                   // initialValue: user.viewUsers()['phoneNumber'],
                   decoration: InputDecoration(
-                      labelText: "Phone",
+                      labelText: "Old Phone OR New Phone",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5.0),
                       ))),
