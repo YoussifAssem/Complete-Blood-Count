@@ -109,7 +109,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                             phone.text == '' ||
                             password.text == '') {
                           text = 'Error, Please Fill All Requirements';
-
+                          print(user.getUser());
                           showAlertDialog(context);
                         } else if (phone.text.length <= 10) {
                           text =

@@ -4,9 +4,6 @@ import 'package:completebloodcount/Services/user_services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class BloodAnalysis {
-  // ignore: unused_field
-  late final String _results = '';
-
   late final double _haemoglobin;
   late final double _haematocrit;
   late final double _rbcsCount;
@@ -376,10 +373,6 @@ class BloodAnalysis {
     } else {
       return 'Normal';
     }
-  }
-
-  getTranslate() {
-    return 'ربما تكون مصاب بفيرس كورونا لذلك حاول التواصل مع الطبيب';
   }
 
   getResults() {

@@ -104,6 +104,10 @@ class User {
     await uS.editProfile(name: name, phone: phone, password: password);
   }
 
+  Future<List?> getUser() async {
+    print(await uS.getUser());
+  }
+
   getEmail() {
     if (_email == '') {
       return 'Error';
