@@ -3,6 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:completebloodcount/models/bannerModel.dart';
 
+
 class Carouselslider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -13,6 +14,8 @@ class Carouselslider extends StatelessWidget {
         itemCount: bannerCards.length,
         itemBuilder: (context, index, realIndex) {
           return Container(
+            //alignment:  Alignment.centerLeft,
+            //width: MediaQuery.of(context).size.width,
             height: 140,
             margin: EdgeInsets.only(left: 0, right: 0, bottom: 20),
             padding: EdgeInsets.only(left: 0),
@@ -26,6 +29,17 @@ class Carouselslider extends StatelessWidget {
               ),
             ),
             child: GestureDetector(
+              // onTap: () {
+              //   index == 0
+              //       ? Navigator.push(context,
+              //           MaterialPageRoute(builder: (BuildContext context) {
+              //           return Disease();
+              //         }))
+              //       : Navigator.push(context,
+              //           MaterialPageRoute(builder: (BuildContext context) {
+              //           return DiseaseDetail(disease: 'Covid-19');
+              //         }));
+              // },
               child: Stack(
                 children: [
                   Image.asset(
@@ -49,6 +63,11 @@ class Carouselslider extends StatelessWidget {
                             fontSize: 15,
                           ),
                         ),
+                        Icon(
+                          Icons.chevron_right_rounded,
+                          color: Colors.lightBlue[900],
+                          size: 20,
+                        )
                       ],
                     ),
                   ),

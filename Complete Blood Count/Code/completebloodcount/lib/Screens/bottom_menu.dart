@@ -7,7 +7,7 @@ import 'package:completebloodcount/Screens/editprofileone.dart';
 import 'package:completebloodcount/models/user.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:completebloodcount/Screens/doctor_screen.dart';
 class BottomMenu extends StatefulWidget {
   static const String screenRoute = 'bottom_menu';
   const BottomMenu({Key? key}) : super(key: key);
@@ -19,13 +19,14 @@ class BottomMenu extends StatefulWidget {
 class _BottomMenu extends State<BottomMenu> {
   User profile = User();
   int currentIndex = 0;
-
+  static const IconData local_hospital = IconData(0xe396, fontFamily: 'MaterialIcons');
   final screens = [
     HomePage(),
+    Doctor(),
     ChatScreen(),
-    EditProfilePage(),
     cbcTest(),
     History(),
+    EditProfilePage(),
     logInScreen(),
   ];
   @override
@@ -33,7 +34,7 @@ class _BottomMenu extends State<BottomMenu> {
         body: screens[currentIndex],
         bottomNavigationBar: BottomNavigationBar(
           onTap: (index) {
-            if (index == 5) {
+            if (index == 7) {
               profile.signOut();
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => logInScreen()));
@@ -60,12 +61,12 @@ class _BottomMenu extends State<BottomMenu> {
               label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.chat),
-              label: 'chat',
+              icon: Icon(Icons.local_hospital),
+              label: 'Doctor',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Account',
+              icon: Icon(Icons.chat),
+              label: 'chat',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.analytics),
@@ -74,6 +75,10 @@ class _BottomMenu extends State<BottomMenu> {
             BottomNavigationBarItem(
               icon: Icon(Icons.history),
               label: 'History',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: 'Account',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.logout),

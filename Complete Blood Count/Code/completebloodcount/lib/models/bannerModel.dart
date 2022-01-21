@@ -10,14 +10,14 @@ class BannerModel {
 
 List<BannerModel> bannerCards = [
   new BannerModel(
-      "Check Disease",
+      "best doctors ever",
       [
         Color(0xffa1d4ed),
         Color(0xffc0eaff),
       ],
       "images/414-bg.png"),
   new BannerModel(
-      "Covid-19",
+      "we take care of you",
       [
         Color(0xffb6d4fa),
         Color(0xffcfe3fc),
