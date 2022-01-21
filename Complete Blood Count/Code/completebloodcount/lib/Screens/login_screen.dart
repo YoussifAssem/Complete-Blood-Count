@@ -30,11 +30,14 @@ class _logInScreen extends State<logInScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const Text('LogIn'),
+        title: const Text(
+          'LogIn',
+          textAlign: TextAlign.center,
+        ),
         backgroundColor: Colors.blue[600],
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        // padding: const EdgeInsets.all(8.0),
         child: ListView(
           children: [
             const SizedBox(
@@ -173,24 +176,6 @@ class _logInScreen extends State<logInScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 // ignore: deprecated_member_use
-                ElevatedButton(
-                  // ignore: prefer_const_constructors
-                  onPressed: () {},
-                  child: Padding(
-                    padding: const EdgeInsets.only(right: 0, top: 1),
-                    // ignore: deprecated_member_use
-                    child: Image.asset(
-                      'images/facebook.png',
-                      width: 40,
-                      height: 50,
-                    ),
-                  ),
-
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.white,
-                    onPrimary: Colors.black,
-                  ),
-                ),
 
                 // ignore: deprecated_member_use
                 ElevatedButton(
