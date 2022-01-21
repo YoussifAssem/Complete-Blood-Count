@@ -1,5 +1,6 @@
 import 'package:completebloodcount/Screens/cbc_test_screen.dart';
 import 'package:completebloodcount/Screens/chat_screen.dart';
+import 'package:completebloodcount/Screens/history.dart';
 import 'package:completebloodcount/Screens/home_screen.dart';
 import 'package:completebloodcount/Screens/login_screen.dart';
 import 'package:completebloodcount/Screens/editprofileone.dart';
@@ -18,21 +19,21 @@ class BottomMenu extends StatefulWidget {
 class _BottomMenu extends State<BottomMenu> {
   User profile = User();
   int currentIndex = 0;
-  
+
   final screens = [
     HomePage(),
     ChatScreen(),
     EditProfilePage(),
     cbcTest(),
+    History(),
     logInScreen(),
   ];
   @override
   Widget build(BuildContext) => Scaffold(
-      
         body: screens[currentIndex],
         bottomNavigationBar: BottomNavigationBar(
           onTap: (index) {
-            if (index == 4) {
+            if (index == 5) {
               profile.signOut();
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => logInScreen()));
@@ -69,6 +70,10 @@ class _BottomMenu extends State<BottomMenu> {
             BottomNavigationBarItem(
               icon: Icon(Icons.analytics),
               label: 'Examine',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.history),
+              label: 'History',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.logout),
