@@ -132,6 +132,7 @@ class userServices {
       if (snapShot.exists) {
         u.add(snapShot.get('name'));
         u.add(snapShot.get('phoneNumber'));
+        print(u);
         return u;
       }
     });
