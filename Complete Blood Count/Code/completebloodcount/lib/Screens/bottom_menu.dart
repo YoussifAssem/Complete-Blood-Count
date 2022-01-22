@@ -49,8 +49,8 @@ class _BottomMenu extends State<BottomMenu> {
           backgroundColor: Colors.blue.shade500,
           selectedItemColor: Colors.white,
           unselectedItemColor: Colors.white70,
-          iconSize: 30,
-          selectedFontSize: 20,
+          iconSize: 20,
+          selectedFontSize: 10,
           unselectedFontSize: 15,
 
           //showSelectedLabels: false,

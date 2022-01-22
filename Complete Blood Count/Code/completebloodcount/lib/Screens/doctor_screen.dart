@@ -35,6 +35,7 @@ class _DoctorState extends State<Doctor>
     );
 
     animationController.repeat();
+    
   }
 
   // void _getUser() {
@@ -44,6 +45,7 @@ class _DoctorState extends State<Doctor>
   @override
   void dispose() {
     _doctorName.dispose();
+    animationController.dispose();
     super.dispose();
   }
 

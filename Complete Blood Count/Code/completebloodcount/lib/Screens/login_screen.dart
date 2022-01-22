@@ -1,10 +1,11 @@
 import 'package:completebloodcount/Screens/signup_screen.dart';
+import 'package:completebloodcount/Services/google_sign_in.dart';
 import 'package:completebloodcount/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:completebloodcount/Screens/bottom_menu.dart';
 import 'package:provider/provider.dart';
 
-import '../google_sign_in.dart';
+
 
 // ignore: camel_case_types, use_key_in_widget_constructors, must_be_immutable
 class logInScreen extends StatefulWidget {

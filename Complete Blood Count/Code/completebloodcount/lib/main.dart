@@ -9,7 +9,7 @@ import 'package:provider/provider.dart';
 import 'Screens/login_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'Screens/bottom_menu.dart';
-import 'google_sign_in.dart';
+import 'Services/google_sign_in.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => GoogleSignInProvider(),
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: Splash(),
       ),
     );
