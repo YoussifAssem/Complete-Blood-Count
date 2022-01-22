@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:completebloodcount/Screens/bottom_menu.dart';
 import 'package:provider/provider.dart';
 
-
-
 // ignore: camel_case_types, use_key_in_widget_constructors, must_be_immutable
 class logInScreen extends StatefulWidget {
   static const String screenRoute = 'login_screen';
@@ -128,13 +126,6 @@ class _logInScreen extends State<logInScreen> {
             const SizedBox(
               height: 20,
             ),
-            const Text('forget password',
-                style: TextStyle(
-                  color: Colors.blue,
-                  fontSize: 14.0,
-                  decoration: TextDecoration.underline,
-                  decorationThickness: 1,
-                )),
             const SizedBox(
               height: 20,
             ),
@@ -160,40 +151,6 @@ class _logInScreen extends State<logInScreen> {
                   }
                 }
               },
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Text('or log in with:',
-                style: TextStyle(color: Colors.black)),
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                // ignore: deprecated_member_use
-
-                // ignore: deprecated_member_use
-                ElevatedButton(
-                  // ignore: prefer_const_constructors
-                  onPressed: () {
-                    final provider = Provider.of<GoogleSignInProvider>(context,
-                        listen: false);
-                    provider.googleLogin();
-                  },
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.white,
-                    onPrimary: Colors.black,
-                  ),
-                  // ignore: deprecated_member_use
-                  child: Image.asset(
-                    'images/Google.png',
-                    width: 40,
-                    height: 50,
-                  ),
-                ),
-              ],
             ),
           ],
         ),
