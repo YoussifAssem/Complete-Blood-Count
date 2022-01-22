@@ -26,7 +26,6 @@ class History extends StatelessWidget {
           if (!snapshot.hasData) {
             return Center(
               child: Text("You have no lab tests shown in your record"),
-              
             );
           }
           return ListView(
@@ -90,6 +89,9 @@ class History extends StatelessWidget {
                   title: Text('Basophils'),
                   subtitle: Text(document['Basophils'].toString()),
                 ),
+                SizedBox(
+                  height: 35,
+                )
               ].toList());
             }).toList(),
           );
