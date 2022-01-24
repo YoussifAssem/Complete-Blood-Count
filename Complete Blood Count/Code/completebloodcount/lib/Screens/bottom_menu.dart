@@ -25,8 +25,8 @@ class _BottomMenu extends State<BottomMenu> {
       IconData(0xe396, fontFamily: 'MaterialIcons');
   final screens = [
     HomePage(),
-    Doctor(),
-    ChatScreen(),
+    //Doctor(),
+    //ChatScreen(),
     cbcTest(),
     History(),
     EditProfilePage(),
@@ -37,7 +37,7 @@ class _BottomMenu extends State<BottomMenu> {
         body: screens[currentIndex],
         bottomNavigationBar: BottomNavigationBar(
           onTap: (index) {
-            if (index == 6) {
+            if (index == 4) {
               profile.signOut();
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => logInScreen()));
@@ -63,14 +63,18 @@ class _BottomMenu extends State<BottomMenu> {
               icon: Icon(Icons.home),
               label: 'Home',
             ),
+            /*
             BottomNavigationBarItem(
               icon: Icon(Icons.local_hospital),
               label: 'Doctor',
             ),
+            */
+            /*
             BottomNavigationBarItem(
               icon: Icon(Icons.chat),
               label: 'chat',
             ),
+            */
             BottomNavigationBarItem(
               icon: Icon(Icons.analytics),
               label: 'Examine',
